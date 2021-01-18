@@ -40,11 +40,10 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.email = this.signupForm.get('email').value;
     this.signupRequestPayload.password = this.signupForm.get('password').value;
 
-    this.authService.signup(this.signupRequestPayload)
-      .subscribe(() => {
-        this.router.navigate(['/login'], {queryParams: {registered: 'true'}});
-      }, (error) => {
-        this.toastrService.error(`Registration failed: ${error.error.message}`);
-      });
+    this.authService.signup(this.signupRequestPayload).subscribe(() => {
+      this.router.navigate(['/login'], {queryParams: {registered: 'true'}});
+    }, (error) => {
+      this.toastrService.error(`Registration failed: ${error.error.message}`);
+    });
   }
 }
