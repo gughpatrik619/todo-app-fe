@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
         this.isError = false;
         this.router.navigateByUrl('/');
         this.toastrService.success('Login Successful');
-      } else {
-        this.isError = true;
       }
     }, (error) => {
+      console.log('iserror: true');
+      this.isError = true;
       this.toastrService.error(`Login failed: ${error.error.error}`);
     });
   }
