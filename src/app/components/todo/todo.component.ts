@@ -17,10 +17,8 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe(data => {
-      setInterval(() => {
-        this.loaded = true;
-        this.todos = data;
-      }, 2000);
+      this.todos = data;
+      this.loaded = true;
     });
   }
 

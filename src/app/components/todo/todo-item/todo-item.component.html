@@ -1,1 +1,60 @@
-<p>todo-item works!</p>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="p-1 my-auto" style="width: fit-content; height: fit-content">
+      <mat-icon *ngIf="todo.state == 'DONE'" style="color: green; font-size: 45px" inline="true" matTooltip="Done"
+                matTooltipPosition="above">done
+      </mat-icon>
+      <mat-icon *ngIf="todo.state == 'IN_PROGRESS'" style="color: yellowgreen; font-size: 45px" inline="true"
+                matTooltip="In progress"
+                matTooltipPosition="above">schedule
+      </mat-icon>
+      <mat-icon *ngIf="todo.state == 'DEFERRED'" style="color: red; font-size: 45px" inline="true" matTooltip="Deferred"
+                matTooltipPosition="above">
+        hourglass_disabled
+      </mat-icon>
+      <mat-icon *ngIf="todo.state == 'TO_DO'" style="color: blue; font-size: 45px" inline="true" matTooltip="To do"
+                matTooltipPosition="above">
+        list_alt
+      </mat-icon>
+    </div>
+    <mat-card-title>{{todo.title}}</mat-card-title>
+    <mat-card-subtitle><strong>ID:</strong> {{todo.id}}</mat-card-subtitle>
+  </mat-card-header>
+  <!--  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+  <mat-card-content>
+    <p>{{todo.description}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="row">
+      <div class="col-9 my-auto">
+        <div class="row">
+          <div class="col">
+            <p class="my-auto"><strong>Created:</strong> {{todo.created | date: 'full'}}</p>
+            <p class="my-auto"><strong>Due date:</strong> {{todo.dueDate | date: 'full'}}</p>
+            <p class="my-auto"><strong>Last updated:</strong> {{todo.lastUpdated | date: 'full'}}</p>
+          </div>
+        </div>
+        <!--        <p class="my-auto"><strong>Created:</strong> {{todo.created | date: 'full'}}</p>-->
+      </div>
+      <div class="col-3 text-right">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Mark as complete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>voicemail</mat-icon>
+            <span>Defer</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>voicemail</mat-icon>
+            <span>Update</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

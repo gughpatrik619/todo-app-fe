@@ -27,6 +27,9 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoItemComponent } from './components/todo/todo-item/todo-item.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -42,23 +45,26 @@ import { TodoItemComponent } from './components/todo/todo-item/todo-item.compone
     TodoComponent,
     TodoItemComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        NgxWebstorageModule.forRoot(),
-        ToastrModule.forRoot(),
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatMenuModule,
-        MatListModule,
-        MatBadgeModule,
-        MatProgressBarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgxWebstorageModule.forRoot(),
+    ToastrModule.forRoot(),
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatListModule,
+    MatBadgeModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTooltipModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
