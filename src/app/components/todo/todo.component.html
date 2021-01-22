@@ -1,0 +1,17 @@
+<mat-progress-bar style="position: fixed" *ngIf="!loaded" color="warn" mode="indeterminate"></mat-progress-bar>
+
+<div class="container">
+  <div class="jumbotron">
+    <div *ngFor="let todo of todos">
+      <p>ID: {{todo.id}}</p>
+      <p>Title: {{todo.title}}</p>
+      <p>Description: {{todo.description}}</p>
+      <p>Created: {{todo.created | date: 'full'}}</p>
+      <p>Last updated: {{todo.lastUpdated | date: 'full'}}</p>
+      <p>Due date: {{todo.dueDate | date: 'full'}}</p>
+      <p>State: {{todo.state}}</p>
+      <p>Priority: {{todo.priority}}</p>
+      <hr>
+    </div>
+  </div>
+</div>

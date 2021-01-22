@@ -1,11 +1,10 @@
-import {Injectable} from '@angular/core';
+import {DoCheck, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SignupRequestPayload} from '../model/payload/signup-request-payload';
-import {Observable} from 'rxjs';
-import {LocalStorageService} from 'ngx-webstorage';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {LoginRequestPayload} from '../model/payload/login-request-payload';
 import {LoginResponsePayload} from '../model/payload/login-response-payload';
-import {map, tap} from 'rxjs/operators';
+import {StorageService} from './storage.service';
 
 const httpOptions = {
   headers: new HttpHeaders({'content-type': 'application/json'})
@@ -16,51 +15,44 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) {
+  static readonly BACKEND_AUTH_URL = 'http://localhost:8081/auth';
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+  isAdmin = new BehaviorSubject<boolean>(false);
+  isModerator = new BehaviorSubject<boolean>(false);
+  username = new BehaviorSubject<string>(null);
+
+  constructor(private httpClient: HttpClient, private storageService: StorageService) {
+    const token = this.storageService.retrieveToken();
+    const roles = this.storageService.retrieveRoles();
+    const username = this.storageService.retrieveUsername();
+
+    if (token) {
+      this.isLoggedIn.next(true);
+    }
+
+    if (username) {
+      this.username.next(username);
+    }
+
+    if (roles) {
+      this.isAdmin.next(roles.includes('ROLE_ADMIN'));
+      this.isModerator.next(roles.includes('ROLE_MODERATOR'));
+    }
   }
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
-    return this.httpClient.post('http://localhost:8081/auth/signup', signupRequestPayload, httpOptions);
+    return this.httpClient.post(`${AuthService.BACKEND_AUTH_URL}/signup`, signupRequestPayload, httpOptions);
   }
 
-  login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-    return this.httpClient.post<LoginResponsePayload>('http://localhost:8081/auth/login', loginRequestPayload, httpOptions)
-      .pipe(map(data => {
-        this.localStorage.store('authenticationToken', data.jwtToken);
-        this.localStorage.store('username', data.username);
-        this.localStorage.store('refreshToken', data.refreshToken);
-        this.localStorage.store('expiresAt', data.expiresAt);
-        return true;
-      }));
+  login(loginRequestPayload: LoginRequestPayload): Observable<any> {
+    return this.httpClient.post<LoginResponsePayload>(`${AuthService.BACKEND_AUTH_URL}/login`, loginRequestPayload, httpOptions);
   }
 
-  refreshToken() {
-    const refreshTokenPayload = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUserName()
-    };
-
-    return this.httpClient.post<LoginResponsePayload>('http://localhost:8081/auth/refreshToken',
-      refreshTokenPayload)
-      .pipe(tap(response => {
-        this.localStorage.store('authenticationToken', response.jwtToken);
-        this.localStorage.store('expiresAt', response.expiresAt);
-      }));
-  }
-
-  getJwtToken() {
-    return this.localStorage.retrieve('authenticationToken');
-  }
-
-  getRefreshToken() {
-    return this.localStorage.retrieve('refreshToken');
-  }
-
-  getUserName() {
-    return this.localStorage.retrieve('username');
-  }
-
-  getExpirationTime() {
-    return this.localStorage.retrieve('expiresAt');
+  logout() {
+    this.isLoggedIn.next(false);
+    this.isAdmin.next(false);
+    this.isModerator.next(false);
+    this.username.next(null);
+    this.storageService.clear();
   }
 }

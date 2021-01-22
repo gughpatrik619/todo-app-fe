@@ -7,3 +7,7 @@
 .home-logo:hover {
   background-color: #454d55;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}

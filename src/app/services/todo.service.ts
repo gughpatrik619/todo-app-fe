@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Todo} from '../model/todo';
-import {LocalStorageService} from 'ngx-webstorage';
+import {StorageService} from './storage.service';
 
 const httpOptions = {
   headers: new HttpHeaders({'content-type': 'application/json'})
@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class TodoService {
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) {
+  constructor(private httpClient: HttpClient, private storageService: StorageService) {
   }
 
   getTodos(): Observable<Todo[]> {
@@ -21,6 +21,6 @@ export class TodoService {
   }
 
   private getUserName() {
-    return this.localStorage.retrieve('username');
+    return this.storageService.retrieveUsername();
   }
 }

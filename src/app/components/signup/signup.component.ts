@@ -41,9 +41,10 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.password = this.signupForm.get('password').value;
 
     this.authService.signup(this.signupRequestPayload).subscribe(() => {
-      this.router.navigate(['/login'], {queryParams: {registered: 'true'}});
-    }, (error) => {
-      this.toastrService.error(`Registration failed: ${error.error.message}`);
+      this.toastrService.success('Sign up successful. Check your mail box for verification email.');
+      this.router.navigate(['/login']);
+    }, error => {
+      this.toastrService.error(`Sign up failed: ${error.error.message}`);
     });
   }
 }

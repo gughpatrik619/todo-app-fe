@@ -1,0 +1,14 @@
+.custom-list-item {
+  background-color: white;
+  color: black;
+}
+
+.custom-list-item:hover, .custom-list-item:focus {
+  background-color: #673AB7;
+  color: white;
+}
+
+mat-sidenav {
+  padding-left: 0;
+  padding-right: 0;
+}
