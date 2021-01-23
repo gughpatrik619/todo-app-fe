@@ -1,7 +1,51 @@
 <mat-progress-bar style="position: fixed" *ngIf="!loaded" color="warn" mode="indeterminate"></mat-progress-bar>
 
-<div class="container">
-  <div class="jumbotron">
-    <app-todo-item *ngFor="let todo of todos" [todo]="todo" class="m-3"></app-todo-item>
+<div class="container-fluid justify-content-center d-flex align-items-center flex-column">
+  <div class="list-container">
+
+    <div class="column-container"
+         cdkDropList
+         #todosToDoList="cdkDropList"
+         [cdkDropListData]="todosToDo"
+         [cdkDropListConnectedTo]="[todosInProgressList, todosDoneList, todosDeferredList]"
+         (cdkDropListDropped)="onDrop($event)">
+      <h2 style="color: cornflowerblue">TO DO</h2>
+      <hr>
+      <app-todo-item *ngFor="let todo of todosToDo" [todo]="todo"></app-todo-item>
+    </div>
+
+    <div class="column-container"
+         cdkDropList
+         #todosInProgressList="cdkDropList"
+         [cdkDropListData]="todosInProgress"
+         [cdkDropListConnectedTo]="[todosToDoList, todosDoneList, todosDeferredList]"
+         (cdkDropListDropped)="onDrop($event)">
+      <h2 style="color: lightgreen">IN PROGRESS</h2>
+      <hr>
+      <app-todo-item *ngFor="let todo of todosInProgress" [todo]="todo"></app-todo-item>
+    </div>
+
+    <div class="column-container"
+         cdkDropList
+         #todosDoneList="cdkDropList"
+         [cdkDropListData]="todosDone"
+         [cdkDropListConnectedTo]="[todosToDoList, todosDeferredList, todosInProgressList]"
+         (cdkDropListDropped)="onDrop($event)">
+      <h2 style="color: green">DONE</h2>
+      <hr>
+      <app-todo-item *ngFor="let todo of todosDone" [todo]="todo"></app-todo-item>
+    </div>
+
+    <div class="column-container"
+         cdkDropList
+         #todosDeferredList="cdkDropList"
+         [cdkDropListData]="todosDeferred"
+         [cdkDropListConnectedTo]="[todosToDoList, todosInProgressList, todosDoneList]"
+         (cdkDropListDropped)="onDrop($event)">
+      <h2 style="color: palevioletred">DEFERRED</h2>
+      <hr>
+      <app-todo-item *ngFor="let todo of todosDeferred" [todo]="todo"></app-todo-item>
+    </div>
+
   </div>
 </div>

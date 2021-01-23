@@ -1,0 +1,23 @@
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.list-container {
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.column-container {
+  min-height: 200px;
+  width: 20vw;
+  padding-top: 1em;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  background-color: whitesmoke;
+}

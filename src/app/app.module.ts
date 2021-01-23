@@ -30,6 +30,7 @@ import { TodoItemComponent } from './components/todo/todo-item/todo-item.compone
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -45,26 +46,27 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     TodoComponent,
     TodoItemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot(),
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatListModule,
-    MatBadgeModule,
-    MatProgressBarModule,
-    MatCardModule,
-    MatGridListModule,
-    MatTooltipModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        NgxWebstorageModule.forRoot(),
+        ToastrModule.forRoot(),
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatMenuModule,
+        MatListModule,
+        MatBadgeModule,
+        MatProgressBarModule,
+        MatCardModule,
+        MatGridListModule,
+        MatTooltipModule,
+        DragDropModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
