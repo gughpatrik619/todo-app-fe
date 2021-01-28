@@ -1,33 +1,33 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-mini-fab (click)="toggleSidebar()">
-      <mat-icon>apps</mat-icon>
-    </button>
+<!--<mat-toolbar color="primary">-->
+<!--  <mat-toolbar-row>-->
+<!--    <button mat-mini-fab (click)="toggleSidebar()">-->
+<!--      <mat-icon>apps</mat-icon>-->
+<!--    </button>-->
 
-    <h1 class="pr-2 pl-2 pt-1 pb-1 mr-2 ml-3 home-logo" [routerLink]="'/home'">
-      <mat-icon class="mr-2 align-middle" color="accent">grading</mat-icon>
-      <span class="align-middle">TODO APP</span>
-    </h1>
+<!--    <h1 class="pr-2 pl-2 pt-1 pb-1 mr-2 ml-3 home-logo" [routerLink]="'/home'">-->
+<!--      <mat-icon class="mr-2 align-middle" color="accent">grading</mat-icon>-->
+<!--      <span class="align-middle">TODO APP</span>-->
+<!--    </h1>-->
 
-    <button mat-flat-button color="primary" [routerLink]="'/home'">Home</button>
-    <button mat-flat-button color="primary" [routerLink]="'/admin'" *ngIf="isAdmin">Admin Board</button>
-    <button mat-flat-button color="primary" [routerLink]="'/mod'" *ngIf="isModerator" >Moderator Board</button>
-    <button mat-flat-button color="primary" [routerLink]="'/user'" *ngIf="this.isLoggedIn" >User</button>
+<!--    <button mat-flat-button color="primary" [routerLink]="'/home'">Home</button>-->
+<!--    <button mat-flat-button color="primary" [routerLink]="'/admin'" *ngIf="isAdmin">Admin Board</button>-->
+<!--    <button mat-flat-button color="primary" [routerLink]="'/mod'" *ngIf="isModerator" >Moderator Board</button>-->
+<!--    <button mat-flat-button color="primary" [routerLink]="'/user'" *ngIf="this.isLoggedIn" >User</button>-->
 
-    <span class="example-spacer"></span>
+<!--    <span class="example-spacer"></span>-->
 
-    <p *ngIf="isLoggedIn" class="my-auto mr-3 font-italic">@{{username}}</p>
-    <button *ngIf="!isLoggedIn" mat-raised-button color="accent" [routerLink]="'/login'">Log in</button>
-    <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="logout()">Log out</button>
+<!--    <p *ngIf="isLoggedIn" class="my-auto mr-3 font-italic">@{{username}}</p>-->
+<!--    <button *ngIf="!isLoggedIn" mat-raised-button color="accent" [routerLink]="'/login'">Log in</button>-->
+<!--    <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="logout()">Log out</button>-->
 
-    <!--    <button mat-mini-fab [matMenuTriggerFor]="beforeMenu">-->
-    <!--      <mat-icon>person</mat-icon>-->
-    <!--    </button>-->
+<!--    &lt;!&ndash;    <button mat-mini-fab [matMenuTriggerFor]="beforeMenu">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <mat-icon>person</mat-icon>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </button>&ndash;&gt;-->
 
-    <!--    <mat-menu #beforeMenu="matMenu" xPosition="before">-->
-    <!--      <app-menu-login *ngIf="!this.authService.getIsLoggedIn()"></app-menu-login>-->
-    <!--      <app-menu-settings *ngIf="this.authService.getIsLoggedIn()"></app-menu-settings>-->
-    <!--    </mat-menu>-->
-  </mat-toolbar-row>
-</mat-toolbar>
-<app-sidebar [opened]="isSidebarOpen"></app-sidebar>
+<!--    &lt;!&ndash;    <mat-menu #beforeMenu="matMenu" xPosition="before">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <app-menu-login *ngIf="!this.authService.getIsLoggedIn()"></app-menu-login>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <app-menu-settings *ngIf="this.authService.getIsLoggedIn()"></app-menu-settings>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </mat-menu>&ndash;&gt;-->
+<!--  </mat-toolbar-row>-->
+<!--</mat-toolbar>-->
+<!--<app-sidebar [opened]="isSidebarOpen"></app-sidebar>-->

@@ -1,51 +1,85 @@
-<mat-progress-bar style="position: fixed" *ngIf="!loaded" color="warn" mode="indeterminate"></mat-progress-bar>
+<!--<mat-progress-bar style="position: fixed" *ngIf="!loaded" color="warn" mode="indeterminate"></mat-progress-bar>-->
 
-<div class="container-fluid justify-content-center d-flex align-items-center flex-column">
-  <div class="list-container">
+<!--<button mat-raised-button (click)="openDialog()">Create</button>-->
 
-    <div class="column-container"
-         cdkDropList
-         #todosToDoList="cdkDropList"
-         [cdkDropListData]="todosToDo"
-         [cdkDropListConnectedTo]="[todosInProgressList, todosDoneList, todosDeferredList]"
-         (cdkDropListDropped)="onDrop($event)">
-      <h2 style="color: cornflowerblue">TO DO</h2>
-      <hr>
-      <app-todo-item *ngFor="let todo of todosToDo" [todo]="todo"></app-todo-item>
-    </div>
+<!--<div class="container-fluid justify-content-center d-flex align-items-center flex-column">-->
+<!--  <div class="list-container">-->
 
-    <div class="column-container"
-         cdkDropList
-         #todosInProgressList="cdkDropList"
-         [cdkDropListData]="todosInProgress"
-         [cdkDropListConnectedTo]="[todosToDoList, todosDoneList, todosDeferredList]"
-         (cdkDropListDropped)="onDrop($event)">
-      <h2 style="color: lightgreen">IN PROGRESS</h2>
-      <hr>
-      <app-todo-item *ngFor="let todo of todosInProgress" [todo]="todo"></app-todo-item>
-    </div>
+<!--    <div class="column-container"-->
+<!--         cdkDropList-->
+<!--         #todosToDoList="cdkDropList"-->
+<!--         [cdkDropListData]="todosToDo"-->
+<!--         [cdkDropListConnectedTo]="[todosInProgressList, todosDoneList, todosDeferredList]"-->
+<!--         (cdkDropListDropped)="onDrop($event)">-->
+<!--      <h2 style="color: cornflowerblue">TO DO</h2>-->
+<!--      <hr>-->
+<!--      <mat-card cdkDrag *ngFor="let todo of todosToDo">-->
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>{{todo.title}}</mat-card-title>-->
+<!--          <mat-card-subtitle>{{todo.description}}</mat-card-subtitle>-->
+<!--        </mat-card-header>-->
+<!--        <mat-card-actions align="end">-->
+<!--          <button mat-raised-button>Edit</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--    </div>-->
 
-    <div class="column-container"
-         cdkDropList
-         #todosDoneList="cdkDropList"
-         [cdkDropListData]="todosDone"
-         [cdkDropListConnectedTo]="[todosToDoList, todosDeferredList, todosInProgressList]"
-         (cdkDropListDropped)="onDrop($event)">
-      <h2 style="color: green">DONE</h2>
-      <hr>
-      <app-todo-item *ngFor="let todo of todosDone" [todo]="todo"></app-todo-item>
-    </div>
+<!--    <div class="column-container"-->
+<!--         cdkDropList-->
+<!--         #todosInProgressList="cdkDropList"-->
+<!--         [cdkDropListData]="todosInProgress"-->
+<!--         [cdkDropListConnectedTo]="[todosToDoList, todosDoneList, todosDeferredList]"-->
+<!--         (cdkDropListDropped)="onDrop($event)">-->
+<!--      <h2 style="color: yellowgreen">IN PROGRESS</h2>-->
+<!--      <hr>-->
+<!--      <mat-card cdkDrag *ngFor="let todo of todosInProgress">-->
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>{{todo.title}}</mat-card-title>-->
+<!--          <mat-card-subtitle>{{todo.description}}</mat-card-subtitle>-->
+<!--        </mat-card-header>-->
+<!--        <mat-card-actions align="end">-->
+<!--          <button mat-raised-button>Edit</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--    </div>-->
 
-    <div class="column-container"
-         cdkDropList
-         #todosDeferredList="cdkDropList"
-         [cdkDropListData]="todosDeferred"
-         [cdkDropListConnectedTo]="[todosToDoList, todosInProgressList, todosDoneList]"
-         (cdkDropListDropped)="onDrop($event)">
-      <h2 style="color: palevioletred">DEFERRED</h2>
-      <hr>
-      <app-todo-item *ngFor="let todo of todosDeferred" [todo]="todo"></app-todo-item>
-    </div>
+<!--    <div class="column-container"-->
+<!--         cdkDropList-->
+<!--         #todosDoneList="cdkDropList"-->
+<!--         [cdkDropListData]="todosDone"-->
+<!--         [cdkDropListConnectedTo]="[todosToDoList, todosDeferredList, todosInProgressList]"-->
+<!--         (cdkDropListDropped)="onDrop($event)">-->
+<!--      <h2 style="color: green">DONE</h2>-->
+<!--      <hr>-->
+<!--      <mat-card cdkDrag *ngFor="let todo of todosDone">-->
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>{{todo.title}}</mat-card-title>-->
+<!--          <mat-card-subtitle>{{todo.description}}</mat-card-subtitle>-->
+<!--        </mat-card-header>-->
+<!--        <mat-card-actions align="end">-->
+<!--          <button mat-raised-button>Edit</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--    </div>-->
 
-  </div>
-</div>
+<!--    <div class="column-container"-->
+<!--         cdkDropList-->
+<!--         #todosDeferredList="cdkDropList"-->
+<!--         [cdkDropListData]="todosDeferred"-->
+<!--         [cdkDropListConnectedTo]="[todosToDoList, todosInProgressList, todosDoneList]"-->
+<!--         (cdkDropListDropped)="onDrop($event)">-->
+<!--      <h2 style="color: palevioletred">DEFERRED</h2>-->
+<!--      <hr>-->
+<!--      <mat-card cdkDrag *ngFor="let todo of todosDeferred">-->
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>{{todo.title}}</mat-card-title>-->
+<!--          <mat-card-subtitle>{{todo.description}}</mat-card-subtitle>-->
+<!--        </mat-card-header>-->
+<!--        <mat-card-actions align="end">-->
+<!--          <button mat-raised-button>Edit</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</div>-->

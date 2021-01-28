@@ -14,6 +14,7 @@ export class TodoComponent implements OnInit {
   todosInProgress: Todo[] = [];
   todosDeferred: Todo[] = [];
   todosToDo: Todo[] = [];
+
   loaded = false;
 
   constructor(private todoService: TodoService) {
@@ -33,7 +34,6 @@ export class TodoComponent implements OnInit {
   onDrop(event: CdkDragDrop<Todo[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      console.log(event.container.data[event.currentIndex]);
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
