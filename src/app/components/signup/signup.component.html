@@ -1,52 +1,106 @@
-<div class="register-section">
-  <div class="row justify-content-center">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header" style="text-align: center">
-          <h4>Register</h4>
+<div class="container text-center mt-5">
+  <div class="m-auto" style="width: 300px">
+
+    <!--  todo:  *ngIf="!this.authService.isLoggedIn.value"-->
+
+    <form
+
+      [formGroup]="signupFormGroup"
+
+      novalidate
+      (ngSubmit)="onSubmit()"
+    >
+      <div formGroupName="signupPayload">
+        <h1 class="h2 mb-4 fw-normal">Sign Up</h1>
+
+        <div class="text-start">
+          <div class="input-group has-validation mt-2">
+            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              [ngClass]="{
+              'is-invalid': (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.invalid,
+              'is-valid': (usernameFormControl.dirty || usernameFormControl.touched) && !usernameFormControl.invalid
+              }"
+              placeholder="Username"
+              aria-label="username"
+              formControlName="username"
+              required
+            >
+            <div
+              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.required"
+              class="invalid-feedback mb-0 mt-01">
+              Username is required
+            </div>
+            <div
+              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.minlength"
+              class="invalid-feedback mb-0 mt-01">
+              Username must have at least 5 characters
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <form [formGroup]="signupForm" (ngSubmit)="signup()">
-            <div class="form-group row">
-              <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
-                Address</label>
-              <div class="col-md-6">
-                <input type="text" [formControlName]="'email'" id="email_address" class="form-control"
-                       name="email-address">
-                <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched" class="help-block">Please enter a valid email</span>
-              </div>
-            </div>
 
-            <div class="form-group row">
-              <label class="col-md-4 col-form-label text-md-right">User Name</label>
-              <div class="col-md-6">
-                <input type="text" [formControlName]="'username'" class="form-control">
-                <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
-                      class="help-block">Please enter a valid username</span>
-              </div>
+        <div class="text-start">
+          <div class="input-group has-validation mt-2">
+            <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
+            <input
+              type="password"
+              class="form-control"
+              [ngClass]="{
+              'is-invalid': (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.invalid,
+              'is-valid': (passwordFormControl.dirty || passwordFormControl.touched) && !passwordFormControl.invalid
+              }"
+              placeholder="Password"
+              aria-label="password"
+              formControlName="password"
+              required
+            >
+            <div
+              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.required"
+              class="invalid-feedback mb-0 mt-01">
+              Password is required
             </div>
-
-            <div class="form-group row">
-              <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-              <div class="col-md-6">
-                <input type="password" [formControlName]="'password'" id="password" class="form-control"
-                       name="password">
-                <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
-                      class="help-block">Please enter a valid password</span>
-              </div>
+            <div
+              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.minlength"
+              class="invalid-feedback mb-0 mt-01">
+              Password must have at least 5 characters
             </div>
-
-            <span class="col-md-6 offset-md-4">
-              <button type="submit" class="sign-up">
-                Sign Up
-              </button>
-              <span style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
-            </span>
-          </form>
+          </div>
         </div>
+
+        <div class="text-start">
+          <div class="input-group has-validation mt-2">
+            <span class="input-group-text"><i class="fas fa-at fa-fw"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              [ngClass]="{
+              'is-invalid': (emailFormControl.dirty || emailFormControl.touched) && emailFormControl.invalid,
+              'is-valid': (emailFormControl.dirty || emailFormControl.touched) && !emailFormControl.invalid
+              }"
+              placeholder="Email"
+              aria-label="email"
+              formControlName="email"
+              required
+            >
+            <div
+              *ngIf="emailFormControl.invalid && (emailFormControl.dirty || emailFormControl.touched) && emailFormControl.errors.required"
+              class="invalid-feedback mb-0 mt-01">
+              Email is required
+            </div>
+            <div
+              *ngIf="emailFormControl.invalid && (emailFormControl.dirty || emailFormControl.touched) && emailFormControl.errors.pattern"
+              class="invalid-feedback mb-0 mt-01">
+              Wrong email format
+            </div>
+          </div>
+        </div>
+
+        <button class="mt-4 w-100 btn btn-primary" type="submit">Sign Up</button>
+
       </div>
-    </div>
-    <div class="col-md-3"></div>
+    </form>
+
   </div>
 </div>

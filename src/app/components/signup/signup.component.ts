@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SignupRequestPayload} from '../../model/payload/signup-request-payload';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {SignupRequestPayload} from '../../model/payload/signup-request-payload';
 
 @Component({
   selector: 'app-signup',
@@ -12,35 +12,52 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  signupRequestPayload: SignupRequestPayload;
-  signupForm: FormGroup;
+  signupFormGroup: FormGroup;
+  formError = false;
 
   constructor(
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private toastrService: ToastrService
   ) {
-    this.signupRequestPayload = {
-      username: '',
-      email: '',
-      password: ''
-    };
   }
 
   ngOnInit() {
-    this.signupForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+    this.signupFormGroup = this.formBuilder.group({
+      signupPayload: this.formBuilder.group({
+        username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+        email: new FormControl(null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
+      })
     });
   }
 
-  signup() {
-    this.signupRequestPayload.username = this.signupForm.get('username').value;
-    this.signupRequestPayload.email = this.signupForm.get('email').value;
-    this.signupRequestPayload.password = this.signupForm.get('password').value;
+  get usernameFormControl() {
+    return this.signupFormGroup.get('signupPayload.username');
+  }
 
-    this.authService.signup(this.signupRequestPayload).subscribe(() => {
+  get passwordFormControl() {
+    return this.signupFormGroup.get('signupPayload.password');
+  }
+
+  get emailFormControl() {
+    return this.signupFormGroup.get('signupPayload.email');
+  }
+
+  onSubmit() {
+    if (this.signupFormGroup.invalid) {
+      this.toastrService.error('Invalid inputs');
+      this.signupFormGroup.markAllAsTouched();
+      this.formError = true;
+      return;
+    }
+
+    const signupRequestPayload: SignupRequestPayload = this.signupFormGroup.controls.signupPayload.value;
+
+    console.log(signupRequestPayload);
+
+    this.authService.signup(signupRequestPayload).subscribe(() => {
       this.toastrService.success('Sign up successful. Check your mail box for verification email.');
       this.router.navigate(['/login']);
     }, error => {

@@ -1,12 +1,12 @@
 <div class="container text-center mt-5">
   <div class="m-auto" style="width: 300px">
 
-    <!--    *ngIf="!this.authService.isLoggedIn.value"-->
+    <!--  todo:  *ngIf="!this.authService.isLoggedIn.value"-->
 
     <form
-      class="needs-validation"
-      [ngClass]="{'was-validated': formError}"
+
       [formGroup]="loginFormGroup"
+
       novalidate
       (ngSubmit)="onSubmit()"
     >
@@ -19,12 +19,25 @@
             <input
               type="text"
               class="form-control"
+              [ngClass]="{
+              'is-invalid': (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.invalid,
+              'is-valid': (usernameFormControl.dirty || usernameFormControl.touched) && !usernameFormControl.invalid
+              }"
               placeholder="Username"
               aria-label="username"
               formControlName="username"
               required
             >
-            <div class="invalid-feedback mb-0 mt-01">Username is required</div>
+            <div
+              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.required"
+              class="invalid-feedback mb-0 mt-01">
+              Username is required
+            </div>
+            <div
+              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.minlength"
+              class="invalid-feedback mb-0 mt-01">
+              Username must have at least 5 characters
+            </div>
           </div>
         </div>
 
@@ -34,12 +47,25 @@
             <input
               type="password"
               class="form-control"
+              [ngClass]="{
+              'is-invalid': (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.invalid,
+              'is-valid': (passwordFormControl.dirty || passwordFormControl.touched) && !passwordFormControl.invalid
+              }"
               placeholder="Password"
               aria-label="password"
               formControlName="password"
               required
             >
-            <p class="invalid-feedback mb-0 mt-01">Password is required</p>
+            <div
+              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.required"
+              class="invalid-feedback mb-0 mt-01">
+              Password is required
+            </div>
+            <div
+              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.minlength"
+              class="invalid-feedback mb-0 mt-01">
+              Password must have at least 5 characters
+            </div>
 
           </div>
         </div>

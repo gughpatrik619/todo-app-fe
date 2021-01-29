@@ -28,15 +28,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginFormGroup = this.formBuilder.group({
       loginPayload: this.formBuilder.group({
-        username: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required)
+        username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(5)])
       })
     });
   }
 
+  get usernameFormControl() {
+    return this.loginFormGroup.get('loginPayload.username');
+  }
+
+  get passwordFormControl() {
+    return this.loginFormGroup.get('loginPayload.password');
+  }
+
   onSubmit() {
     if (this.loginFormGroup.invalid) {
-      console.log('login form invalid');
+      this.toastrService.error('Invalid inputs');
+      this.loginFormGroup.markAllAsTouched();
       this.formError = true;
       return;
     }
