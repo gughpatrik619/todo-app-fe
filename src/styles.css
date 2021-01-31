@@ -1,10 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~ngx-toastr/toastr.css";
-
-/*input.ng-invalid.ng-touched {*/
-/*  border: 1px solid red;*/
-/*}*/
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 html, body {
   height: 100%;

@@ -4,9 +4,7 @@
     <!--  todo:  *ngIf="!this.authService.isLoggedIn.value"-->
 
     <form
-
       [formGroup]="loginFormGroup"
-
       novalidate
       (ngSubmit)="onSubmit()"
     >
@@ -33,11 +31,6 @@
               class="invalid-feedback mb-0 mt-01">
               Username is required
             </div>
-            <div
-              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.minlength"
-              class="invalid-feedback mb-0 mt-01">
-              Username must have at least 5 characters
-            </div>
           </div>
         </div>
 
@@ -61,16 +54,17 @@
               class="invalid-feedback mb-0 mt-01">
               Password is required
             </div>
-            <div
-              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.minlength"
-              class="invalid-feedback mb-0 mt-01">
-              Password must have at least 5 characters
-            </div>
-
           </div>
         </div>
 
-        <button class="mt-4 w-100 btn btn-primary" type="submit">Log In</button>
+        <div class="row mt-4">
+          <div class="col-8">
+            <button class="w-100 btn btn-primary" type="submit">Log In</button>
+          </div>
+          <div class="col-4">
+            <button class="w-100 btn btn-outline-primary" [routerLink]="'/signup'" type="submit">Sign Up</button>
+          </div>
+        </div>
 
       </div>
     </form>

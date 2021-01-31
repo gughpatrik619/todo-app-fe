@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "bootstrap": "^5.0.0-beta1",
     "ngx-toastr": "^13.2.0",
     "ngx-webstorage": "^7.0.1",
     "rxjs": "~6.5.4",

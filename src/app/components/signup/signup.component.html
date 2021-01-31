@@ -4,9 +4,7 @@
     <!--  todo:  *ngIf="!this.authService.isLoggedIn.value"-->
 
     <form
-
       [formGroup]="signupFormGroup"
-
       novalidate
       (ngSubmit)="onSubmit()"
     >
@@ -92,12 +90,19 @@
             <div
               *ngIf="emailFormControl.invalid && (emailFormControl.dirty || emailFormControl.touched) && emailFormControl.errors.pattern"
               class="invalid-feedback mb-0 mt-01">
-              Wrong email format
+              Invalid email format
             </div>
           </div>
         </div>
 
-        <button class="mt-4 w-100 btn btn-primary" type="submit">Sign Up</button>
+        <div class="row mt-4">
+          <div class="col-8">
+            <button class="w-100 btn btn-primary" type="submit">Sign Up</button>
+          </div>
+          <div class="col-4">
+            <button class="w-100 btn btn-outline-primary" [routerLink]="'/login'" type="submit">Log In</button>
+          </div>
+        </div>
 
       </div>
     </form>

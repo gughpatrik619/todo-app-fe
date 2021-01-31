@@ -19,6 +19,7 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {TodoComponent} from './components/todo/todo.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BoardUserComponent,
     SidebarComponent,
     ToolbarComponent,
-    TodoComponent
+    TodoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
