@@ -17,35 +17,53 @@
       kiwi
     </a>
     <div class="dropdown me-2">
-      <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Projects
+      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Todo's
       </button>
       <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text"><strong>Projects</strong></span></li>
+        <li><span class="dropdown-item-text"><strong>Todo's</strong></span></li>
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">All</a></li>
-        <li><a class="dropdown-item" href="#">Recent</a></li>
-        <li><a class="dropdown-item" href="#">Favorite</a></li>
+        <li>
+          <button class="dropdown-item">All</button>
+        </li>
+        <li>
+          <button class="dropdown-item">To Do</button>
+        </li>
+        <li>
+          <button class="dropdown-item">In Progress</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Deferred</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Done</button>
+        </li>
       </ul>
     </div>
     <div class="dropdown me-2">
-      <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Tasks
+      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Groups
       </button>
       <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text"><strong>Tasks</strong></span></li>
+        <li><span class="dropdown-item-text"><strong>Groups</strong></span></li>
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">All</a></li>
-        <li><a class="dropdown-item" href="#">Recent</a></li>
-        <li><a class="dropdown-item" href="#">Favorite</a></li>
+        <li>
+          <button class="dropdown-item">All</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Recent</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Favorite</button>
+        </li>
       </ul>
     </div>
     <div class="dropdown me-auto">
-      <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown"
+      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">More
       </button>
       <ul class="dropdown-menu">
@@ -53,23 +71,38 @@
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Layout</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <button class="dropdown-item">Timeline</button>
+        </li>
+        <li>
+          <button class="dropdown-item">Charts</button>
+        </li>
       </ul>
     </div>
     <div class="dropdown">
-      <button class="btn btn-dark btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-              aria-expanded="false">Info
+      <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+        <i class="fas fa-user-cog fa-fw"></i>
       </button>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-        <li><span class="dropdown-item-text"><strong>Info</strong></span></li>
+        <li><span class="dropdown-item-text fst-italic"><strong>@{{username}}</strong></span>
+        </li>
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li>
+          <button class="dropdown-item" [routerLink]="'/profile'">Profile</button>
+        </li>
+        <li>
+          <button class="dropdown-item" [routerLink]="'/settings'">Settings</button>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li>
+          <button class="dropdown-item" (click)="onLogout()">Log Out</button>
+        </li>
       </ul>
     </div>
   </div>

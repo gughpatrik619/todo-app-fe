@@ -1,27 +1,47 @@
 <div class="collapse navbar-collapse bg-dark" id="sidebar">
   <ul class="navbar-nav pt-2">
     <li class="nav-item">
-      <a class="nav-link active px-3" href="#">
-        <i class="fas fa-home fa-fw me-2"></i>
-        Home
+      <a
+        class="nav-link px-3"
+        [ngClass]="{ 'active': activeLink === 'list' }"
+        [routerLink]="'/home/todo-list'"
+        (click)="activeLink = 'list'"
+      >
+        <i class="fas fa-clipboard-list fa-fw me-2"></i>
+        Todo's
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link px-3" href="#">
-        <i class="fas fa-dollar-sign fa-fw me-2"></i>
-        Pricing
+      <a
+        class="nav-link px-3"
+        [ngClass]="{ 'active': activeLink === 'board' }"
+        [routerLink]="'/home/todo-board'"
+        (click)="activeLink = 'board'"
+      >
+        <i class="fas fa-columns fa-fw me-2"></i>
+        Board
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link px-3" href="#">
-        <i class="fas fa-rocket fa-fw me-2"></i>
-        Features
+      <a
+        class="nav-link px-3"
+        [ngClass]="{ 'active': activeLink === 'stats' }"
+        [routerLink]="'/home/statistics'"
+        (click)="activeLink = 'stats'"
+      >
+        <i class="fas fa-chart-line fa-fw me-2"></i>
+        Statistics
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link px-3" href="#">
-        <i class="fas fa-address-book fa-fw me-2"></i>
-        Contact
+      <a
+        class="nav-link px-3"
+        [ngClass]="{ 'active': activeLink === 'calendar' }"
+        [routerLink]="'/home/calendar'"
+        (click)="activeLink = 'calendar'"
+      >
+        <i class="fas fa-calendar-alt fa-fw me-2"></i>
+        Calendar
       </a>
     </li>
   </ul>

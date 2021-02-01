@@ -16,10 +16,14 @@ import {BoardAdminComponent} from './components/board-admin/board-admin.componen
 import {BoardModeratorComponent} from './components/board-moderator/board-moderator.component';
 import {BoardUserComponent} from './components/board-user/board-user.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import {ToolbarComponent} from './components/toolbar/toolbar.component';
-import {TodoComponent} from './components/todo/todo.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {SettingsComponent} from './components/settings/settings.component';
+import {TodoListComponent} from './components/todo-list/todo-list.component';
+import {TodoBoardComponent} from './components/todo-board/todo-board.component';
+import {StatisticsComponent} from './components/statistics/statistics.component';
+import {CalendarComponent} from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +35,13 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     BoardModeratorComponent,
     BoardUserComponent,
     SidebarComponent,
-    ToolbarComponent,
-    TodoComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent,
+    SettingsComponent,
+    TodoListComponent,
+    TodoBoardComponent,
+    StatisticsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

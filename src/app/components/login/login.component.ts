@@ -64,8 +64,8 @@ export class LoginComponent implements OnInit {
         this.authService.isAdmin.next(data.roles.includes('ROLE_ADMIN'));
         this.authService.isModerator.next(data.roles.includes('ROLE_MODERATOR'));
         this.authService.username.next(data.username);
-        this.toastrService.success('Login Successful');
-        this.router.navigate(['/user']);
+        this.toastrService.success(`Logged in as @${data.username}`);
+        this.router.navigate(['/home']);
       }
     }, error => {
       console.log(error);

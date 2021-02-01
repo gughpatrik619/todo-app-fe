@@ -4,11 +4,11 @@ import {TodoService} from '../../services/todo.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  selector: 'app-todo-board',
+  templateUrl: './todo-board.component.html',
+  styleUrls: ['./todo-board.component.css']
 })
-export class TodoComponent implements OnInit {
+export class TodoBoardComponent implements OnInit {
 
   todosDone: Todo[] = [];
   todosInProgress: Todo[] = [];
@@ -20,13 +20,13 @@ export class TodoComponent implements OnInit {
   constructor(private todoService: TodoService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.todoService.getTodos().subscribe(data => {
       const todos = data;
       this.todosDone = todos.filter(todo => todo.state === 'DONE');
-      this.todosInProgress = todos.filter(todo => todo.state === 'IN_PROGRESS');
+      this.todosInProgress = todos.filter(todo => todo.state === 'IN PROGRESS');
       this.todosDeferred = todos.filter(todo => todo.state === 'DEFERRED');
-      this.todosToDo = todos.filter(todo => todo.state === 'TO_DO');
+      this.todosToDo = todos.filter(todo => todo.state === 'TO DO');
       this.loaded = true;
     });
   }

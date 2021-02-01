@@ -1,0 +1,54 @@
+<div *ngIf="!loaded" class="text-center mt-5">
+  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="p-4">
+
+  <table *ngIf="loaded" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created</th>
+      <th scope="col">Last Updated</th>
+      <th scope="col">Due</th>
+      <th scope="col">State</th>
+      <th scope="col">Priority</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let todo of todos"
+      style="cursor: pointer"
+    >
+      <th scope="row">{{todo.id}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.created | date: 'medium'}}</td>
+      <td>{{todo.lastUpdated | date: 'medium'}}</td>
+      <td>{{todo.dueDate | date: 'medium'}}</td>
+      <td>
+      <span [ngClass]="{
+    'bg-success': todo.state === 'DONE',
+    'bg-secondary': todo.state === 'DEFERRED',
+    'bg-info': todo.state === 'TO DO',
+    'bg-primary': todo.state === 'IN PROGRESS'
+    }" class="badge bg">
+        {{todo.state}}
+    </span>
+      </td>
+      <td>
+      <span [ngClass]="{
+    'bg-danger': todo.priority === 'HIGH',
+    'bg-warning': todo.priority === 'MEDIUM',
+    'bg-success': todo.priority === 'LOW'
+    }" class="badge bg">
+        {{todo.priority}}
+      </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

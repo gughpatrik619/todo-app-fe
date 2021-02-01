@@ -1,4 +1,4 @@
-import {DoCheck, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SignupRequestPayload} from '../model/payload/signup-request-payload';
 import {BehaviorSubject, Observable} from 'rxjs';
