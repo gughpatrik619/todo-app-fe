@@ -1,23 +1,20 @@
 #sidebar.collapse {
-  position: fixed;
-  z-index: 2000;
+  position: relative;
   transition: all .2s ease-out;
-  top: 50px;
   bottom: 0;
   left: -200px; /* -width of sidebar */
   width: 0;
-  height: 100% !important;
+  height: 100%;
   display: block;
 }
 
 #sidebar.collapsing {
   transition: all .2s ease;
-  position: fixed;
-  top: 50px;
+  position: relative;
   bottom: 0;
   left: -200px; /* -width of sidebar */
   width: 200px; /* width of sidebar */
-  height: 100% !important;
+  height: 100%;
   display: block;
 }
 

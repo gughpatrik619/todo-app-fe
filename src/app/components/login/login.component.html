@@ -9,11 +9,14 @@
       (ngSubmit)="onSubmit()"
     >
       <div formGroupName="loginPayload">
+        <img src="assets/kiwi-bird-solid.svg" width="100" class="mb-4">
+
+
         <h1 class="h2 mb-4 fw-normal">Log In</h1>
 
         <div class="text-start">
           <div class="input-group has-validation mt-2">
-            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+            <span class="input-group-text bg-dark text-light me-2"><i class="fas fa-user fa-fw"></i></span>
             <input
               type="text"
               class="form-control"
@@ -36,7 +39,7 @@
 
         <div class="text-start">
           <div class="input-group has-validation mt-2">
-            <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
+            <span class="input-group-text bg-dark text-light me-2"><i class="fas fa-lock fa-fw"></i></span>
             <input
               type="password"
               class="form-control"
@@ -59,10 +62,10 @@
 
         <div class="row mt-4">
           <div class="col-8">
-            <button class="w-100 btn btn-primary" type="submit">Log In</button>
+            <button class="w-100 btn btn-dark" type="submit">Log In</button>
           </div>
           <div class="col-4">
-            <button class="w-100 btn btn-outline-primary" [routerLink]="'/signup'" type="submit">Sign Up</button>
+            <button class="w-100 btn btn-outline-dark" [routerLink]="'/signup'" type="submit">Sign Up</button>
           </div>
         </div>
 
