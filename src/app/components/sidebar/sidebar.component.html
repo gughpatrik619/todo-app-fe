@@ -1,11 +1,11 @@
-<div class="collapse navbar-collapse bg-dark" id="sidebar">
+<div class="collapse bg-dark" id="sidebar" [ngClass]="{ 'show': leftSidebarState === 'open' }">
   <ul class="navbar-nav pt-2">
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeLink === 'list' }"
+        [ngClass]="{ 'active': activeHomepage === 'list' }"
         [routerLink]="'/home/todo-list'"
-        (click)="activeLink = 'list'"
+        (click)="openPage('list')"
       >
         <i class="fas fa-clipboard-list fa-fw me-2"></i>
         Todo's
@@ -14,9 +14,9 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeLink === 'board' }"
+        [ngClass]="{ 'active': activeHomepage === 'board' }"
         [routerLink]="'/home/todo-board'"
-        (click)="activeLink = 'board'"
+        (click)="openPage('board')"
       >
         <i class="fas fa-columns fa-fw me-2"></i>
         Board
@@ -25,9 +25,9 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeLink === 'stats' }"
+        [ngClass]="{ 'active': activeHomepage === 'stats' }"
         [routerLink]="'/home/statistics'"
-        (click)="activeLink = 'stats'"
+        (click)="openPage('stats')"
       >
         <i class="fas fa-chart-line fa-fw me-2"></i>
         Statistics
@@ -36,9 +36,9 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeLink === 'calendar' }"
+        [ngClass]="{ 'active': activeHomepage === 'calendar' }"
         [routerLink]="'/home/calendar'"
-        (click)="activeLink = 'calendar'"
+        (click)="openPage('calendar')"
       >
         <i class="fas fa-calendar-alt fa-fw me-2"></i>
         Calendar

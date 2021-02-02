@@ -20,10 +20,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
-import {TodoListComponent} from './components/todo-list/todo-list.component';
-import {TodoBoardComponent} from './components/todo-board/todo-board.component';
-import {StatisticsComponent} from './components/statistics/statistics.component';
-import {CalendarComponent} from './components/calendar/calendar.component';
+import {TodoListComponent} from './components/home/todo-list/todo-list.component';
+import {TodoBoardComponent} from './components/home/todo-board/todo-board.component';
+import {StatisticsComponent} from './components/home/statistics/statistics.component';
+import {CalendarComponent} from './components/home/calendar/calendar.component';
+import {ChartsModule} from 'ng2-charts';
+import {PieChartComponent} from './components/charts/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {CalendarComponent} from './components/calendar/calendar.component';
     TodoListComponent,
     TodoBoardComponent,
     StatisticsComponent,
-    CalendarComponent
+    CalendarComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {CalendarComponent} from './components/calendar/calendar.component';
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     DragDropModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [
     {

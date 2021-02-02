@@ -48,7 +48,10 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     if (this.signupFormGroup.invalid) {
       this.toastrService.error('Invalid inputs');
-      this.signupFormGroup.markAllAsTouched();
+      this.usernameFormControl.markAsDirty();
+      this.passwordFormControl.markAsDirty();
+      this.emailFormControl.markAsDirty();
+
       this.formError = true;
       return;
     }

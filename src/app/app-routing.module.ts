@@ -9,10 +9,10 @@ import {BoardAdminComponent} from './components/board-admin/board-admin.componen
 import {AuthGuard} from './services/auth-guard.service';
 import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
-import {TodoListComponent} from './components/todo-list/todo-list.component';
-import {TodoBoardComponent} from './components/todo-board/todo-board.component';
-import {StatisticsComponent} from './components/statistics/statistics.component';
-import {CalendarComponent} from './components/calendar/calendar.component';
+import {TodoListComponent} from './components/home/todo-list/todo-list.component';
+import {TodoBoardComponent} from './components/home/todo-board/todo-board.component';
+import {StatisticsComponent} from './components/home/statistics/statistics.component';
+import {CalendarComponent} from './components/home/calendar/calendar.component';
 
 
 const routes: Routes = [

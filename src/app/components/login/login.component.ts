@@ -45,14 +45,14 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginFormGroup.invalid) {
       this.toastrService.error('Invalid inputs');
-      this.loginFormGroup.markAllAsTouched();
+      this.usernameFormControl.markAsDirty();
+      this.passwordFormControl.markAsDirty();
+
       this.formError = true;
       return;
     }
 
     const loginRequestPayload: LoginRequestPayload = this.loginFormGroup.controls.loginPayload.value;
-
-    console.log(loginRequestPayload);
 
     this.authService.login(loginRequestPayload).subscribe(data => {
       if (data) {

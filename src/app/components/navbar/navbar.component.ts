@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {AppSettingsService} from '../../services/app-settings.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private appSettingsService: AppSettingsService
   ) {
   }
 
@@ -23,7 +25,18 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+    this.appSettingsService.clear();
     this.router.navigateByUrl('/login');
   }
 
+  toggleLeftSidebar() {
+    const state = this.appSettingsService.leftSidebarState.value;
+
+    if (state === 'open') {
+      this.appSettingsService.setLeftSidebarState('close');
+    } else {
+      this.appSettingsService.setLeftSidebarState('open');
+    }
+
+  }
 }

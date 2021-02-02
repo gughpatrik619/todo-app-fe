@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Todo} from '../../model/todo';
-import {TodoService} from '../../services/todo.service';
+import {Todo} from '../../../model/todo';
+import {TodoService} from '../../../services/todo.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {AppSettingsService} from '../../../services/app-settings.service';
 
 @Component({
   selector: 'app-todo-board',
@@ -17,10 +18,12 @@ export class TodoBoardComponent implements OnInit {
 
   loaded = false;
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
   }
 
   ngOnInit() {
+    this.appSettingsService.setActiveHomepage('board');
+
     this.todoService.getTodos().subscribe(data => {
       const todos = data;
       this.todosDone = todos.filter(todo => todo.state === 'DONE');

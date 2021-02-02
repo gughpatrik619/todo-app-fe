@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AppSettingsService} from '../../services/app-settings.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  constructor(private appSettingsService: AppSettingsService) {
   }
 
   ngOnInit(): void {
+    this.appSettingsService.setActiveHomepage('list');
   }
 }

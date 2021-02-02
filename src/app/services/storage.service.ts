@@ -9,6 +9,8 @@ export class StorageService {
   static readonly TOKEN_KEY = 'authToken';
   static readonly USERNAME_KEY = 'username';
   static readonly ROLES_KEY = 'roles';
+  static readonly ACTIVE_HOMEPAGE = 'activeHomePage';
+  static readonly LEFT_SIDEBAR_STATE = 'leftSidebarState';
 
   constructor(private localStorageService: LocalStorageService) {
   }
@@ -42,5 +44,23 @@ export class StorageService {
 
   retrieveRoles() {
     return JSON.parse(this.localStorageService.retrieve(StorageService.ROLES_KEY));
+  }
+
+  storeActiveHomepage(page: string) {
+    this.localStorageService.clear(StorageService.ACTIVE_HOMEPAGE);
+    this.localStorageService.store(StorageService.ACTIVE_HOMEPAGE, page);
+  }
+
+  retrieveActiveHomePage() {
+    return this.localStorageService.retrieve(StorageService.ACTIVE_HOMEPAGE);
+  }
+
+  storeLeftSidebarState(state: string) {
+    this.localStorageService.clear(StorageService.LEFT_SIDEBAR_STATE);
+    this.localStorageService.store(StorageService.LEFT_SIDEBAR_STATE, state);
+  }
+
+  retrieveLeftSidebarState() {
+    return this.localStorageService.retrieve(StorageService.LEFT_SIDEBAR_STATE);
   }
 }

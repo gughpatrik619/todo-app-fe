@@ -18,11 +18,12 @@
           <div class="input-group has-validation mt-2">
             <span class="input-group-text bg-dark text-light me-2"><i class="fas fa-user fa-fw"></i></span>
             <input
+              autofocus
               type="text"
               class="form-control"
               [ngClass]="{
-              'is-invalid': (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.invalid,
-              'is-valid': (usernameFormControl.dirty || usernameFormControl.touched) && !usernameFormControl.invalid
+              'is-invalid': usernameFormControl.dirty && usernameFormControl.invalid,
+              'is-valid': usernameFormControl.dirty && !usernameFormControl.invalid
               }"
               placeholder="Username"
               aria-label="username"
@@ -30,7 +31,7 @@
               required
             >
             <div
-              *ngIf="usernameFormControl.invalid && (usernameFormControl.dirty || usernameFormControl.touched) && usernameFormControl.errors.required"
+              *ngIf="usernameFormControl.invalid && usernameFormControl.dirty && usernameFormControl.errors.required"
               class="invalid-feedback mb-0 mt-01">
               Username is required
             </div>
@@ -44,8 +45,8 @@
               type="password"
               class="form-control"
               [ngClass]="{
-              'is-invalid': (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.invalid,
-              'is-valid': (passwordFormControl.dirty || passwordFormControl.touched) && !passwordFormControl.invalid
+              'is-invalid': passwordFormControl.dirty && passwordFormControl.invalid,
+              'is-valid': passwordFormControl.dirty && !passwordFormControl.invalid
               }"
               placeholder="Password"
               aria-label="password"
@@ -53,7 +54,7 @@
               required
             >
             <div
-              *ngIf="passwordFormControl.invalid && (passwordFormControl.dirty || passwordFormControl.touched) && passwordFormControl.errors.required"
+              *ngIf="passwordFormControl.invalid && passwordFormControl.dirty && passwordFormControl.errors.required"
               class="invalid-feedback mb-0 mt-01">
               Password is required
             </div>
