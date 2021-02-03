@@ -1,0 +1,34 @@
+<div class="col p-2">
+  <div class="card">
+    <div class="card-header bg-dark text-light">
+      {{title}}
+      <div
+        class="btn-group btn-group-sm position-absolute"
+        style="right: 5px; top: 5px"
+      >
+        <button
+          [ngClass]="{ 'active': type === 'pie' }"
+          class="btn btn-outline-light"
+          (click)="type = 'pie'"
+        >
+          <i class="fa fa-fw fa-chart-pie fa-lg"></i>
+        </button>
+
+        <button
+          [ngClass]="{ 'active': type === 'bar' }"
+          class="btn btn-outline-light"
+          (click)="type = 'bar'"
+        >
+          <i class="fa fa-fw fa-chart-bar fa-lg"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <app-chart
+        [data]="data"
+        [labels]="labels"
+        [type]="type"
+      ></app-chart>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,8 @@ import {TodoBoardComponent} from './components/home/todo-board/todo-board.compon
 import {StatisticsComponent} from './components/home/statistics/statistics.component';
 import {CalendarComponent} from './components/home/calendar/calendar.component';
 import {ChartsModule} from 'ng2-charts';
-import {PieChartComponent} from './components/charts/pie-chart/pie-chart.component';
+import {ChartComponent} from './chart/chart.component';
+import {ChartCardComponent} from './components/home/statistics/chart-card/chart-card.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {PieChartComponent} from './components/charts/pie-chart/pie-chart.compone
     TodoBoardComponent,
     StatisticsComponent,
     CalendarComponent,
-    PieChartComponent
+    ChartComponent,
+    ChartCardComponent
   ],
   imports: [
     BrowserModule,

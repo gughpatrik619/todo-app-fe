@@ -1,1 +1,36 @@
-<app-pie-chart *ngIf="loaded" [data]="data" [labels]="labels"></app-pie-chart>
+<div *ngIf="!loaded" class="text-center mt-5">
+  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="loaded" class="m-4">
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-0">
+
+    <app-chart-card
+      [data]="data"
+      [labels]="labels"
+      [title]="'States'"
+    ></app-chart-card>
+
+    <app-chart-card
+      [data]="data"
+      [labels]="labels"
+      [title]="'Priorities'"
+    ></app-chart-card>
+
+    <app-chart-card
+      [data]="data"
+      [labels]="labels"
+      [title]="'todo 1'"
+    ></app-chart-card>
+
+    <app-chart-card
+      [data]="data"
+      [labels]="labels"
+      [title]="'todo 2'"
+    ></app-chart-card>
+
+  </div>
+</div>
