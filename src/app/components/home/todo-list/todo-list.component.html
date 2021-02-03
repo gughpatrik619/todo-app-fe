@@ -30,20 +30,20 @@
       <td>{{todo.dueDate | date: 'medium'}}</td>
       <td>
       <span [ngClass]="{
-    'bg-success': todo.state === 'DONE',
-    'bg-secondary': todo.state === 'DEFERRED',
-    'bg-info': todo.state === 'TO DO',
-    'bg-primary': todo.state === 'IN PROGRESS'
-    }" class="badge bg">
-        {{todo.state}}
-    </span>
+          'bg-success': todo.state === 'DONE',
+          'bg-secondary': todo.state === 'DEFERRED',
+          'bg-info': todo.state === 'TO DO',
+          'bg-primary': todo.state === 'IN PROGRESS'
+          }" class="badge">
+          {{todo.state}}
+      </span>
       </td>
       <td>
       <span [ngClass]="{
     'bg-danger': todo.priority === 'HIGH',
     'bg-warning': todo.priority === 'MEDIUM',
     'bg-success': todo.priority === 'LOW'
-    }" class="badge bg">
+    }" class="badge">
         {{todo.priority}}
       </span>
       </td>
