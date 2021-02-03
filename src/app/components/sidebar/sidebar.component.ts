@@ -17,8 +17,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.appSettingservice.activeHomepage.subscribe(page => this.activeHomepage = page);
     this.appSettingservice.leftSidebarState.subscribe(state => this.leftSidebarState = state);
-
-    console.log(this.leftSidebarState);
   }
 
   openPage(page: string) {
