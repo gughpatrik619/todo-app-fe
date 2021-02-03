@@ -24,11 +24,17 @@
       </div>
     </div>
     <div class="card-body">
-      <app-chart
+      <app-pie-chart
+        *ngIf="type === 'pie'"
         [data]="data"
         [labels]="labels"
-        [type]="type"
-      ></app-chart>
+      ></app-pie-chart>
+
+      <app-bar-chart
+        *ngIf="type === 'bar'"
+        [data]="data"
+        [labels]="labels"
+      ></app-bar-chart>
     </div>
   </div>
 </div>
