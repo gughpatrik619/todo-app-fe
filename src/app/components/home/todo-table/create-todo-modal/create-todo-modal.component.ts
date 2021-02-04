@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./create-todo-modal.component.css']
 })
 export class CreateTodoModalComponent implements OnInit {
-  
+
   constructor() {
   }
 
