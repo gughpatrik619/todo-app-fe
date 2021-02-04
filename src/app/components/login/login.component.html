@@ -52,7 +52,19 @@
               aria-label="password"
               formControlName="password"
               required
+              #passwordInput
             >
+            <button
+              type="button"
+              (click)="passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password'"
+              class="btn btn-dark btn-sm ms-2">
+              <i class="fas fa-fw"
+                 [ngClass]="{
+                    'fa-eye-slash': passwordInput.type === 'password',
+                    'fa-eye': passwordInput.type === 'text'
+                 }"
+              ></i>
+            </button>
             <div
               *ngIf="passwordFormControl.invalid && passwordFormControl.dirty && passwordFormControl.errors.required"
               class="invalid-feedback mb-0 mt-01">
