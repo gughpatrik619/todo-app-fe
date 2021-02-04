@@ -20,7 +20,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
-import {TodoListComponent} from './components/home/todo-list/todo-list.component';
+import {TodoTableComponent} from './components/home/todo-table/todo-table.component';
 import {TodoBoardComponent} from './components/home/todo-board/todo-board.component';
 import {StatisticsComponent} from './components/home/statistics/statistics.component';
 import {CalendarComponent} from './components/home/calendar/calendar.component';
@@ -28,6 +28,7 @@ import {ChartsModule} from 'ng2-charts';
 import {ChartCardComponent} from './components/home/statistics/chart-card/chart-card.component';
 import {PieChartComponent} from './components/charts/pie-chart/pie-chart.component';
 import {BarChartComponent} from './components/charts/bar-chart/bar-chart.component';
+import {CreateTodoModalComponent} from './components/home/todo-table/create-todo-modal/create-todo-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +43,14 @@ import {BarChartComponent} from './components/charts/bar-chart/bar-chart.compone
     NavbarComponent,
     ProfileComponent,
     SettingsComponent,
-    TodoListComponent,
+    TodoTableComponent,
     TodoBoardComponent,
     StatisticsComponent,
     CalendarComponent,
     ChartCardComponent,
     PieChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    CreateTodoModalComponent
   ],
   imports: [
     BrowserModule,

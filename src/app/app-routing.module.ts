@@ -9,7 +9,7 @@ import {BoardAdminComponent} from './components/board-admin/board-admin.componen
 import {AuthGuard} from './services/auth-guard.service';
 import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
-import {TodoListComponent} from './components/home/todo-list/todo-list.component';
+import {TodoTableComponent} from './components/home/todo-table/todo-table.component';
 import {TodoBoardComponent} from './components/home/todo-board/todo-board.component';
 import {StatisticsComponent} from './components/home/statistics/statistics.component';
 import {CalendarComponent} from './components/home/calendar/calendar.component';
@@ -18,11 +18,11 @@ import {CalendarComponent} from './components/home/calendar/calendar.component';
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
-      {path: 'todo-list', component: TodoListComponent},
-      {path: 'todo-board', component: TodoBoardComponent},
+      {path: 'table', component: TodoTableComponent},
+      {path: 'board', component: TodoBoardComponent},
       {path: 'statistics', component: StatisticsComponent},
       {path: 'calendar', component: CalendarComponent},
-      {path: '', redirectTo: 'todo-list', pathMatch: 'full'},
+      {path: '', redirectTo: 'table', pathMatch: 'full'},
     ]
   },
   {path: 'signup', component: SignupComponent},

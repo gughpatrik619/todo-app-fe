@@ -8,10 +8,10 @@ import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  templateUrl: './todo-table.component.html',
+  styleUrls: ['./todo-table.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class TodoTableComponent implements OnInit {
 
   todos: Todo[] = [];
   loaded = false;
@@ -25,7 +25,7 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appSettingsService.setActiveHomepage('list');
+    this.appSettingsService.setActiveHomepage('table');
 
     this.todoService.getTodos().subscribe(data => {
       this.todos = data;

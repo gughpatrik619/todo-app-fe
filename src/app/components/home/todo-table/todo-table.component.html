@@ -5,7 +5,14 @@
 </div>
 
 <div class="p-4">
-  <button class="btn btn-dark" (click)="createTodo()">New</button>
+  <!--  <button class="btn btn-dark" (click)="createTodo()">New</button>-->
+
+  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createTodoModal">
+    <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
+  </button>
+
+  <app-create-todo-modal></app-create-todo-modal>
+
 
   <table *ngIf="loaded" class="table table-striped">
     <thead>
