@@ -12,6 +12,8 @@
 
   <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>
 
+  <app-edit-todo-modal [todoToEdit]="todoToUpdate"></app-edit-todo-modal>
+
   <table *ngIf="loaded" class="table table-striped">
     <thead>
     <tr>
@@ -22,6 +24,7 @@
       <th scope="col">Due</th>
       <th scope="col">State</th>
       <th scope="col">Priority</th>
+      <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -52,6 +55,22 @@
     }" class="badge">
         {{todo.priority}}
       </span>
+      </td>
+      <td>
+        <div class="btn-group btn-group-sm" role="group">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#editTodoModal"
+            (click)="todoToUpdate = todo"
+          >
+            <i class="fas fa-pen fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteTodoById(todo.id)">
+            <i class="fas fa-trash fa-fw"></i>
+          </button>
+        </div>
       </td>
     </tr>
     </tbody>

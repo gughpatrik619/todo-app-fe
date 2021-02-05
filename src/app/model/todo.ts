@@ -1,7 +1,7 @@
 export class Todo {
   created: Date;
   description: string;
-  dueDate: string;
+  dueDate: Date;
   id: number;
   lastUpdated: Date;
   priority: string;

@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 export class TodoTableComponent implements OnInit {
 
   todos: Todo[] = [];
+  todoToUpdate: Todo;
   loaded = false;
 
   constructor(
@@ -36,4 +37,15 @@ export class TodoTableComponent implements OnInit {
     this.todos.push(newTodo);
   }
 
+  deleteTodoById(id: number) {
+    this.todoService.deleteTodoById(id).subscribe(
+      next => {
+        const index = this.todos.findIndex(todo => todo.id === id);
+        if (index > -1) {
+          this.todos.splice(index, 1);
+        }
+      },
+      error => this.toastrService.error(error.error.message)
+    );
+  }
 }

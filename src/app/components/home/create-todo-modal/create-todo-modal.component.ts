@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {TodoService} from '../../../../services/todo.service';
-import {CreateTodo} from '../../../../model/create-todo';
+import {TodoService} from '../../../services/todo.service';
+import {CreateTodo} from '../../../model/create-todo';
 import {ToastrService} from 'ngx-toastr';
-import {Todo} from '../../../../model/todo';
+import {Todo} from '../../../model/todo';
 
 @Component({
   selector: 'app-create-todo-modal',
