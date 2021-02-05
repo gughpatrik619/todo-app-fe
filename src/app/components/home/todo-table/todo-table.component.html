@@ -12,7 +12,7 @@
 
   <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>
 
-  <app-edit-todo-modal [todoToEdit]="todoToUpdate"></app-edit-todo-modal>
+  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
 
   <table *ngIf="loaded" class="table table-striped">
     <thead>

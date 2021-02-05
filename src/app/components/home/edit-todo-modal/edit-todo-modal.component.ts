@@ -49,9 +49,16 @@ export class EditTodoModalComponent implements OnInit, OnChanges {
 
 
   onSubmit() {
-    const editTodo: UpdateTodo = this.editTodoFormGroup.controls.editTodoPayload.value;
-    editTodo.dueDate = new Date(editTodo.dueDate);
+    const updateTodo: UpdateTodo = this.editTodoFormGroup.controls.editTodoPayload.value;
+    updateTodo.dueDate = new Date(updateTodo.dueDate);
 
-    console.log(editTodo);
+    this.todoService.updateTodo(this.todoToEdit.id, updateTodo).subscribe(
+      data => {
+        this.updateTodoEvent.emit(data);
+        this.toastrService.success('Todo updated');
+      }, error => this.toastrService.error(error.error.message)
+    );
+
+    this.editTodoFormGroup.reset();
   }
 }

@@ -37,6 +37,13 @@ export class TodoTableComponent implements OnInit {
     this.todos.push(newTodo);
   }
 
+  onUpdateTodo(updatedTodo: Todo) {
+    const index = this.todos.findIndex(todo => todo.id === updatedTodo.id);
+    if (index > -1) {
+      this.todos[index] = updatedTodo;
+    }
+  }
+
   deleteTodoById(id: number) {
     this.todoService.deleteTodoById(id).subscribe(
       next => {

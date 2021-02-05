@@ -66,6 +66,7 @@ export class CreateTodoModalComponent implements OnInit {
 
     this.todoService.saveTodo(createTodo).subscribe(
       data => {
+        this.toastrService.success('Todo created');
         this.createTodoEvent.emit(data);
       }, error => this.toastrService.error(error.error.error)
     );
