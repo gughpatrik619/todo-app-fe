@@ -11,7 +11,7 @@
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
   </button>
 
-  <app-create-todo-modal></app-create-todo-modal>
+  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>
 
 
   <table *ngIf="loaded" class="table table-striped">

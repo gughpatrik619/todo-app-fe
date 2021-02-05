@@ -2,46 +2,124 @@
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <div class="modal-header bg-dark text-light">
-        <h5 class="modal-title" id="staticBackdropLabel">New Todo</h5>
-        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="input-group mb-2">
-            <span class="input-group-text bg-dark text-light">
-              Title
-            </span>
-            <input type="text" placeholder="Title" class="form-control">
-          </div>
-          <div class="input-group mb-2">
-            <span class="input-group-text bg-dark text-light">
-              Description
-            </span>
-            <textarea class="form-control" rows="5" placeholder="Description"></textarea>
-          </div>
-          <div class="input-group mb-2">
-            <span class="input-group-text bg-dark text-light">
-              Priority
-            </span>
-            <select class="form-select">
-              <option selected value="LOW">LOW</option>
-              <option value="MEDIUM">MEDIUM</option>
-              <option value="HIGH">HIGH</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text bg-dark text-light">
-              Due
-            </span>
-            <input type="date" class="form-control">
+      <form
+        [formGroup]="createTodoFormGroup"
+        novalidate
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="modal-header bg-dark text-light">
+          <h5 class="modal-title" id="staticBackdropLabel">New Todo</h5>
+          <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container">
+
+            <div formGroupName="createTodoPayload">
+              <div class="input-group has-validation mb-2">
+                <span class="input-group-text bg-dark text-light w-25">
+                  Title
+                </span>
+                <input
+                  type="text"
+                  placeholder="e.g. Laundry"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': titleFormControl.dirty && titleFormControl.invalid,
+                    'is-valid': titleFormControl.dirty && !titleFormControl.invalid
+                  }"
+                  aria-label="title"
+                  formControlName="title"
+                  required
+                >
+                <div
+                  *ngIf="titleFormControl.invalid && titleFormControl.dirty && titleFormControl.errors.required"
+                  class="invalid-feedback mb-0 mt-01">
+                  Title is required
+                </div>
+              </div>
+
+              <div class="input-group has-validation mb-2">
+                <span class="input-group-text bg-dark text-light w-25">
+                  Description
+                </span>
+                <textarea
+                  rows="5"
+                  placeholder="e.g. Do the laundry before husband is back!"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': descriptionFormControl.dirty && descriptionFormControl.invalid,
+                    'is-valid': descriptionFormControl.dirty && !descriptionFormControl.invalid
+                  }"
+                  aria-label="description"
+                  formControlName="description"
+                  required
+                ></textarea>
+                <div
+                  *ngIf="descriptionFormControl.invalid && descriptionFormControl.dirty && descriptionFormControl.errors.required"
+                  class="invalid-feedback mb-0 mt-01">
+                  Description is required
+                </div>
+              </div>
+
+              <div class="input-group has-validation mb-2">
+                <span class="input-group-text bg-dark text-light w-25">
+                  Priority
+                </span>
+                <select
+                  class="form-select"
+                  [ngClass]="{
+                    'is-invalid': priorityFormControl.dirty && priorityFormControl.invalid,
+                    'is-valid': priorityFormControl.dirty && !priorityFormControl.invalid
+                  }"
+                  aria-label="priority"
+                  formControlName="priority"
+                  required
+                >
+                  <option value="LOW">LOW</option>
+                  <option value="MEDIUM">MEDIUM</option>
+                  <option value="HIGH">HIGH</option>
+                </select>
+                <div
+                  *ngIf="priorityFormControl.invalid && priorityFormControl.dirty && priorityFormControl.errors.required"
+                  class="invalid-feedback mb-0 mt-01">
+                  Priority must be specified
+                </div>
+              </div>
+
+              <div class="input-group has-validation mb-2">
+                <span class="input-group-text bg-dark text-light w-25">
+                  Due
+                </span>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': dueDateFormControl.dirty && dueDateFormControl.invalid,
+                    'is-valid': dueDateFormControl.dirty && !dueDateFormControl.invalid
+                  }"
+                  aria-label="dueDate"
+                  formControlName="dueDate"
+                  required
+                >
+                <div
+                  *ngIf="dueDateFormControl.invalid && dueDateFormControl.dirty && dueDateFormControl.errors.required"
+                  class="invalid-feedback mb-0 mt-01">
+                  Due date must be specified
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-dark" (click)="createTodo()">Submit</button>
-      </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal"
+                  (click)="createTodoFormGroup.reset()">Cancel
+          </button>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>

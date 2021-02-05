@@ -1,4 +1,4 @@
-export class CreateTodo {
+export interface CreateTodo {
   description: string;
   dueDate: Date;
   priority: string;
