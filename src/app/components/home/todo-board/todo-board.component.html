@@ -20,26 +20,24 @@
       <h5 class="text-info text-center">To Do</h5>
 
       <div class="row mb-2" *ngFor="let todo of todosToDo" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px"
-        >
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">{{todo.title}}</div>
+        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
+          <div class="card-header" cdkDragHandle style="cursor: grabbing">
+            <span
+              [ngClass]="{
+                'text-danger': todo.priority === 'HIGH',
+                'text-warning': todo.priority === 'MEDIUM',
+                'text-success': todo.priority === 'LOW'
+              }"><i class="fas fa-fw fa-circle"></i>
+            </span>
+            <span class="ms-3">{{todo.title}}</span>
+          </div>
           <div class="card-body overflow-auto pb-0">
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
-              class="btn btn-light btn-sm position-absolute"
+              class="btn btn-dark btn-sm position-absolute"
               style="top: 5px; right: 5px">
               <i class="fas fa-fw fa-pen"></i>
             </button>
-            <span
-              style="bottom: 5px; right: 10px"
-              [ngClass]="{
-                    'bg-danger': todo.priority === 'HIGH',
-                    'bg-warning': todo.priority === 'MEDIUM',
-                    'bg-success': todo.priority === 'LOW'
-              }"
-              class="badge position-absolute">
-              {{todo.priority}}
-            </span>
           </div>
         </div>
       </div>
@@ -56,26 +54,24 @@
       <h5 class="text-primary text-center">In Progress</h5>
 
       <div class="row mb-2" *ngFor="let todo of todosInProgress" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px"
-        >
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">{{todo.title}}</div>
+        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
+          <div class="card-header" cdkDragHandle style="cursor: grabbing">
+            <span
+              [ngClass]="{
+                'text-danger': todo.priority === 'HIGH',
+                'text-warning': todo.priority === 'MEDIUM',
+                'text-success': todo.priority === 'LOW'
+              }"><i class="fas fa-fw fa-circle"></i>
+            </span>
+            <span class="ms-3">{{todo.title}}</span>
+          </div>
           <div class="card-body overflow-auto pb-0">
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
-              class="btn btn-light btn-sm position-absolute"
+              class="btn btn-dark btn-sm position-absolute"
               style="top: 5px; right: 5px">
               <i class="fas fa-fw fa-pen"></i>
             </button>
-            <span
-              style="bottom: 5px; right: 10px"
-              [ngClass]="{
-                    'bg-danger': todo.priority === 'HIGH',
-                    'bg-warning': todo.priority === 'MEDIUM',
-                    'bg-success': todo.priority === 'LOW'
-              }"
-              class="badge position-absolute">
-              {{todo.priority}}
-            </span>
           </div>
         </div>
       </div>
@@ -92,26 +88,24 @@
       <h5 class="text-success text-center">Done</h5>
 
       <div class="row mb-2" *ngFor="let todo of todosDone" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px"
-        >
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">{{todo.title}}</div>
+        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
+          <div class="card-header" cdkDragHandle style="cursor: grabbing">
+            <span
+              [ngClass]="{
+                'text-danger': todo.priority === 'HIGH',
+                'text-warning': todo.priority === 'MEDIUM',
+                'text-success': todo.priority === 'LOW'
+              }"><i class="fas fa-fw fa-circle"></i>
+            </span>
+            <span class="ms-3">{{todo.title}}</span>
+          </div>
           <div class="card-body overflow-auto pb-0">
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
-              class="btn btn-light btn-sm position-absolute"
+              class="btn btn-dark btn-sm position-absolute"
               style="top: 5px; right: 5px">
               <i class="fas fa-fw fa-pen"></i>
             </button>
-            <span
-              style="bottom: 5px; right: 10px"
-              [ngClass]="{
-                    'bg-danger': todo.priority === 'HIGH',
-                    'bg-warning': todo.priority === 'MEDIUM',
-                    'bg-success': todo.priority === 'LOW'
-              }"
-              class="badge position-absolute">
-              {{todo.priority}}
-            </span>
           </div>
         </div>
       </div>
@@ -128,26 +122,24 @@
       <h5 class="text-secondary text-center">Deferred</h5>
 
       <div class="row mb-2" *ngFor="let todo of todosDeferred" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px"
-        >
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">{{todo.title}}</div>
+        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
+          <div class="card-header" cdkDragHandle style="cursor: grabbing">
+            <span
+              [ngClass]="{
+                'text-danger': todo.priority === 'HIGH',
+                'text-warning': todo.priority === 'MEDIUM',
+                'text-success': todo.priority === 'LOW'
+              }"><i class="fas fa-fw fa-circle"></i>
+            </span>
+            <span class="ms-3">{{todo.title}}</span>
+          </div>
           <div class="card-body overflow-auto pb-0">
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
-              class="btn btn-light btn-sm position-absolute"
+              class="btn btn-dark btn-sm position-absolute"
               style="top: 5px; right: 5px">
               <i class="fas fa-fw fa-pen"></i>
             </button>
-            <span
-              style="bottom: 5px; right: 10px"
-              [ngClass]="{
-                    'bg-danger': todo.priority === 'HIGH',
-                    'bg-warning': todo.priority === 'MEDIUM',
-                    'bg-success': todo.priority === 'LOW'
-              }"
-              class="badge position-absolute">
-              {{todo.priority}}
-            </span>
           </div>
         </div>
       </div>
