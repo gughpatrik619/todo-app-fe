@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ChartOptions} from 'chart.js';
+import {ChartDataSets, ChartOptions} from 'chart.js';
 
 @Component({
   selector: 'app-bar-chart',
@@ -8,7 +8,7 @@ import {ChartOptions} from 'chart.js';
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() data: number[];
+  @Input() datasets: ChartDataSets[];
   @Input() labels: string[];
 
   options: ChartOptions = {

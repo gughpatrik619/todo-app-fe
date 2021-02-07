@@ -9,26 +9,26 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-0">
 
     <app-chart-card
-      [data]="dataTodoStates"
-      [labels]="labelsTodoStates"
+      [datasets]="[stateDataset]"
+      [labels]="stateDataLabels"
       [title]="'States'"
     ></app-chart-card>
 
     <app-chart-card
-      [data]="dataTodoPriorities"
-      [labels]="labelsTodoPriorities"
+      [datasets]="[priorityDataset]"
+      [labels]="priorityDataLabels"
       [title]="'Priorities'"
     ></app-chart-card>
 
     <app-chart-card
-      [data]="dataTodoStates"
-      [labels]="labelsTodoStates"
+      [datasets]="[stateDataset]"
+      [labels]="stateDataLabels"
       [title]="'States'"
     ></app-chart-card>
 
     <app-chart-card
-      [data]="dataTodoPriorities"
-      [labels]="labelsTodoPriorities"
+      [datasets]="[priorityDataset]"
+      [labels]="priorityDataLabels"
       [title]="'Priorities'"
     ></app-chart-card>
 

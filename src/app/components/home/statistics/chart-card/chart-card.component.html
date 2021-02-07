@@ -26,13 +26,13 @@
     <div class="card-body">
       <app-pie-chart
         *ngIf="type === 'pie'"
-        [data]="data"
+        [datasets]="datasets"
         [labels]="labels"
       ></app-pie-chart>
 
       <app-bar-chart
         *ngIf="type === 'bar'"
-        [data]="data"
+        [datasets]="datasets"
         [labels]="labels"
       ></app-bar-chart>
     </div>

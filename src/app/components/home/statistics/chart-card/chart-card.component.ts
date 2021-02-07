@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ChartDataSets} from 'chart.js';
 
 @Component({
   selector: 'app-chart-card',
@@ -8,7 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ChartCardComponent implements OnInit {
 
   @Input() title: string;
-  @Input() data: number[];
+  @Input() datasets: ChartDataSets[];
   @Input() labels: string[];
   type = 'pie';
 

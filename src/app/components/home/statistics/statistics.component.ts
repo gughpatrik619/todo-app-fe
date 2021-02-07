@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../../../services/todo.service';
 import {AppSettingsService} from '../../../services/app-settings.service';
 import {Todo} from '../../../model/todo';
+import {ChartDataSets} from 'chart.js';
 
 @Component({
   selector: 'app-statistics',
@@ -11,11 +12,11 @@ import {Todo} from '../../../model/todo';
 export class StatisticsComponent implements OnInit {
 
   loaded = false;
-  dataTodoStates: number[] = [];
-  labelsTodoStates: string[] = [];
+  stateDataset: ChartDataSets;
+  stateDataLabels: string[] = [];
 
-  dataTodoPriorities: number[] = [];
-  labelsTodoPriorities: string[] = [];
+  priorityDataset: ChartDataSets;
+  priorityDataLabels: string[] = [];
 
   constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
   }
@@ -33,34 +34,27 @@ export class StatisticsComponent implements OnInit {
   }
 
   private calculateTodoStates(todos: Todo[]) {
-    const states = [];
-    const counts = {};
+    const todo = todos.filter(it => it.state === 'TO DO').length;
+    const inProgress = todos.filter(it => it.state === 'IN PROGRESS').length;
+    const done = todos.filter(it => it.state === 'DONE').length;
+    const deferred = todos.filter(it => it.state === 'DEFERRED').length;
 
-    for (const todo of todos) {
-      states.push(todo.state);
-    }
-
-    for (const state of states) {
-      counts[state] = counts[state] ? counts[state] + 1 : 1;
-    }
-
-    this.dataTodoStates = Object.values(counts);
-    this.labelsTodoStates = Object.keys(counts);
+    this.stateDataset = {
+      data: [todo, inProgress, done, deferred],
+      backgroundColor: ['#0dcaf0', '#0d6efd', '#198754', '#6c757d']
+    };
+    this.stateDataLabels = ['TO DO', 'IN PROGRESS', 'DONE', 'DEFERRED'];
   }
 
   private calculateTodoPriorities(todos: Todo[]) {
-    const priorities = [];
-    const counts = {};
+    const low = todos.filter(it => it.priority === 'LOW').length;
+    const medium = todos.filter(it => it.priority === 'MEDIUM').length;
+    const high = todos.filter(it => it.priority === 'HIGH').length;
 
-    for (const todo of todos) {
-      priorities.push(todo.priority);
-    }
-
-    for (const priority of priorities) {
-      counts[priority] = counts[priority] ? counts[priority] + 1 : 1;
-    }
-
-    this.dataTodoPriorities = Object.values(counts);
-    this.labelsTodoPriorities = Object.keys(counts);
+    this.priorityDataset = {
+      data: [low, medium, high],
+      backgroundColor: ['#198754', '#ffc107', '#dc3545']
+    };
+    this.priorityDataLabels = ['LOW', 'MEDIUM', 'HIGH'];
   }
 }
