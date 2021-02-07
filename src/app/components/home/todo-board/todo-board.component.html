@@ -7,6 +7,8 @@
 
 <div *ngIf="loaded" class="p-4 my-3" id="container">
 
+  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
+
   <div class="row row-cols-lg-4 row-cols-2">
 
     <div class="col px-4 overflow-auto"
@@ -22,20 +24,24 @@
       <div class="row mb-2" *ngFor="let todo of todosToDo" cdkDragBoundary="#container" cdkDrag>
         <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
           <div class="card-header" cdkDragHandle style="cursor: grabbing">
-            <span
-              [ngClass]="{
-                'text-danger': todo.priority === 'HIGH',
-                'text-warning': todo.priority === 'MEDIUM',
-                'text-success': todo.priority === 'LOW'
-              }"><i class="fas fa-fw fa-circle"></i>
-            </span>
+                <span
+                  [ngClass]="{
+                    'text-danger': todo.priority === 'HIGH',
+                    'text-warning': todo.priority === 'MEDIUM',
+                    'text-success': todo.priority === 'LOW'
+                  }"><i class="fas fa-fw fa-circle"></i>
+                </span>
             <span class="ms-3">{{todo.title}}</span>
           </div>
           <div class="card-body overflow-auto pb-0">
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
               class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px">
+              style="top: 5px; right: 5px"
+              data-bs-toggle="modal"
+              data-bs-target="#editTodoModal"
+              (click)="todoToUpdate = todo"
+            >
               <i class="fas fa-fw fa-pen"></i>
             </button>
           </div>
@@ -69,7 +75,11 @@
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
               class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px">
+              style="top: 5px; right: 5px"
+              data-bs-toggle="modal"
+              data-bs-target="#editTodoModal"
+              (click)="todoToUpdate = todo"
+            >
               <i class="fas fa-fw fa-pen"></i>
             </button>
           </div>
@@ -103,7 +113,11 @@
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
               class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px">
+              style="top: 5px; right: 5px"
+              data-bs-toggle="modal"
+              data-bs-target="#editTodoModal"
+              (click)="todoToUpdate = todo"
+            >
               <i class="fas fa-fw fa-pen"></i>
             </button>
           </div>
@@ -137,7 +151,11 @@
             <pre class="card-text text-secondary">{{todo.description}}</pre>
             <button
               class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px">
+              style="top: 5px; right: 5px"
+              data-bs-toggle="modal"
+              data-bs-target="#editTodoModal"
+              (click)="todoToUpdate = todo"
+            >
               <i class="fas fa-fw fa-pen"></i>
             </button>
           </div>

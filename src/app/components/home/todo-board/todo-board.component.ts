@@ -3,6 +3,7 @@ import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {AppSettingsService} from '../../../services/app-settings.service';
+import {EState} from '../../../model/e-state.enum';
 
 @Component({
   selector: 'app-todo-board',
@@ -16,6 +17,8 @@ export class TodoBoardComponent implements OnInit {
   todosDeferred: Todo[] = [];
   todosToDo: Todo[] = [];
 
+  todoToUpdate: Todo;
+
   loaded = false;
 
   constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
@@ -26,12 +29,16 @@ export class TodoBoardComponent implements OnInit {
 
     this.todoService.getTodos().subscribe(data => {
       const todos = data;
-      this.todosDone = todos.filter(todo => todo.state === 'DONE');
-      this.todosInProgress = todos.filter(todo => todo.state === 'IN PROGRESS');
-      this.todosDeferred = todos.filter(todo => todo.state === 'DEFERRED');
-      this.todosToDo = todos.filter(todo => todo.state === 'TO DO');
+      this.todosDone = todos.filter(todo => todo.state === EState.DONE);
+      this.todosInProgress = todos.filter(todo => todo.state === EState.IN_PROGRESS);
+      this.todosDeferred = todos.filter(todo => todo.state === EState.DEFERRED);
+      this.todosToDo = todos.filter(todo => todo.state === EState.TODO);
       this.loaded = true;
     });
+  }
+
+  onUpdateTodo(updatedTodo: Todo) {
+    console.log(updatedTodo);
   }
 
   onDrop(event: CdkDragDrop<Todo[]>) {

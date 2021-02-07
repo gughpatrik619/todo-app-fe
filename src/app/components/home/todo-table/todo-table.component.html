@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="p-4">
+<div *ngIf="loaded" class="p-4">
 
   <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createTodoModal">
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
@@ -14,7 +14,7 @@
 
   <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
 
-  <table *ngIf="loaded" class="table table-striped">
+  <table class="table table-striped">
     <thead>
     <tr>
       <th scope="col">Id</th>

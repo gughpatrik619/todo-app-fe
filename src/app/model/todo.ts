@@ -1,10 +1,13 @@
+import {EPriority} from './e-priority.enum';
+import {EState} from './e-state.enum';
+
 export class Todo {
   created: Date;
   description: string;
   dueDate: Date;
   id: number;
   lastUpdated: Date;
-  priority: string;
-  state: string;
+  priority: EPriority;
+  state: EState;
   title: string;
 }
