@@ -30,6 +30,7 @@ import {PieChartComponent} from './components/charts/pie-chart/pie-chart.compone
 import {BarChartComponent} from './components/charts/bar-chart/bar-chart.component';
 import {CreateTodoModalComponent} from './components/home/create-todo-modal/create-todo-modal.component';
 import {EditTodoModalComponent} from './components/home/edit-todo-modal/edit-todo-modal.component';
+import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-column/todo-state-column.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {EditTodoModalComponent} from './components/home/edit-todo-modal/edit-tod
     PieChartComponent,
     BarChartComponent,
     CreateTodoModalComponent,
-    EditTodoModalComponent
+    EditTodoModalComponent,
+    TodoStateColumnComponent
   ],
   imports: [
     BrowserModule,

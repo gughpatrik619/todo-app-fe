@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {AppSettingsService} from '../../../services/app-settings.service';
 import {EState} from '../../../model/e-state.enum';
 
@@ -39,13 +38,5 @@ export class TodoBoardComponent implements OnInit {
 
   onUpdateTodo(updatedTodo: Todo) {
     console.log(updatedTodo);
-  }
-
-  onDrop(event: CdkDragDrop<Todo[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    }
   }
 }

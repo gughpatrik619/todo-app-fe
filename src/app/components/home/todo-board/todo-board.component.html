@@ -5,163 +5,16 @@
 </div>
 
 
-<div *ngIf="loaded" class="p-4 my-3" id="container">
+<div *ngIf="loaded" class="pt-4 px-2 px-lg-4" id="container">
 
   <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
 
-  <div class="row row-cols-lg-4 row-cols-2">
+  <div class="row d-block overflow-auto gx-0" cdkDropListGroup style="white-space: nowrap">
 
-    <div class="col px-4 overflow-auto"
-         style="max-height: 85vh"
-         cdkDropList
-         #todosToDoList="cdkDropList"
-         [cdkDropListData]="todosToDo"
-         [cdkDropListConnectedTo]="[todosInProgressList, todosDoneList, todosDeferredList]"
-         (cdkDropListDropped)="onDrop($event)">
-
-      <h5 class="text-info text-center">To Do</h5>
-
-      <div class="row mb-2" *ngFor="let todo of todosToDo" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">
-                <span
-                  [ngClass]="{
-                    'text-danger': todo.priority === 'HIGH',
-                    'text-warning': todo.priority === 'MEDIUM',
-                    'text-success': todo.priority === 'LOW'
-                  }"><i class="fas fa-fw fa-circle"></i>
-                </span>
-            <span class="ms-3">{{todo.title}}</span>
-          </div>
-          <div class="card-body overflow-auto pb-0">
-            <pre class="card-text text-secondary">{{todo.description}}</pre>
-            <button
-              class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px"
-              data-bs-toggle="modal"
-              data-bs-target="#editTodoModal"
-              (click)="todoToUpdate = todo"
-            >
-              <i class="fas fa-fw fa-pen"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col px-4 overflow-auto"
-         style="max-height: 85vh"
-         cdkDropList
-         #todosInProgressList="cdkDropList"
-         [cdkDropListData]="todosInProgress"
-         [cdkDropListConnectedTo]="[todosToDoList, todosDoneList, todosDeferredList]"
-         (cdkDropListDropped)="onDrop($event)">
-
-      <h5 class="text-primary text-center">In Progress</h5>
-
-      <div class="row mb-2" *ngFor="let todo of todosInProgress" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">
-            <span
-              [ngClass]="{
-                'text-danger': todo.priority === 'HIGH',
-                'text-warning': todo.priority === 'MEDIUM',
-                'text-success': todo.priority === 'LOW'
-              }"><i class="fas fa-fw fa-circle"></i>
-            </span>
-            <span class="ms-3">{{todo.title}}</span>
-          </div>
-          <div class="card-body overflow-auto pb-0">
-            <pre class="card-text text-secondary">{{todo.description}}</pre>
-            <button
-              class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px"
-              data-bs-toggle="modal"
-              data-bs-target="#editTodoModal"
-              (click)="todoToUpdate = todo"
-            >
-              <i class="fas fa-fw fa-pen"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col px-4 overflow-auto"
-         style="max-height: 85vh"
-         cdkDropList
-         #todosDoneList="cdkDropList"
-         [cdkDropListData]="todosDone"
-         [cdkDropListConnectedTo]="[todosToDoList, todosDeferredList, todosInProgressList]"
-         (cdkDropListDropped)="onDrop($event)">
-
-      <h5 class="text-success text-center">Done</h5>
-
-      <div class="row mb-2" *ngFor="let todo of todosDone" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">
-            <span
-              [ngClass]="{
-                'text-danger': todo.priority === 'HIGH',
-                'text-warning': todo.priority === 'MEDIUM',
-                'text-success': todo.priority === 'LOW'
-              }"><i class="fas fa-fw fa-circle"></i>
-            </span>
-            <span class="ms-3">{{todo.title}}</span>
-          </div>
-          <div class="card-body overflow-auto pb-0">
-            <pre class="card-text text-secondary">{{todo.description}}</pre>
-            <button
-              class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px"
-              data-bs-toggle="modal"
-              data-bs-target="#editTodoModal"
-              (click)="todoToUpdate = todo"
-            >
-              <i class="fas fa-fw fa-pen"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col px-4 overflow-auto"
-         style="max-height: 85vh"
-         cdkDropList
-         #todosDeferredList="cdkDropList"
-         [cdkDropListData]="todosDeferred"
-         [cdkDropListConnectedTo]="[todosToDoList, todosInProgressList, todosDoneList]"
-         (cdkDropListDropped)="onDrop($event)">
-
-      <h5 class="text-secondary text-center">Deferred</h5>
-
-      <div class="row mb-2" *ngFor="let todo of todosDeferred" cdkDragBoundary="#container" cdkDrag>
-        <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
-          <div class="card-header" cdkDragHandle style="cursor: grabbing">
-            <span
-              [ngClass]="{
-                'text-danger': todo.priority === 'HIGH',
-                'text-warning': todo.priority === 'MEDIUM',
-                'text-success': todo.priority === 'LOW'
-              }"><i class="fas fa-fw fa-circle"></i>
-            </span>
-            <span class="ms-3">{{todo.title}}</span>
-          </div>
-          <div class="card-body overflow-auto pb-0">
-            <pre class="card-text text-secondary">{{todo.description}}</pre>
-            <button
-              class="btn btn-dark btn-sm position-absolute"
-              style="top: 5px; right: 5px"
-              data-bs-toggle="modal"
-              data-bs-target="#editTodoModal"
-              (click)="todoToUpdate = todo"
-            >
-              <i class="fas fa-fw fa-pen"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-todo-state-column [title]="'To Do'" [data]="todosToDo"></app-todo-state-column>
+    <app-todo-state-column [title]="'In Progress'" [data]="todosInProgress"></app-todo-state-column>
+    <app-todo-state-column [title]="'Done'" [data]="todosDone"></app-todo-state-column>
+    <app-todo-state-column [title]="'Deferred'" [data]="todosDeferred"></app-todo-state-column>
 
   </div>
 
