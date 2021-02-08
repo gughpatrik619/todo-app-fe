@@ -31,7 +31,7 @@ export class TodoBoardComponent implements OnInit {
       this.todosDone = todos.filter(todo => todo.state === EState.DONE);
       this.todosInProgress = todos.filter(todo => todo.state === EState.IN_PROGRESS);
       this.todosDeferred = todos.filter(todo => todo.state === EState.DEFERRED);
-      this.todosToDo = todos.filter(todo => todo.state === EState.TODO);
+      this.todosToDo = todos.filter(todo => todo.state === EState.TO_DO);
       this.loaded = true;
     });
   }

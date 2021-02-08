@@ -36,7 +36,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   private calculateTodoStates(todos: Todo[]) {
-    const todo = todos.filter(it => it.state === EState.TODO).length;
+    const todo = todos.filter(it => it.state === EState.TO_DO).length;
     const inProgress = todos.filter(it => it.state === EState.IN_PROGRESS).length;
     const done = todos.filter(it => it.state === EState.DONE).length;
     const deferred = todos.filter(it => it.state === EState.DEFERRED).length;
@@ -47,7 +47,7 @@ export class StatisticsComponent implements OnInit {
       hoverBackgroundColor: '#000000',
       hoverBorderWidth: 0
     };
-    this.stateDataLabels = [EState.TODO, EState.IN_PROGRESS, EState.DONE, EState.DEFERRED];
+    this.stateDataLabels = [EState.TO_DO, EState.IN_PROGRESS, EState.DONE, EState.DEFERRED];
   }
 
   private calculateTodoPriorities(todos: Todo[]) {
