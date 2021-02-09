@@ -1,16 +1,32 @@
 <div
-  id="col"
-  class="col-11 col-md-6 col-lg-4 col-xxl-3 px-4 overflow-auto d-inline-block"
+  class="bg-light col-11 col-md-6 col-lg-4 px-3 col-xxl-3 overflow-auto d-inline-block "
   style="height: 88vh"
-  cdkDropList
-  [cdkDropListData]="data"
-  (cdkDropListDropped)="onDrop($event)"
 >
-  <h5 class="text-dark text-center">{{title}}</h5>
+  <div class="row text-start" style="height: 5vh">
+    <div class="col-5 py-2 text-start">
+      <span class="align-middle"><strong>{{title}}</strong></span>
+    </div>
+    <div class="col-7 py-2 text-end">
+      <span class="align-middle">{{data.length}}</span>
+      <button class="ms-2 btn btn-sm btn-light">
+        <i class="fas fa-fw fa-plus"></i>
+      </button>
+    </div>
+  </div>
 
-  <div class="row mb-2" *ngFor="let todo of data" cdkDragBoundary="#container" cdkDrag>
-    <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
-      <div class="card-header" cdkDragHandle style="cursor: grabbing">
+  <hr class="mt-0 mb-3">
+
+  <div
+    id="list-col"
+    class="overflow-auto pe-2"
+    style="height: 80vh"
+    cdkDropList
+    [cdkDropListData]="data"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <div class="row mb-2 mx-0 px-0" *ngFor="let todo of data" cdkDragBoundary="#container" cdkDrag>
+      <div class="card bg-dark p-0 text-light mx-auto" style="height: 120px">
+        <div class="card-header" cdkDragHandle style="cursor: grabbing">
         <span
           [ngClass]="{
             'text-danger': todo.priority === 'HIGH',
@@ -18,20 +34,22 @@
             'text-success': todo.priority === 'LOW'
           }"><i class="fas fa-fw fa-circle"></i>
         </span>
-        <span class="ms-3">{{todo.title}}</span>
-      </div>
-      <div class="card-body overflow-auto pb-0">
-        <pre class="card-text text-secondary">{{todo.description}}</pre>
-        <button
-          class="btn btn-dark btn-sm position-absolute"
-          style="top: 5px; right: 5px"
-          data-bs-toggle="modal"
-          data-bs-target="#editTodoModal">
-          <!--          (click)="todoToUpdate = todo"-->
-          <!--        >-->
-          <i class="fas fa-fw fa-pen"></i>
-        </button>
+          <span class="ms-3">{{todo.title}}</span>
+        </div>
+        <div class="card-body overflow-auto pb-0">
+          <pre class="card-text text-secondary">{{todo.description}}</pre>
+          <button
+            class="btn btn-dark btn-sm position-absolute"
+            style="top: 5px; right: 5px"
+            data-bs-toggle="modal"
+            data-bs-target="#editTodoModal">
+            <!--          (click)="todoToUpdate = todo"-->
+            <!--        >-->
+            <i class="fas fa-fw fa-pen"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
