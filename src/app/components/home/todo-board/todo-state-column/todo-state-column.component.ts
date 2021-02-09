@@ -12,6 +12,8 @@ export class TodoStateColumnComponent implements OnInit {
   @Input() data: Todo[];
   @Input() title: string;
 
+  open = true;
+
   constructor() {
   }
 
