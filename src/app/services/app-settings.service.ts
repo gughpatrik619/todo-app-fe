@@ -8,26 +8,43 @@ import {StorageService} from './storage.service';
 export class AppSettingsService {
 
   activeHomepage = new BehaviorSubject<string>(null);
-  leftSidebarState = new BehaviorSubject<string>(null);
+  activeNavTab = new BehaviorSubject<string>(null);
+  navSidebarIsOpen = new BehaviorSubject<boolean>(null);
+  infoSidebarIsOpen = new BehaviorSubject<boolean>(null);
 
   constructor(private storageService: StorageService) {
-    const leftSidebarState = storageService.retrieveLeftSidebarState();
+    const navSidebarIsOpen = storageService.retrieveNavSidebarIsOpen();
+    const infoSidebarIsOpen = storageService.retrieveInfoSidebarIsOpen();
 
-    if (leftSidebarState) {
-      this.leftSidebarState.next(leftSidebarState);
+    if (navSidebarIsOpen) {
+      this.navSidebarIsOpen.next(navSidebarIsOpen);
+    }
+
+    if (infoSidebarIsOpen) {
+      this.infoSidebarIsOpen.next(infoSidebarIsOpen);
     }
   }
 
   clear() {
-    this.leftSidebarState.next(null);
+    this.navSidebarIsOpen.next(null);
+    this.infoSidebarIsOpen.next(null);
   }
 
-  setActiveHomepage(page) {
+  setActiveHomepage(page: string) {
     this.activeHomepage.next(page);
   }
 
-  setLeftSidebarState(state: string) {
-    this.storageService.storeLeftSidebarState(state);
-    this.leftSidebarState.next(state);
+  setActiveNavTab(tab: string) {
+    this.activeNavTab.next(tab);
+  }
+
+  setNavSidebarIsOpen(isOpen: boolean) {
+    this.storageService.storeNavSidebarIsOpen(isOpen);
+    this.navSidebarIsOpen.next(isOpen);
+  }
+
+  setInfoSidebarIsOpen(isOpen: boolean) {
+    this.storageService.storeInfoSidebarIsOpen(isOpen);
+    this.infoSidebarIsOpen.next(isOpen);
   }
 }

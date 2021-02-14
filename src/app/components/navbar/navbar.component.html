@@ -1,110 +1,50 @@
-<nav class="navbar navbar-dark bg-dark p-0" style="height: 50px">
-  <div class="container-fluid px-1">
-    <button
-      class="navbar-toggler m-1"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#sidebar"
-      aria-controls="sidebar"
-      aria-expanded="true"
-      aria-label="Toggle sidebar"
-      (click)="toggleLeftSidebar()"
-    >
-      <i class="fas fa-fw fa-bars"></i>
-    </button>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark"
+>
+  <div class="container-fluid">
     <a class="navbar-brand mx-4 fst-italic fw-bold" [routerLink]="'/home'">
       <img src="assets/kiwi-bird-solid.svg" alt="kiwi logo" width="30" height="30"
            class="d-inline-block img-thumbnail align-top">
       kiwi
     </a>
-    <div class="dropdown me-2">
-      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Todo's
-      </button>
-      <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text"><strong>Todo's</strong></span></li>
-        <li>
-          <hr class="dropdown-divider">
+    <button
+      *ngIf="isLoggedIn"
+      class="navbar-toggler m-1"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar"
+      aria-controls="navbar"
+      aria-expanded="false"
+      aria-label="Toggle navbar"
+    >
+      <i class="fas fa-fw fa-bars"></i>
+    </button>
+
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="navbar">
+
+      <ul class="navbar-nav me-auto mb-lg-0">
+        <li class="nav-item">
+          <a
+            [ngClass]="{'active': activeTab === 'home'}"
+            class="nav-link" [routerLink]="'/home'"
+          >Home</a>
         </li>
-        <li>
-          <button class="dropdown-item">All</button>
+        <li class="nav-item">
+          <a
+            [ngClass]="{'active': activeTab === 'profile'}"
+            class="nav-link" [routerLink]="'/profile'"
+          >Profile</a>
         </li>
-        <li>
-          <button class="dropdown-item">To Do</button>
+        <li class="nav-item">
+          <a
+            [ngClass]="{'active': activeTab === 'settings'}"
+            class="nav-link" [routerLink]="'/settings'"
+          >Settings</a>
         </li>
-        <li>
-          <button class="dropdown-item">In Progress</button>
-        </li>
-        <li>
-          <button class="dropdown-item">Deferred</button>
-        </li>
-        <li>
-          <button class="dropdown-item">Done</button>
-        </li>
-      </ul>
-    </div>
-    <div class="dropdown me-2">
-      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Groups
-      </button>
-      <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text"><strong>Groups</strong></span></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li>
-          <button class="dropdown-item">All</button>
-        </li>
-        <li>
-          <button class="dropdown-item">Recent</button>
-        </li>
-        <li>
-          <button class="dropdown-item">Favorite</button>
+        <li class="nav-item">
+          <button class="btn btn-outline-light" (click)="onLogout()">Log Out</button>
         </li>
       </ul>
-    </div>
-    <div class="dropdown me-auto">
-      <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">More
-      </button>
-      <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text"><strong>More</strong></span></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li>
-          <button class="dropdown-item">Timeline</button>
-        </li>
-        <li>
-          <button class="dropdown-item">Charts</button>
-        </li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-        <i class="fas fa-user-cog fa-fw"></i>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-        <li><span class="dropdown-item-text fst-italic"><strong>@{{username}}</strong></span>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li>
-          <button class="dropdown-item" [routerLink]="'/profile'">Profile</button>
-        </li>
-        <li>
-          <button class="dropdown-item" [routerLink]="'/settings'">Settings</button>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li>
-          <button class="dropdown-item" (click)="onLogout()">Log Out</button>
-        </li>
-      </ul>
+
     </div>
   </div>
 </nav>

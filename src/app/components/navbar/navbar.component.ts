@@ -11,6 +11,8 @@ import {AppSettingsService} from '../../services/app-settings.service';
 export class NavbarComponent implements OnInit {
 
   username: string;
+  isLoggedIn: boolean;
+  activeTab: string;
 
   constructor(
     private authService: AuthService,
@@ -21,22 +23,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.username.subscribe(data => this.username = data);
+    this.authService.isLoggedIn.subscribe(data => this.isLoggedIn = data);
+    this.appSettingsService.activeNavTab.subscribe(data => this.activeTab = data);
   }
 
   onLogout() {
     this.authService.logout();
     this.appSettingsService.clear();
     this.router.navigateByUrl('/login');
-  }
-
-  toggleLeftSidebar() {
-    const state = this.appSettingsService.leftSidebarState.value;
-
-    if (state === 'open') {
-      this.appSettingsService.setLeftSidebarState('close');
-    } else {
-      this.appSettingsService.setLeftSidebarState('open');
-    }
-
   }
 }

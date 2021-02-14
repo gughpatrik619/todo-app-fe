@@ -4,12 +4,12 @@
   </div>
 </div>
 
+<div *ngIf="loaded" id="container" class="w-100 h-100 overflow-auto p-2 p-lg-4">
+  <!--<div *ngIf="loaded" class="pt-4 px-2" id="container">-->
 
-<div *ngIf="loaded" class="pt-4 px-2" id="container">
+  <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
 
-  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
-
-  <div class="row d-block overflow-auto gx-0" cdkDropListGroup style="white-space: nowrap">
+  <div class="row h-100 d-block gx-0" cdkDropListGroup style="white-space: nowrap">
 
     <app-todo-state-column [title]="'To Do'" [data]="todosToDo"></app-todo-state-column>
     <app-todo-state-column [title]="'In Progress'" [data]="todosInProgress"></app-todo-state-column>

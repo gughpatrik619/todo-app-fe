@@ -13,5 +13,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.appSettingsService.setActiveHomepage('list');
+    this.appSettingsService.setActiveNavTab('home');
   }
 }

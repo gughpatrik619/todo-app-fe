@@ -15,7 +15,6 @@ import {HomeComponent} from './components/home/home.component';
 import {BoardAdminComponent} from './components/board-admin/board-admin.component';
 import {BoardModeratorComponent} from './components/board-moderator/board-moderator.component';
 import {BoardUserComponent} from './components/board-user/board-user.component';
-import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProfileComponent} from './components/profile/profile.component';
@@ -31,6 +30,9 @@ import {BarChartComponent} from './components/charts/bar-chart/bar-chart.compone
 import {CreateTodoModalComponent} from './components/home/create-todo-modal/create-todo-modal.component';
 import {EditTodoModalComponent} from './components/home/edit-todo-modal/edit-todo-modal.component';
 import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-column/todo-state-column.component';
+import {SidebarContainerComponent} from './components/sidebar/sidebar-container/sidebar-container.component';
+import {SidebarNavComponent} from './components/sidebar/sidebar-nav/sidebar-nav.component';
+import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,6 @@ import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    SidebarComponent,
     NavbarComponent,
     ProfileComponent,
     SettingsComponent,
@@ -54,7 +55,10 @@ import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-
     BarChartComponent,
     CreateTodoModalComponent,
     EditTodoModalComponent,
-    TodoStateColumnComponent
+    TodoStateColumnComponent,
+    SidebarContainerComponent,
+    SidebarNavComponent,
+    SidebarInfoComponent
   ],
   imports: [
     BrowserModule,

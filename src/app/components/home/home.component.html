@@ -1,11 +1,16 @@
-<app-navbar></app-navbar>
+<div class="h-100 w-100 overflow-auto">
+  <div class="d-flex h-100 w-100 overflow-auto">
 
-<div class="d-flex" style="height: calc(100vh - 50px)">
+    <app-sidebar-nav></app-sidebar-nav>
 
-  <app-sidebar></app-sidebar>
+    <div class="w-100 h-100 overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
 
-  <main class="container-fluid position-relative overflow-auto">
-    <router-outlet></router-outlet>
-  </main>
+    <app-sidebar-info></app-sidebar-info>
+
+  </div>
 
 </div>
+
+

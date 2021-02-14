@@ -1,0 +1,20 @@
+<div
+  class="d-flex flex-column collapse bg-dark sidebar"
+  [ngClass]="{ 'show': isOpen }"
+>
+  <ng-content></ng-content>
+
+  <div
+    class="py-2 text-center btn-outline-secondary"
+    style="cursor: pointer"
+    (click)="toggleSidebar()"
+  >
+    <i
+      [ngClass]="{
+        'fa-compress-alt': isOpen,
+        'fa-arrows-alt-h': !isOpen
+      }"
+      class="fas fa-fw me-2 fa-lg"></i>
+    <span *ngIf="isOpen">Collapse sidebar</span>
+  </div>
+</div>

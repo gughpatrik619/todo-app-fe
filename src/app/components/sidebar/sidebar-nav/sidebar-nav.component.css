@@ -1,0 +1,16 @@
+a {
+  border: 3px solid transparent;
+}
+
+.nav-link {
+  color: #ffffff8c;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+a.active {
+  border-left: 3px solid white;
+  color: white;
+}

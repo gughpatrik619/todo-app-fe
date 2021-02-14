@@ -4,24 +4,24 @@
   </div>
 </div>
 
-<div *ngIf="loaded" class="p-4">
+<div *ngIf="loaded" class="w-100 h-100 overflow-auto p-2 p-lg-4">
 
   <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createTodoModal">
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
   </button>
 
-  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>
+  <!--  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>-->
 
-  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>
+  <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
 
   <table class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">Id</th>
+      <th class="d-none d-md-table-cell" scope="col">Id</th>
       <th scope="col">Title</th>
-      <th scope="col">Created</th>
-      <th scope="col">Last Updated</th>
-      <th scope="col">Due</th>
+      <th class="d-none d-lg-table-cell" scope="col">Created</th>
+      <th class="d-none d-lg-table-cell" scope="col">Last Updated</th>
+      <th class="d-none d-lg-table-cell" scope="col">Due</th>
       <th scope="col">State</th>
       <th scope="col">Priority</th>
       <th scope="col">Actions</th>
@@ -32,29 +32,29 @@
       *ngFor="let todo of todos"
       style="cursor: pointer"
     >
-      <th scope="row">{{todo.id}}</th>
+      <th class="d-none d-md-table-cell" scope="row">{{todo.id}}</th>
       <td>{{todo.title}}</td>
-      <td>{{todo.created | date: 'medium'}}</td>
-      <td>{{todo.lastUpdated | date: 'medium'}}</td>
-      <td>{{todo.dueDate | date: 'medium'}}</td>
+      <td class="d-none d-lg-table-cell">{{todo.created | date: 'medium'}}</td>
+      <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'medium'}}</td>
+      <td class="d-none d-lg-table-cell">{{todo.dueDate | date: 'medium'}}</td>
       <td>
-      <span [ngClass]="{
-          'bg-success': todo.state === 'DONE',
-          'bg-secondary': todo.state === 'DEFERRED',
-          'bg-info': todo.state === 'TO DO',
-          'bg-primary': todo.state === 'IN PROGRESS'
-          }" class="badge">
-          {{todo.state}}
-      </span>
+        <span [ngClass]="{
+            'bg-success': todo.state === 'DONE',
+            'bg-secondary': todo.state === 'DEFERRED',
+            'bg-info': todo.state === 'TO DO',
+            'bg-primary': todo.state === 'IN PROGRESS'
+            }" class="badge">
+            {{todo.state}}
+        </span>
       </td>
       <td>
-      <span [ngClass]="{
-    'bg-danger': todo.priority === 'HIGH',
-    'bg-warning': todo.priority === 'MEDIUM',
-    'bg-success': todo.priority === 'LOW'
-    }" class="badge">
-        {{todo.priority}}
-      </span>
+        <span [ngClass]="{
+      'bg-danger': todo.priority === 'HIGH',
+      'bg-warning': todo.priority === 'MEDIUM',
+      'bg-success': todo.priority === 'LOW'
+      }" class="badge">
+          {{todo.priority}}
+        </span>
       </td>
       <td>
         <div class="btn-group btn-group-sm" role="group">

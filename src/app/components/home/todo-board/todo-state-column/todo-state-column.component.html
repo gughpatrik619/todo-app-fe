@@ -1,12 +1,12 @@
 <div
   id="col"
   class="bg-light col-11 col-md-6 col-lg-4 px-2 col-xxl-3 overflow-auto d-inline-block "
-  style="height: 88vh"
-  [ngClass]="{ 'close-col': !open }"
->
+  [ngClass]="{ 'close-col': !open }">
+  <!--  style="height: 100%; min-height: 500px"-->
+  <!--&gt;-->
   <div
     class="row px-0 m-0 text-start"
-    style="height: 5vh"
+    style="height: 50px"
     [ngClass]="{ 'rotated': !open }"
   >
     <div class="col-5 py-2 px-0 text-start">
@@ -28,7 +28,7 @@
   <div
     id="list-col"
     class="overflow-auto pe-2"
-    style="height: 80vh"
+    style="height: calc(88vh - 80px); min-height: calc(500px - 80px)"
     [ngStyle]="{ 'visibility': open ? 'visible' : 'hidden' }"
     cdkDropList
     [cdkDropListData]="data"

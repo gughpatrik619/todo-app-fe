@@ -10,7 +10,8 @@ export class StorageService {
   static readonly USERNAME_KEY = 'username';
   static readonly ROLES_KEY = 'roles';
   static readonly ACTIVE_HOMEPAGE = 'activeHomePage';
-  static readonly LEFT_SIDEBAR_STATE = 'leftSidebarState';
+  static readonly NAV_SIDEBAR_IS_OPEN = 'navSidebarIsOpen';
+  static readonly INFO_SIDEBAR_IS_OPEN = 'infoSidebarIsOpen';
 
   constructor(private localStorageService: LocalStorageService) {
   }
@@ -55,12 +56,21 @@ export class StorageService {
     return this.localStorageService.retrieve(StorageService.ACTIVE_HOMEPAGE);
   }
 
-  storeLeftSidebarState(state: string) {
-    this.localStorageService.clear(StorageService.LEFT_SIDEBAR_STATE);
-    this.localStorageService.store(StorageService.LEFT_SIDEBAR_STATE, state);
+  storeNavSidebarIsOpen(isOpen: boolean) {
+    this.localStorageService.clear(StorageService.NAV_SIDEBAR_IS_OPEN);
+    this.localStorageService.store(StorageService.NAV_SIDEBAR_IS_OPEN, isOpen);
   }
 
-  retrieveLeftSidebarState() {
-    return this.localStorageService.retrieve(StorageService.LEFT_SIDEBAR_STATE);
+  retrieveNavSidebarIsOpen() {
+    return this.localStorageService.retrieve(StorageService.NAV_SIDEBAR_IS_OPEN);
+  }
+
+  storeInfoSidebarIsOpen(isOpen: boolean) {
+    this.localStorageService.clear(StorageService.INFO_SIDEBAR_IS_OPEN);
+    this.localStorageService.store(StorageService.INFO_SIDEBAR_IS_OPEN, isOpen);
+  }
+
+  retrieveInfoSidebarIsOpen() {
+    return this.localStorageService.retrieve(StorageService.INFO_SIDEBAR_IS_OPEN);
   }
 }
