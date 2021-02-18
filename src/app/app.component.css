@@ -1,9 +1,0 @@
-.home-logo {
-  cursor: pointer;
-  outline: none;
-  border-radius: 5px;
-}
-
-.home-logo:hover {
-  background-color: #454d55;
-}
