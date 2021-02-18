@@ -1,7 +1,6 @@
 <app-sidebar-container [isOpen]="sidebarIsOpen" (toggleEvent)="onToggleSidebar($event)">
   <!--  add class 'mb-auto' for the collapse button to go down-->
   <div class="mb-auto">
-    <p class="text-light">hello</p>
-    <p class="text-light">world</p>
+    <router-outlet name="info"></router-outlet>
   </div>
 </app-sidebar-container>

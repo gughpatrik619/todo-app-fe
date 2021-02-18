@@ -22,7 +22,11 @@ const routes: Routes = [
       {path: 'board', component: TodoBoardComponent},
       {path: 'statistics', component: StatisticsComponent},
       {path: 'calendar', component: CalendarComponent},
+      // {path: 'create/:id', component: CreateTodoComponent, outlet: 'info'},
+      // {path: 'edit/:id', component: EditTodoComponent, outlet: 'info'},
+      {path: 'calendar', component: CalendarComponent},
       {path: '', redirectTo: 'table', pathMatch: 'full'},
+      {path: '**', redirectTo: 'table', pathMatch: 'full'}
     ]
   },
   {path: 'signup', component: SignupComponent},
@@ -32,7 +36,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: 'login', pathMatch: 'full'}
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -33,6 +33,8 @@ import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-
 import {SidebarContainerComponent} from './components/sidebar/sidebar-container/sidebar-container.component';
 import {SidebarNavComponent} from './components/sidebar/sidebar-nav/sidebar-nav.component';
 import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-info.component';
+import {CreateTodoComponent} from './components/home/create-todo/create-todo.component';
+import {EditTodoComponent} from './components/home/edit-todo/edit-todo.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-in
     TodoStateColumnComponent,
     SidebarContainerComponent,
     SidebarNavComponent,
-    SidebarInfoComponent
+    SidebarInfoComponent,
+    CreateTodoComponent,
+    EditTodoComponent
   ],
   imports: [
     BrowserModule,

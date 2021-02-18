@@ -6,7 +6,7 @@
 
 <div *ngIf="loaded" class="w-100 h-100 overflow-auto p-2 p-lg-4">
 
-  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createTodoModal">
+  <button type="button" class="btn btn-dark">
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
   </button>
 
@@ -61,9 +61,7 @@
           <button
             type="button"
             class="btn btn-outline-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#editTodoModal"
-            (click)="todoToUpdate = todo"
+            routerLink="/home/edit/1"
           >
             <i class="fas fa-pen fa-fw"></i>
           </button>
