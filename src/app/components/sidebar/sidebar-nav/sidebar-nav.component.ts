@@ -23,7 +23,7 @@ export class SidebarNavComponent implements OnInit {
     this.appSettingsService.setActiveHomepage(page);
   }
 
-  onToggleSidebar(isOpen: boolean) {
-    this.appSettingsService.setNavSidebarIsOpen(isOpen);
+  toggleSidebar() {
+    this.appSettingsService.setNavSidebarIsOpen(!this.sidebarIsOpen);
   }
 }

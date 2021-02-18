@@ -1,6 +1,22 @@
-<app-sidebar-container [isOpen]="sidebarIsOpen" (toggleEvent)="onToggleSidebar($event)">
-  <!--  add class 'mb-auto' for the collapse button to go down-->
+<div
+  class="d-flex flex-column collapse bg-dark sidebar"
+  [ngClass]="{ 'show': sidebarIsOpen }"
+>
   <div class="mb-auto">
     <router-outlet name="info"></router-outlet>
   </div>
-</app-sidebar-container>
+
+  <div
+    class="py-2 text-center btn-outline-secondary"
+    style="cursor: pointer"
+    (click)="toggleSidebar()"
+  >
+    <i
+      [ngClass]="{
+        'fa-chevron-right': sidebarIsOpen,
+        'fa-chevron-left': !sidebarIsOpen
+      }"
+      class="fas fa-fw fa-lg"></i>
+    <span *ngIf="sidebarIsOpen" class="ms-4">Collapse sidebar</span>
+  </div>
+</div>

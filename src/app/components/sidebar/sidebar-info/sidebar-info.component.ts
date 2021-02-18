@@ -14,10 +14,10 @@ export class SidebarInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appSettingsService.infoSidebarIsOpen.subscribe(data => this.sidebarIsOpen = data);
+    this.appSettingsService.infoSidebarIsOpen.subscribe(isOpen => this.sidebarIsOpen = isOpen);
   }
 
-  onToggleSidebar(isOpen: boolean) {
-    this.appSettingsService.setInfoSidebarIsOpen(isOpen);
+  toggleSidebar() {
+    this.appSettingsService.setInfoSidebarIsOpen(!this.sidebarIsOpen);
   }
 }

@@ -1,0 +1,10 @@
+.sidebar.collapse {
+  position: relative;
+  width: 68px;
+  height: 100%;
+  display: block;
+}
+
+.sidebar.collapse.show {
+  width: 300px;
+}

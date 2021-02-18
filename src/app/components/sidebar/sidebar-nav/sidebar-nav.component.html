@@ -1,4 +1,7 @@
-<app-sidebar-container [isOpen]="sidebarIsOpen" (toggleEvent)="onToggleSidebar($event)">
+<div
+  class="d-flex flex-column collapse bg-dark sidebar"
+  [ngClass]="{ 'show': sidebarIsOpen }"
+>
   <ul class="navbar-nav pt-2 mb-auto">
     <li class="nav-item">
       <a
@@ -45,4 +48,18 @@
       </a>
     </li>
   </ul>
-</app-sidebar-container>
+
+  <div
+    class="py-2 text-center btn-outline-secondary"
+    style="cursor: pointer"
+    (click)="toggleSidebar()"
+  >
+    <i
+      [ngClass]="{
+        'fa-chevron-left': sidebarIsOpen,
+        'fa-chevron-right': !sidebarIsOpen
+      }"
+      class="fas fa-fw fa-lg"></i>
+    <span *ngIf="sidebarIsOpen" class="ms-2">Collapse sidebar</span>
+  </div>
+</div>
