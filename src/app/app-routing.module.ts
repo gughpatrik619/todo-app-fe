@@ -13,6 +13,8 @@ import {TodoTableComponent} from './components/home/todo-table/todo-table.compon
 import {TodoBoardComponent} from './components/home/todo-board/todo-board.component';
 import {StatisticsComponent} from './components/home/statistics/statistics.component';
 import {CalendarComponent} from './components/home/calendar/calendar.component';
+import {EditTodoComponent} from './components/home/edit-todo/edit-todo.component';
+import {CreateTodoComponent} from './components/home/create-todo/create-todo.component';
 
 
 const routes: Routes = [
@@ -22,8 +24,8 @@ const routes: Routes = [
       {path: 'board', component: TodoBoardComponent},
       {path: 'statistics', component: StatisticsComponent},
       {path: 'calendar', component: CalendarComponent},
-      // {path: 'create/:id', component: CreateTodoComponent, outlet: 'info'},
-      // {path: 'edit/:id', component: EditTodoComponent, outlet: 'info'},
+      {path: 'create', component: CreateTodoComponent, outlet: 'info'},
+      {path: 'edit/:id', component: EditTodoComponent, outlet: 'info'},
       {path: 'calendar', component: CalendarComponent},
       {path: '', redirectTo: 'table', pathMatch: 'full'},
       {path: '**', redirectTo: 'table', pathMatch: 'full'}

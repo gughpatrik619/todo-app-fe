@@ -6,12 +6,17 @@
 
 <div *ngIf="loaded" class="w-100 h-100 overflow-auto p-2 p-lg-4">
 
+
+  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'edit', '59'] } }]">edit comp</a>
+  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'create'] } }]">create comp</a>
+  <a class="btn btn-primary btn-sm" [routerLink]="'../board'">board</a>
+
+
   <button type="button" class="btn btn-dark">
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
   </button>
 
   <!--  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>-->
-
   <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
 
   <table class="table table-striped">
@@ -61,7 +66,6 @@
           <button
             type="button"
             class="btn btn-outline-primary"
-            routerLink="/home/edit/1"
           >
             <i class="fas fa-pen fa-fw"></i>
           </button>

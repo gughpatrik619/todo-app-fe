@@ -5,7 +5,10 @@
   <div class="w-100 h-100 overflow-auto">
     <router-outlet></router-outlet>
   </div>
-  <app-sidebar-info></app-sidebar-info>
+
+  <app-sidebar-info>
+    <router-outlet name="info"></router-outlet>
+  </app-sidebar-info>
 
 </div>
 
