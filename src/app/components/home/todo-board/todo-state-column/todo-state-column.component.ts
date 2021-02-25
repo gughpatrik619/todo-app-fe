@@ -29,7 +29,7 @@ export class TodoStateColumnComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-      
+
       const todo = event.container.data[event.currentIndex];
 
       this.todoService.updateTodo(todo.id, {

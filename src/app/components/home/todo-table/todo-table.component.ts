@@ -8,13 +8,18 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-table.component.html',
-  styleUrls: ['./todo-table.component.css']
+  styleUrls: ['./todo-table.component.scss']
 })
 export class TodoTableComponent implements OnInit {
 
   todos: Todo[] = [];
   todoToUpdate: Todo;
   loaded = false;
+
+  sortByIdAsc = true;
+  sortByDueDateAsc = true;
+  sortByCreatedAsc = true;
+  sortByLastUpdatedAsc = true;
 
   constructor(
     private todoService: TodoService,
@@ -55,5 +60,45 @@ export class TodoTableComponent implements OnInit {
       },
       error => this.toastrService.error(error.error.message)
     );
+  }
+
+  sortTodosById() {
+    this.sortByIdAsc = !this.sortByIdAsc;
+
+    if (this.sortByIdAsc) {
+      this.todos.sort((a, b) => a.id > b.id ? 1 : -1);
+    } else {
+      this.todos.sort((a, b) => a.id < b.id ? 1 : -1);
+    }
+  }
+
+  sortTodosByDueDate() {
+    this.sortByDueDateAsc = !this.sortByDueDateAsc;
+
+    if (this.sortByDueDateAsc) {
+      this.todos.sort((a, b) => a.dueDate > b.dueDate ? 1 : -1);
+    } else {
+      this.todos.sort((a, b) => a.dueDate < b.dueDate ? 1 : -1);
+    }
+  }
+
+  sortTodosByCreated() {
+    this.sortByCreatedAsc = !this.sortByCreatedAsc;
+
+    if (this.sortByCreatedAsc) {
+      this.todos.sort((a, b) => a.created > b.created ? 1 : -1);
+    } else {
+      this.todos.sort((a, b) => a.created < b.created ? 1 : -1);
+    }
+  }
+
+  sortTodosByLastUpdated() {
+    this.sortByLastUpdatedAsc = !this.sortByLastUpdatedAsc;
+
+    if (this.sortByLastUpdatedAsc) {
+      this.todos.sort((a, b) => a.lastUpdated > b.lastUpdated ? 1 : -1);
+    } else {
+      this.todos.sort((a, b) => a.lastUpdated < b.lastUpdated ? 1 : -1);
+    }
   }
 }

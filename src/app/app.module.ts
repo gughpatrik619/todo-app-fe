@@ -34,6 +34,7 @@ import {SidebarNavComponent} from './components/sidebar/sidebar-nav/sidebar-nav.
 import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-info.component';
 import {CreateTodoComponent} from './components/home/create-todo/create-todo.component';
 import {EditTodoComponent} from './components/home/edit-todo/edit-todo.component';
+import {LineChartComponent} from './components/charts/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {EditTodoComponent} from './components/home/edit-todo/edit-todo.component
     SidebarNavComponent,
     SidebarInfoComponent,
     CreateTodoComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,

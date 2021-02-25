@@ -7,12 +7,12 @@
 <div *ngIf="loaded" class="w-100 h-100 overflow-auto p-2 p-lg-4">
 
 
-  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'edit', '59'] } }]">edit comp</a>
-  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'create'] } }]">create comp</a>
-  <a class="btn btn-primary btn-sm" [routerLink]="'../board'">board</a>
+  <!--  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['edit', '59'] } }]">edit comp</a>-->
+  <!--  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'create'] } }]">create comp</a>-->
+  <!--  <a class="btn btn-primary btn-sm" [routerLink]="'../board'">board</a>-->
 
 
-  <button type="button" class="btn btn-dark">
+  <button type="button" class="btn btn-dark mb-2">
     <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
   </button>
 
@@ -22,11 +22,27 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th class="d-none d-md-table-cell" scope="col">Id</th>
+      <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosById()">
+        Id
+        <i [ngClass]="{'fa-arrow-up': sortByIdAsc, 'fa-arrow-down': !sortByIdAsc}"
+           class="invisible fas fa-fw fa-sm text-secondary"></i>
+      </th>
       <th scope="col">Title</th>
-      <th class="d-none d-lg-table-cell" scope="col">Created</th>
-      <th class="d-none d-lg-table-cell" scope="col">Last Updated</th>
-      <th class="d-none d-lg-table-cell" scope="col">Due</th>
+      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByCreated()">
+        Created
+        <i [ngClass]="{'fa-arrow-up': sortByCreatedAsc, 'fa-arrow-down': !sortByCreatedAsc}"
+           class="invisible fas fa-fw fa-sm text-secondary"></i>
+      </th>
+      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByLastUpdated()">
+        Last Updated
+        <i [ngClass]="{'fa-arrow-up': sortByLastUpdatedAsc, 'fa-arrow-down': !sortByLastUpdatedAsc}"
+           class="invisible fas fa-fw fa-sm text-secondary"></i>
+      </th>
+      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByDueDate()">
+        Due
+        <i [ngClass]="{'fa-arrow-up': sortByDueDateAsc, 'fa-arrow-down': !sortByDueDateAsc}"
+           class="invisible fas fa-fw fa-sm text-secondary"></i>
+      </th>
       <th scope="col">State</th>
       <th scope="col">Priority</th>
       <th scope="col">Actions</th>
