@@ -11,54 +11,83 @@
   <!--  <a class="btn btn-primary btn-sm" [routerLink]="[{ outlets: { info: ['..', 'create'] } }]">create comp</a>-->
   <!--  <a class="btn btn-primary btn-sm" [routerLink]="'../board'">board</a>-->
 
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-dark mb-3">
+        <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
+      </button>
+    </div>
+    <div class="col text-end">
+      <div class="btn-toolbar d-inline" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group btn-group-sm me-4" role="group" aria-label="First group">
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked
+                 (change)="onStateCheckboxChanged($event, 'TO DO')"
+          >
+          <label class="btn btn-outline-info" for="btnradio1">TO DO</label>
 
-  <button type="button" class="btn btn-dark mb-2">
-    <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
-  </button>
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio2">IN PROGRESS</label>
+
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
+          <label class="btn btn-outline-success" for="btnradio3">DONE</label>
+
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
+          <label class="btn btn-outline-secondary" for="btnradio4">DEFERRED</label>
+        </div>
+        <div class="btn-group btn-group-sm" role="group" aria-label="Second group">
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
+          <label class="btn btn-outline-success" for="btnradio5">LOW</label>
+
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off" checked>
+          <label class="btn btn-outline-warning" for="btnradio6">MEDIUM</label>
+
+          <input type="checkbox" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off" checked>
+          <label class="btn btn-outline-danger" for="btnradio7">HIGH</label>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>-->
   <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosById()">
-        Id
-        <i [ngClass]="{'fa-arrow-up': sortByIdAsc, 'fa-arrow-down': !sortByIdAsc}"
-           class="invisible fas fa-fw fa-sm text-secondary"></i>
-      </th>
-      <th scope="col">Title</th>
-      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByCreated()">
-        Created
-        <i [ngClass]="{'fa-arrow-up': sortByCreatedAsc, 'fa-arrow-down': !sortByCreatedAsc}"
-           class="invisible fas fa-fw fa-sm text-secondary"></i>
-      </th>
-      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByLastUpdated()">
-        Last Updated
-        <i [ngClass]="{'fa-arrow-up': sortByLastUpdatedAsc, 'fa-arrow-down': !sortByLastUpdatedAsc}"
-           class="invisible fas fa-fw fa-sm text-secondary"></i>
-      </th>
-      <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByDueDate()">
-        Due
-        <i [ngClass]="{'fa-arrow-up': sortByDueDateAsc, 'fa-arrow-down': !sortByDueDateAsc}"
-           class="invisible fas fa-fw fa-sm text-secondary"></i>
-      </th>
-      <th scope="col">State</th>
-      <th scope="col">Priority</th>
-      <th scope="col">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr
-      *ngFor="let todo of todos"
-      style="cursor: pointer"
-    >
-      <th class="d-none d-md-table-cell" scope="row">{{todo.id}}</th>
-      <td>{{todo.title}}</td>
-      <td class="d-none d-lg-table-cell">{{todo.created | date: 'medium'}}</td>
-      <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'medium'}}</td>
-      <td class="d-none d-lg-table-cell">{{todo.dueDate | date: 'medium'}}</td>
-      <td>
+  <div class="table-responsive-lg">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosById()">
+          Id
+          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByIdAsc ? 'up' : 'down'}}"></i>
+        </th>
+        <th scope="col">Title</th>
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByCreated()">
+          Created
+          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByCreatedAsc ? 'up' : 'down'}}"></i>
+        </th>
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByLastUpdated()">
+          Last Updated
+          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByLastUpdatedAsc ? 'up' : 'down'}}"></i>
+        </th>
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByDueDate()">
+          Due
+          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByDueDateAsc ? 'up' : 'down'}}"></i>
+        </th>
+        <th scope="col">State</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let todo of todos"
+        style="cursor: pointer"
+      >
+        <th class="d-none d-md-table-cell" scope="row">{{todo.id}}</th>
+        <td>{{todo.title}}</td>
+        <td class="d-none d-lg-table-cell">{{todo.created | date: 'medium'}}</td>
+        <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'medium'}}</td>
+        <td class="d-none d-lg-table-cell">{{todo.dueDate | date: 'medium'}}</td>
+        <td>
         <span [ngClass]="{
             'bg-success': todo.state === 'DONE',
             'bg-secondary': todo.state === 'DEFERRED',
@@ -67,8 +96,8 @@
             }" class="badge">
             {{todo.state}}
         </span>
-      </td>
-      <td>
+        </td>
+        <td>
         <span [ngClass]="{
       'bg-danger': todo.priority === 'HIGH',
       'bg-warning': todo.priority === 'MEDIUM',
@@ -76,22 +105,22 @@
       }" class="badge">
           {{todo.priority}}
         </span>
-      </td>
-      <td>
-        <div class="btn-group btn-group-sm" role="group">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-          >
-            <i class="fas fa-pen fa-fw"></i>
-          </button>
-          <button type="button" class="btn btn-outline-danger" (click)="deleteTodoById(todo.id)">
-            <i class="fas fa-trash fa-fw"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
+        </td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+            >
+              <i class="fas fa-pen fa-fw"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteTodoById(todo.id)">
+              <i class="fas fa-trash fa-fw"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

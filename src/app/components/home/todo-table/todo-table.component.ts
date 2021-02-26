@@ -101,4 +101,12 @@ export class TodoTableComponent implements OnInit {
       this.todos.sort((a, b) => a.lastUpdated < b.lastUpdated ? 1 : -1);
     }
   }
+
+  // todo: finish
+  onStateCheckboxChanged(e, state: string) {
+    if (!e.target.checked) {
+      console.log('state: ' + state);
+      this.todos = this.todos.filter(todo => todo.state !== state);
+    }
+  }
 }

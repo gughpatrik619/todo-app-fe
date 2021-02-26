@@ -7,16 +7,14 @@
         style="right: 5px; top: 5px"
       >
         <button
-          [ngClass]="{ 'active': type === 'pie' }"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light {{type === 'pie' ? 'active' : ''}}"
           (click)="type = 'pie'"
         >
           <i class="fa fa-fw fa-chart-pie fa-lg"></i>
         </button>
 
         <button
-          [ngClass]="{ 'active': type === 'bar' }"
-          class="btn btn-outline-light"
+          class="btn btn-outline-light {{type === 'bar' ? 'active' : ''}}"
           (click)="type = 'bar'"
         >
           <i class="fa fa-fw fa-chart-bar fa-lg"></i>

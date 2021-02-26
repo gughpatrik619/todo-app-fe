@@ -54,12 +54,7 @@
     style="cursor: pointer"
     (click)="toggleSidebar()"
   >
-    <i
-      [ngClass]="{
-        'fa-angle-double-left': sidebarIsOpen,
-        'fa-angle-double-right': !sidebarIsOpen
-      }"
-      class="fas fa-fw fa-lg"></i>
+    <i class="fas fa-fw fa-lg fa-angle-double-{{sidebarIsOpen ? 'left' : 'right'}}"></i>
     <span *ngIf="sidebarIsOpen" class="ms-2">Collapse sidebar</span>
   </div>
 </div>
