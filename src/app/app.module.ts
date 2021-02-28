@@ -35,6 +35,18 @@ import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-in
 import {CreateTodoComponent} from './components/home/create-todo/create-todo.component';
 import {EditTodoComponent} from './components/home/edit-todo/edit-todo.component';
 import {LineChartComponent} from './components/charts/line-chart/line-chart.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin,
+  listPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -74,7 +86,8 @@ import {LineChartComponent} from './components/charts/line-chart/line-chart.comp
     ToastrModule.forRoot(),
     DragDropModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    FullCalendarModule
   ],
   providers: [
     {
