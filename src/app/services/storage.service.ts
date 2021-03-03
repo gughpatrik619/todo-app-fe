@@ -9,7 +9,6 @@ export class StorageService {
   static readonly TOKEN_KEY = 'authToken';
   static readonly USERNAME_KEY = 'username';
   static readonly ROLES_KEY = 'roles';
-  static readonly ACTIVE_HOMEPAGE = 'activeHomePage';
   static readonly NAV_SIDEBAR_IS_OPEN = 'navSidebarIsOpen';
   static readonly INFO_SIDEBAR_IS_OPEN = 'infoSidebarIsOpen';
 
@@ -45,15 +44,6 @@ export class StorageService {
 
   retrieveRoles() {
     return JSON.parse(this.localStorageService.retrieve(StorageService.ROLES_KEY));
-  }
-
-  storeActiveHomepage(page: string) {
-    this.localStorageService.clear(StorageService.ACTIVE_HOMEPAGE);
-    this.localStorageService.store(StorageService.ACTIVE_HOMEPAGE, page);
-  }
-
-  retrieveActiveHomePage() {
-    return this.localStorageService.retrieve(StorageService.ACTIVE_HOMEPAGE);
   }
 
   storeNavSidebarIsOpen(isOpen: boolean) {

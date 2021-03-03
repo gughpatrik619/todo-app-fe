@@ -89,8 +89,6 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appSettingsService.setActiveHomepage('calendar');
-
     this.todoService.getTodos().subscribe(data => {
       this.todos = data;
 
@@ -100,7 +98,6 @@ export class CalendarComponent implements OnInit {
           title: todo.title,
           start: new Date(todo.created.toString()).toISOString(),
           end: new Date(todo.dueDate.toString()).toISOString(),
-          allDay: false,
           color: this.randomColor()
         });
       });
@@ -110,7 +107,7 @@ export class CalendarComponent implements OnInit {
   }
 
   // todo: do not remove!!!
-  // onSelect(info) {
+  // onSelect(info: DateSelectArg) {
   //   console.log(`Start: ${info.start.toDateString()} ${info.start.toTimeString()}`);
   //   console.log(`End:   ${info.end.toDateString()} ${info.end.toTimeString()}`);
   //   console.log(`all-day: ${info.allDay}`);
@@ -131,7 +128,8 @@ export class CalendarComponent implements OnInit {
   addEvent() {
     this.calendar.getApi().addEvent({
       title: 'added 1',
-      date: '2021-02-14',
+      start: '2021-03-30T14:12:07',
+      end: '2021-04-01',
       color: this.randomColor()
     });
   }

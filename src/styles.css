@@ -36,3 +36,9 @@ button:focus, button:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #696868;
 }
+
+a, a:focus, a:hover {
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}

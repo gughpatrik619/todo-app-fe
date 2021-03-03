@@ -16,16 +16,12 @@ export class TodoBoardComponent implements OnInit {
   todosDeferred: Todo[] = [];
   todosToDo: Todo[] = [];
 
-  todoToUpdate: Todo;
-
   loaded = false;
 
   constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
   }
 
   ngOnInit() {
-    this.appSettingsService.setActiveHomepage('board');
-
     this.todoService.getTodos().subscribe(data => {
       const todos = data;
       this.todosDone = todos.filter(todo => todo.state === EState.DONE);

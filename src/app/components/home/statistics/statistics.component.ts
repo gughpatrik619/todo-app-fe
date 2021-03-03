@@ -27,8 +27,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appSettingsService.setActiveHomepage('stats');
-
     this.todoService.getTodos().subscribe(data => {
 
       this.calculateTodoStates(data);

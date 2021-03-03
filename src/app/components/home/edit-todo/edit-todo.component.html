@@ -1,1 +1,91 @@
-<p class="text-light">edit-todo works! id: {{todoId}}</p>
+<form
+  [formGroup]="editTodoFormGroup"
+  novalidate
+  (ngSubmit)="onSubmit()"
+>
+
+  <div class="modal-header text-light p-2">
+    <h5>Edit Todo</h5>
+  </div>
+
+  <div class="container p-2">
+
+    <div formGroupName="editTodoPayload">
+      <div class="mb-3">
+        <p class="bg-dark text-light m-1">Id:</p>
+        <input
+          type="number"
+          class="form-control"
+          disabled
+          aria-label="id"
+          value="{{todoId}}"
+        >
+      </div>
+
+      <div class="mb-3">
+        <p class="bg-dark text-light m-1">Title:</p>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="title"
+          formControlName="title"
+        >
+      </div>
+
+      <div class="mb-3">
+        <p class="bg-dark text-light m-1">Description:</p>
+        <textarea
+          rows="5"
+          class="form-control"
+          aria-label="description"
+          formControlName="description"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <p class="bg-dark text-light m-1">Priority:</p>
+        <select
+          class="form-select"
+          aria-label="priority"
+          formControlName="priority"
+        >
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <p class="bg-dark text-light m-1">Due:</p>
+        <input
+          type="datetime-local"
+          class="form-control"
+          aria-label="dueDate"
+          formControlName="dueDate"
+        >
+      </div>
+
+      <div>
+        <p class="bg-dark text-light m-1">State:</p>
+        <select
+          class="form-select"
+          aria-label="priority"
+          formControlName="state"
+        >
+          <option value="TO DO">TO DO</option>
+          <option value="IN PROGRESS">IN PROGRESS</option>
+          <option value="DONE">DONE</option>
+          <option value="DEFERRED">DEFERRED</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer p-2">
+    <button type="button" class="btn btn-sm btn-outline-light">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-sm btn-light">Submit</button>
+  </div>
+
+</form>

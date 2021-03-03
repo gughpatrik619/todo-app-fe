@@ -6,9 +6,8 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeHomepage === 'table' }"
         [routerLink]="'/home/table'"
-        (click)="togglePage('table')"
+        [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-table fa-fw me-2"></i>
         <p *ngIf="sidebarIsOpen" class="d-inline">Table</p>
@@ -17,9 +16,8 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeHomepage === 'board' }"
         [routerLink]="'/home/board'"
-        (click)="togglePage('board')"
+        [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-columns fa-fw me-2"></i>
         <p *ngIf="sidebarIsOpen" class="d-inline">Board</p>
@@ -28,9 +26,8 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeHomepage === 'stats' }"
         [routerLink]="'/home/statistics'"
-        (click)="togglePage('stats')"
+        [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-chart-line fa-fw me-2"></i>
         <p *ngIf="sidebarIsOpen" class="d-inline">Statistics</p>
@@ -39,9 +36,8 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [ngClass]="{ 'active': activeHomepage === 'calendar' }"
         [routerLink]="'/home/calendar'"
-        (click)="togglePage('calendar')"
+        [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-calendar-alt fa-fw me-2"></i>
         <p *ngIf="sidebarIsOpen" class="d-inline">Calendar</p>

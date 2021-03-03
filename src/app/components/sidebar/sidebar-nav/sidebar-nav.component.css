@@ -21,7 +21,7 @@ a {
   color: white;
 }
 
-a.active {
+.active {
   border-left: 3px solid white;
   color: white;
 }

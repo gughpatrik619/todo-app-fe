@@ -30,8 +30,6 @@ export class TodoTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appSettingsService.setActiveHomepage('table');
-
     this.todoService.getTodos().subscribe(data => {
       this.todos = data;
       this.loaded = true;
@@ -108,5 +106,19 @@ export class TodoTableComponent implements OnInit {
       console.log('state: ' + state);
       this.todos = this.todos.filter(todo => todo.state !== state);
     }
+  }
+
+  isToday(date: Date) {
+    return new Date().toDateString() === new Date(date.toString()).toDateString();
+  }
+
+  editTodo(id: number) {
+    this.appSettingsService.setInfoSidebarIsOpen(true);
+    this.router.navigateByUrl(`/home/(table//info:edit/${id})`);
+  }
+
+  createTodo() {
+    this.appSettingsService.setInfoSidebarIsOpen(true);
+    this.router.navigateByUrl('/home/(table//info:create)');
   }
 }

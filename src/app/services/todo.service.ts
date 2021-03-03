@@ -24,6 +24,10 @@ export class TodoService {
     return this.httpClient.get<Todo[]>(`${TodoService.API_URL}/users/${this.getUserName()}/todos`, httpOptions);
   }
 
+  getTodoById(id: number): Observable<Todo> {
+    return this.httpClient.get<Todo>(`${TodoService.API_URL}/users/${this.getUserName()}/todos/${id}`, httpOptions);
+  }
+
   saveTodo(createTodo: CreateTodo): Observable<Todo> {
     return this.httpClient.post<Todo>(`${TodoService.API_URL}/users/${this.getUserName()}/todos`, createTodo, httpOptions);
   }

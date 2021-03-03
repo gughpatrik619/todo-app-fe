@@ -7,7 +7,6 @@ import {StorageService} from './storage.service';
 })
 export class AppSettingsService {
 
-  activeHomepage = new BehaviorSubject<string>(null);
   activeNavTab = new BehaviorSubject<string>(null);
   navSidebarIsOpen = new BehaviorSubject<boolean>(null);
   infoSidebarIsOpen = new BehaviorSubject<boolean>(null);
@@ -28,10 +27,6 @@ export class AppSettingsService {
   clear() {
     this.navSidebarIsOpen.next(null);
     this.infoSidebarIsOpen.next(null);
-  }
-
-  setActiveHomepage(page: string) {
-    this.activeHomepage.next(page);
   }
 
   setActiveNavTab(tab: string) {
