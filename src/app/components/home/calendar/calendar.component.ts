@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AppSettingsService} from '../../../services/app-settings.service';
 import {CalendarOptions, FullCalendarComponent} from '@fullcalendar/angular';
 import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
@@ -85,7 +84,7 @@ export class CalendarComponent implements OnInit {
     // ]
   };
 
-  constructor(private appSettingsService: AppSettingsService, private todoService: TodoService) {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit(): void {

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../../../services/todo.service';
-import {AppSettingsService} from '../../../services/app-settings.service';
 import {Todo} from '../../../model/todo';
 import {ChartDataSets} from 'chart.js';
 import {EState} from '../../../model/e-state.enum';
@@ -23,7 +22,7 @@ export class StatisticsComponent implements OnInit {
   burndownDataset: ChartDataSets;
   burndownLabels: string[];
 
-  constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit(): void {

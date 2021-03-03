@@ -28,7 +28,6 @@ import {ChartCardComponent} from './components/home/statistics/chart-card/chart-
 import {PieChartComponent} from './components/charts/pie-chart/pie-chart.component';
 import {BarChartComponent} from './components/charts/bar-chart/bar-chart.component';
 import {CreateTodoModalComponent} from './components/home/create-todo-modal/create-todo-modal.component';
-import {EditTodoModalComponent} from './components/home/edit-todo-modal/edit-todo-modal.component';
 import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-column/todo-state-column.component';
 import {SidebarNavComponent} from './components/sidebar/sidebar-nav/sidebar-nav.component';
 import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-info.component';
@@ -68,7 +67,6 @@ FullCalendarModule.registerPlugins([
     PieChartComponent,
     BarChartComponent,
     CreateTodoModalComponent,
-    EditTodoModalComponent,
     TodoStateColumnComponent,
     SidebarNavComponent,
     SidebarInfoComponent,

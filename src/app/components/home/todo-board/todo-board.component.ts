@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
-import {AppSettingsService} from '../../../services/app-settings.service';
 import {EState} from '../../../model/e-state.enum';
 
 @Component({
@@ -18,7 +17,7 @@ export class TodoBoardComponent implements OnInit {
 
   loaded = false;
 
-  constructor(private todoService: TodoService, private appSettingsService: AppSettingsService) {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit() {
@@ -30,9 +29,5 @@ export class TodoBoardComponent implements OnInit {
       this.todosToDo = todos.filter(todo => todo.state === EState.TO_DO);
       this.loaded = true;
     });
-  }
-
-  onUpdateTodo(updatedTodo: Todo) {
-    console.log(updatedTodo);
   }
 }
