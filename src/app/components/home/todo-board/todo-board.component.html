@@ -6,8 +6,6 @@
 
 <div *ngIf="loaded" id="container" class="w-100 h-100 overflow-auto p-2 p-lg-4">
 
-  <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
-
   <div class="row h-100 d-block gx-0" cdkDropListGroup style="white-space: nowrap">
 
     <app-todo-state-column [title]="'To Do'" [data]="todosToDo" [label]="'TO DO'"></app-todo-state-column>

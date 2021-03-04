@@ -81,7 +81,11 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      progressBar: true,
+      progressAnimation: 'increasing',
+      timeOut: 4000
+    }),
     DragDropModule,
     FormsModule,
     ChartsModule,

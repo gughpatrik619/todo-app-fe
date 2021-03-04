@@ -17,7 +17,7 @@ export class SidebarInfoComponent implements OnInit {
     this.appSettingsService.infoSidebarIsOpen.subscribe(isOpen => this.sidebarIsOpen = isOpen);
   }
 
-  toggleSidebar() {
-    this.appSettingsService.setInfoSidebarIsOpen(!this.sidebarIsOpen);
-  }
+  // toggleSidebar() {
+  //   this.appSettingsService.setInfoSidebarIsOpen(!this.sidebarIsOpen);
+  // }
 }

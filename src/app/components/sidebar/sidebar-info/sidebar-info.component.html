@@ -2,16 +2,16 @@
   class="d-flex flex-column collapse bg-dark sidebar overflow-auto h-100"
   [ngClass]="{ 'show': sidebarIsOpen }"
 >
-  <div class="mb-auto">
+  <div class="h-100">
     <ng-content></ng-content>
   </div>
 
-  <div
-    class="py-2 text-center btn-outline-secondary"
-    style="cursor: pointer"
-    (click)="toggleSidebar()"
-  >
-    <i class="fas fa-fw fa-lg fa-angle-double-{{sidebarIsOpen ? 'right' : 'left'}}"></i>
-    <span *ngIf="sidebarIsOpen" class="ms-4">Collapse sidebar</span>
-  </div>
+  <!--  <div-->
+  <!--    class="py-2 text-center btn-outline-secondary"-->
+  <!--    style="cursor: pointer"-->
+  <!--    (click)="toggleSidebar()"-->
+  <!--  >-->
+  <!--    <i class="fas fa-fw fa-lg fa-angle-double-{{sidebarIsOpen ? 'right' : 'left'}}"></i>-->
+  <!--    <span *ngIf="sidebarIsOpen" class="ms-4">Collapse sidebar</span>-->
+  <!--  </div>-->
 </div>

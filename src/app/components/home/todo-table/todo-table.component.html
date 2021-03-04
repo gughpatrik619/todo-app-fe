@@ -75,10 +75,10 @@
       <tr *ngFor="let todo of todos" style="cursor: pointer">
         <th class="d-none d-md-table-cell" scope="row">{{todo.id | number: '2.0-0'}}</th>
         <td>{{todo.title}}</td>
-        <td class="d-none d-lg-table-cell">{{todo.created | date: 'medium'}}</td>
-        <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'medium'}}</td>
+        <td class="d-none d-lg-table-cell">{{todo.created | date: 'fullDate'}}</td>
+        <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'fullDate'}}</td>
         <td class="d-none d-lg-table-cell">
-          {{todo.dueDate | date: 'medium'}}
+          {{todo.dueDate | date: 'fullDate'}}
           <i *ngIf="isToday(todo.dueDate)" class="fas fa-fw fa-exclamation text-danger"></i>
         </td>
         <td>
