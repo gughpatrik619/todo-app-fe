@@ -1,20 +1,42 @@
-import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TodoService} from '../../../services/todo.service';
 import {AppSettingsService} from '../../../services/app-settings.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {UpdateTodo} from '../../../model/update-todo';
+import {QuillModules} from 'ngx-quill';
 
 @Component({
   selector: 'app-edit-todo',
   templateUrl: './edit-todo.component.html',
-  styleUrls: ['./edit-todo.component.css']
+  styleUrls: ['./edit-todo.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditTodoComponent implements OnInit {
 
   todoId: number;
   editTodoFormGroup: FormGroup;
+
+  editorStyle = {
+    height: '200px',
+    backgroundColor: '#ffffff'
+  };
+
+  editorConfig: QuillModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link'],
+      [{list: 'ordered'}, {list: 'bullet'}],
+      [{indent: '-1'}, {indent: '+1'}],
+      [{header: 1}, {header: 2}],
+      [{script: 'sub'}, {script: 'super'}],
+      [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'},],
+      [{color: []}, {background: []}],
+      ['clean'],
+      [{size: ['small', false, 'large', 'huge']}],
+      [{font: []}]
+    ]
+  };
 
   private initialized = false;
 

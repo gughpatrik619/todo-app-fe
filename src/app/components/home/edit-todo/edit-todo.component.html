@@ -24,12 +24,13 @@
 
         <div class="mb-3">
           <p class="bg-dark text-light m-1">Description:</p>
-          <textarea
-            rows="5"
-            class="form-control"
-            aria-label="description"
+          <quill-editor
             formControlName="description"
-          ></textarea>
+            [styles]="editorStyle"
+            [modules]="editorConfig"
+            placeholder="Enter some text..."
+            theme="snow"
+          ></quill-editor>
         </div>
 
         <div class="mb-3">

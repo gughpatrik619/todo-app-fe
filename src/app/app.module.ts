@@ -39,6 +39,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+import {QuillModule} from 'ngx-quill';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -89,7 +90,8 @@ FullCalendarModule.registerPlugins([
     DragDropModule,
     FormsModule,
     ChartsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    QuillModule.forRoot(),
   ],
   providers: [
     {
