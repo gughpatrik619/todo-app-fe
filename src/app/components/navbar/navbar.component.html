@@ -8,7 +8,7 @@
       kiwi
     </a>
 
-    <div class="dropdown me-2">
+    <div *ngIf="isLoggedIn" class="dropdown me-2">
       <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">Todo's
       </button>
@@ -34,7 +34,7 @@
         </li>
       </ul>
     </div>
-    <div class="dropdown me-2">
+    <div *ngIf="isLoggedIn" class="dropdown me-2">
       <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">Groups
       </button>
@@ -54,7 +54,7 @@
         </li>
       </ul>
     </div>
-    <div class="dropdown me-auto">
+    <div *ngIf="isLoggedIn" class="dropdown me-auto">
       <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">More
       </button>
@@ -71,14 +71,15 @@
         </li>
       </ul>
     </div>
-    <div class="dropdown">
+    <div *ngIf="isLoggedIn" class="dropdown">
       <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown"
               aria-expanded="false">
-        <i class="fas fa-user-cog fa-fw"></i>
+        <i class="fas fa-lg fa-user-cog fa-fw"></i>
       </button>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-        <li><span class="dropdown-item-text fst-italic"><strong>@{{username}}</strong></span>
+        <li>
+          <span class="dropdown-item-text fst-italic"><strong>@{{username}}</strong></span>
         </li>
         <li>
           <hr class="dropdown-divider">

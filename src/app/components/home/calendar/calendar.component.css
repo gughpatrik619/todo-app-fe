@@ -1,0 +1,71 @@
+.fc-button-primary {
+  color: aqua;
+}
+
+.fc-daygrid-day-number, .fc-daygrid-more-link {
+  color: #212529;
+  text-decoration: none !important;
+}
+
+/*.fc-col-header-cell-cushion:hover,*/
+/*.fc-timegrid-axis-cushion:hover,*/
+/*.fc-daygrid-day-number:hover,*/
+/*.fc-list-day-text:hover,*/
+/*.fc-list-day-side-text:hover {*/
+/*  color: gray;*/
+/*  text-decoration: underline !important;*/
+/*}*/
+
+.fc-col-header-cell-cushion,
+.fc-timegrid-axis-cushion,
+.fc-list-day-text,
+.fc-list-day-side-text {
+  color: white;
+  text-decoration: none !important;
+}
+
+.fc-scrollgrid th, .fc-scrollgrid td {
+  /*border: 1px solid #212529 !important;*/
+}
+
+thead, .fc-list-day-cushion {
+  background-color: #212529 !important;
+  color: white;
+}
+
+.fc-button {
+  color: #212529 !important;
+  background-color: white !important;
+}
+
+.fc-button-active, .fc-button:hover {
+  color: white !important;
+  background-color: #212529 !important;
+}
+
+.fc-day-today {
+  background-color: lightseagreen !important;
+}
+
+
+/*--bs-blue: #0d6efd;*/
+/*--bs-indigo: #6610f2;*/
+/*--bs-purple: #6f42c1;*/
+/*--bs-pink: #d63384;*/
+/*--bs-red: #dc3545;*/
+/*--bs-orange: #fd7e14;*/
+/*--bs-yellow: #ffc107;*/
+/*--bs-green: #198754;*/
+/*--bs-teal: #20c997;*/
+/*--bs-cyan: #0dcaf0;*/
+/*--bs-white: #fff;*/
+/*--bs-gray: #6c757d;*/
+/*--bs-gray-dark: #343a40;*/
+/*--bs-primary: #0d6efd;*/
+/*--bs-secondary: #6c757d;*/
+/*--bs-success: #198754;*/
+/*--bs-info: #0dcaf0;*/
+/*--bs-warning: #ffc107;*/
+/*--bs-danger: #dc3545;*/
+/*--bs-light: #f8f9fa;*/
+/*--bs-dark: #212529;*/

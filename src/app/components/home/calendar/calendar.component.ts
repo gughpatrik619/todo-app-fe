@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {CalendarOptions, FullCalendarComponent} from '@fullcalendar/angular';
 import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
@@ -6,7 +6,8 @@ import {TodoService} from '../../../services/todo.service';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CalendarComponent implements OnInit {
 
@@ -126,9 +127,9 @@ export class CalendarComponent implements OnInit {
 
   addEvent() {
     this.calendar.getApi().addEvent({
-      title: 'added 1',
-      start: '2021-03-30T14:12:07',
-      end: '2021-04-01',
+      title: 'Dummy event',
+      date: new Date(),
+      allDay: true,
       color: this.randomColor()
     });
   }
