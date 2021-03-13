@@ -56,6 +56,7 @@ export class CalendarComponent implements OnInit {
     eventTextColor: 'white',
     // eventStartEditable: true,
     eventDurationEditable: true,
+    // eventChange: (arg: EventChangeArg) => { console.log(arg.event); },
     nowIndicator: true,
     // dateClick: this.handleDateClick.bind(this),
     weekends: true,

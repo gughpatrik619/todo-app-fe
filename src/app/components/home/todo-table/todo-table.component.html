@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col">
       <button type="button" class="btn btn-dark mb-3" (click)="createTodo()">
-        <i class="fas fa-fw fa-plus"></i><span class="ms-1">New</span>
+        <i class="fas fa-fw fa-plus"></i><span class="ms-2">New</span>
       </button>
     </div>
     <div class="col text-end">
@@ -42,29 +42,26 @@
     </div>
   </div>
 
-  <!--  <app-create-todo-modal (createTodoEvent)="onTodoCreated($event)"></app-create-todo-modal>-->
-  <!--  <app-edit-todo-modal [todoToEdit]="todoToUpdate" (updateTodoEvent)="onUpdateTodo($event)"></app-edit-todo-modal>-->
-
   <div class="table-responsive-lg">
     <table class="table table-striped">
       <thead>
       <tr>
         <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosById()">
           Id
-          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByIdAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByIdAsc ? 'up' : 'down'}}"></i>
         </th>
         <th scope="col">Title</th>
         <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByCreated()">
           Created
-          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByCreatedAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByCreatedAsc ? 'up' : 'down'}}"></i>
         </th>
         <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByLastUpdated()">
           Last Updated
-          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByLastUpdatedAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByLastUpdatedAsc ? 'up' : 'down'}}"></i>
         </th>
         <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByDueDate()">
           Due
-          <i class="invisible fas fa-fw fa-sm text-secondary fa-arrow-{{sortByDueDateAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByDueDateAsc ? 'up' : 'down'}}"></i>
         </th>
         <th scope="col">State</th>
         <th scope="col">Priority</th>

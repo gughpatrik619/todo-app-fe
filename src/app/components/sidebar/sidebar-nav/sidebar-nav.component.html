@@ -6,7 +6,7 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [routerLink]="'/home/table'"
+        [routerLink]="[{outlets: {primary: 'table', info: null}}]"
         [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-table fa-fw me-2"></i>
@@ -16,7 +16,7 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [routerLink]="'/home/board'"
+        [routerLink]="[{outlets: {primary: 'board', info: null}}]"
         [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-columns fa-fw me-2"></i>
@@ -26,7 +26,7 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [routerLink]="'/home/statistics'"
+        [routerLink]="[{outlets: {primary: 'statistics', info: null}}]"
         [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-chart-line fa-fw me-2"></i>
@@ -36,7 +36,7 @@
     <li class="nav-item">
       <a
         class="nav-link px-3"
-        [routerLink]="'/home/calendar'"
+        [routerLink]="[{outlets: {primary: 'calendar', info: null}}]"
         [routerLinkActive]="'active'"
       >
         <i [ngClass]="{'fa-lg': !sidebarIsOpen}" class="fas fa-calendar-alt fa-fw me-2"></i>

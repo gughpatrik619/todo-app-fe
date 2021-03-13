@@ -1,0 +1,8 @@
+thead {
+  background-color: #212529;
+  color: white;
+}
+
+thead tr th:hover i {
+  visibility: visible !important;
+}

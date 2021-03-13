@@ -2,18 +2,17 @@ import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../../../services/todo.service';
 import {Todo} from '../../../model/todo';
 import {AppSettingsService} from '../../../services/app-settings.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-table.component.html',
-  styleUrls: ['./todo-table.component.scss']
+  styleUrls: ['./todo-table.component.css']
 })
 export class TodoTableComponent implements OnInit {
 
   todos: Todo[] = [];
-  todoToUpdate: Todo;
   loaded = false;
 
   sortByIdAsc = true;
@@ -25,6 +24,7 @@ export class TodoTableComponent implements OnInit {
     private todoService: TodoService,
     private appSettingsService: AppSettingsService,
     private router: Router,
+    private route: ActivatedRoute,
     private toastrService: ToastrService
   ) {
   }
@@ -40,16 +40,9 @@ export class TodoTableComponent implements OnInit {
     this.todos.push(newTodo);
   }
 
-  onUpdateTodo(updatedTodo: Todo) {
-    const index = this.todos.findIndex(todo => todo.id === updatedTodo.id);
-    if (index > -1) {
-      this.todos[index] = updatedTodo;
-    }
-  }
-
   deleteTodoById(id: number) {
     this.todoService.deleteTodoById(id).subscribe(
-      next => {
+      () => {
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index > -1) {
           this.todos.splice(index, 1);
@@ -115,10 +108,12 @@ export class TodoTableComponent implements OnInit {
   editTodo(id: number) {
     this.appSettingsService.setInfoSidebarIsOpen(true);
     this.router.navigateByUrl(`/home/(table//info:edit/${id})`);
+    this.router.navigate([{outlets: {info: ['edit', `${id}`]}}], {relativeTo: this.route.parent});
   }
 
   createTodo() {
     this.appSettingsService.setInfoSidebarIsOpen(true);
-    this.router.navigateByUrl('/home/(table//info:create)');
+    // this.router.navigateByUrl('/home/(table//info:create)');
+    this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent});
   }
 }
