@@ -98,17 +98,17 @@ export class TodoTableComponent implements OnInit {
     }
   }
 
-  onStateCheckboxChanged(e, state: EState) {
+  onStateCheckboxChanged(e, state: string) {
     if (e.target.checked) {
-      this.stateFilterValues = this.stateFilterValues.concat(state);
+      this.stateFilterValues = this.stateFilterValues.concat(state as EState);
     } else {
       this.stateFilterValues = this.stateFilterValues.filter(s => s !== state);
     }
   }
 
-  onPriorityCheckboxChanged(e, priority: EPriority) {
+  onPriorityCheckboxChanged(e, priority: string) {
     if (e.target.checked) {
-      this.priorityFilterValues = this.priorityFilterValues.concat(priority);
+      this.priorityFilterValues = this.priorityFilterValues.concat(priority as EPriority);
     } else {
       this.priorityFilterValues = this.priorityFilterValues.filter(s => s !== priority);
     }
