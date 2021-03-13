@@ -40,6 +40,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import {QuillModule} from 'ngx-quill';
+import {StateFilterPipe} from './services/state-filter.pipe';
+import {PriorityFilterPipe} from './services/priority-filter.pipe';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -73,7 +75,9 @@ FullCalendarModule.registerPlugins([
     SidebarInfoComponent,
     CreateTodoComponent,
     EditTodoComponent,
-    LineChartComponent
+    LineChartComponent,
+    StateFilterPipe,
+    PriorityFilterPipe
   ],
   imports: [
     BrowserModule,

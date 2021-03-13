@@ -4,6 +4,8 @@ import {Todo} from '../../../model/todo';
 import {AppSettingsService} from '../../../services/app-settings.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {EState} from '../../../model/e-state.enum';
+import {EPriority} from '../../../model/e-priority.enum';
 
 @Component({
   selector: 'app-todo-list',
@@ -19,6 +21,9 @@ export class TodoTableComponent implements OnInit {
   sortByDueDateAsc = true;
   sortByCreatedAsc = true;
   sortByLastUpdatedAsc = true;
+
+  stateFilterValues: EState[] = Object.values(EState);
+  priorityFilterValues: EPriority[] = Object.values(EPriority);
 
   constructor(
     private todoService: TodoService,
@@ -93,11 +98,19 @@ export class TodoTableComponent implements OnInit {
     }
   }
 
-  // todo: finish
-  onStateCheckboxChanged(e, state: string) {
-    if (!e.target.checked) {
-      console.log('state: ' + state);
-      this.todos = this.todos.filter(todo => todo.state !== state);
+  onStateCheckboxChanged(e, state: EState) {
+    if (e.target.checked) {
+      this.stateFilterValues = this.stateFilterValues.concat(state);
+    } else {
+      this.stateFilterValues = this.stateFilterValues.filter(s => s !== state);
+    }
+  }
+
+  onPriorityCheckboxChanged(e, priority: EPriority) {
+    if (e.target.checked) {
+      this.priorityFilterValues = this.priorityFilterValues.concat(priority);
+    } else {
+      this.priorityFilterValues = this.priorityFilterValues.filter(s => s !== priority);
     }
   }
 
@@ -107,13 +120,11 @@ export class TodoTableComponent implements OnInit {
 
   editTodo(id: number) {
     this.appSettingsService.setInfoSidebarIsOpen(true);
-    this.router.navigateByUrl(`/home/(table//info:edit/${id})`);
     this.router.navigate([{outlets: {info: ['edit', `${id}`]}}], {relativeTo: this.route.parent});
   }
 
   createTodo() {
     this.appSettingsService.setInfoSidebarIsOpen(true);
-    // this.router.navigateByUrl('/home/(table//info:create)');
     this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent});
   }
 }
