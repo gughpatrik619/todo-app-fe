@@ -51,22 +51,22 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosById()">
+        <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('id')">
           Id
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByIdAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
         </th>
         <th scope="col">Title</th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByCreated()">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('created')">
           Created
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByCreatedAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
         </th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByLastUpdated()">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('lastUpdated')">
           Last Updated
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByLastUpdatedAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
         </th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortTodosByDueDate()">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('dueDate')">
           Due
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortByDueDateAsc ? 'up' : 'down'}}"></i>
+          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
         </th>
         <th scope="col">State</th>
         <th scope="col">Priority</th>
@@ -74,8 +74,9 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let todo of todos | stateFilter: stateFilterValues | priorityFilter: priorityFilterValues"
-          style="cursor: pointer">
+      <tr
+        *ngFor="let todo of todos | stateFilter: stateFilterValues | priorityFilter: priorityFilterValues | tableColumnSort: sortByAttr: sortAsc"
+        style="cursor: pointer">
         <th class="d-none d-md-table-cell" scope="row">{{todo.id | number: '2.0-0'}}</th>
         <td>{{todo.title}}</td>
         <td class="d-none d-lg-table-cell">{{todo.created | date: 'fullDate'}}</td>

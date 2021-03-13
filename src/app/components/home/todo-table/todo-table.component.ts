@@ -17,10 +17,8 @@ export class TodoTableComponent implements OnInit {
   todos: Todo[] = [];
   loaded = false;
 
-  sortByIdAsc = true;
-  sortByDueDateAsc = true;
-  sortByCreatedAsc = true;
-  sortByLastUpdatedAsc = true;
+  sortByAttr: string = null;
+  sortAsc = true;
 
   stateFilterValues: EState[] = Object.values(EState);
   priorityFilterValues: EPriority[] = Object.values(EPriority);
@@ -58,46 +56,6 @@ export class TodoTableComponent implements OnInit {
     );
   }
 
-  sortTodosById() {
-    this.sortByIdAsc = !this.sortByIdAsc;
-
-    if (this.sortByIdAsc) {
-      this.todos.sort((a, b) => a.id > b.id ? 1 : -1);
-    } else {
-      this.todos.sort((a, b) => a.id < b.id ? 1 : -1);
-    }
-  }
-
-  sortTodosByDueDate() {
-    this.sortByDueDateAsc = !this.sortByDueDateAsc;
-
-    if (this.sortByDueDateAsc) {
-      this.todos.sort((a, b) => a.dueDate > b.dueDate ? 1 : -1);
-    } else {
-      this.todos.sort((a, b) => a.dueDate < b.dueDate ? 1 : -1);
-    }
-  }
-
-  sortTodosByCreated() {
-    this.sortByCreatedAsc = !this.sortByCreatedAsc;
-
-    if (this.sortByCreatedAsc) {
-      this.todos.sort((a, b) => a.created > b.created ? 1 : -1);
-    } else {
-      this.todos.sort((a, b) => a.created < b.created ? 1 : -1);
-    }
-  }
-
-  sortTodosByLastUpdated() {
-    this.sortByLastUpdatedAsc = !this.sortByLastUpdatedAsc;
-
-    if (this.sortByLastUpdatedAsc) {
-      this.todos.sort((a, b) => a.lastUpdated > b.lastUpdated ? 1 : -1);
-    } else {
-      this.todos.sort((a, b) => a.lastUpdated < b.lastUpdated ? 1 : -1);
-    }
-  }
-
   onStateCheckboxChanged(e, state: string) {
     if (e.target.checked) {
       this.stateFilterValues = this.stateFilterValues.concat(state as EState);
@@ -126,5 +84,10 @@ export class TodoTableComponent implements OnInit {
   createTodo() {
     this.appSettingsService.setInfoSidebarIsOpen(true);
     this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent});
+  }
+
+  sortBy(attr: string) {
+    this.sortByAttr = attr;
+    this.sortAsc = !this.sortAsc;
   }
 }
