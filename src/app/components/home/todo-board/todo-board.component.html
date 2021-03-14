@@ -8,11 +8,11 @@
 
   <div class="row h-100 d-block gx-0" cdkDropListGroup style="white-space: nowrap">
 
-    <app-todo-state-column [title]="'To Do'" [data]="todosToDo" [label]="'TO DO'"></app-todo-state-column>
-    <app-todo-state-column [title]="'In Progress'" [data]="todosInProgress"
+    <app-todo-state-column [title]="'To Do'" [todos]="todosToDo" [label]="'TO DO'"></app-todo-state-column>
+    <app-todo-state-column [title]="'In Progress'" [todos]="todosInProgress"
                            [label]="'IN PROGRESS'"></app-todo-state-column>
-    <app-todo-state-column [title]="'Done'" [data]="todosDone" [label]="'DONE'"></app-todo-state-column>
-    <app-todo-state-column [title]="'Deferred'" [data]="todosDeferred" [label]="'DEFERRED'"></app-todo-state-column>
+    <app-todo-state-column [title]="'Done'" [todos]="todosDone" [label]="'DONE'"></app-todo-state-column>
+    <app-todo-state-column [title]="'Deferred'" [todos]="todosDeferred" [label]="'DEFERRED'"></app-todo-state-column>
 
   </div>
 

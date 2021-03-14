@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TodoService} from '../../../services/todo.service';
 import {AppSettingsService} from '../../../services/app-settings.service';
@@ -13,7 +13,7 @@ import {QuillModules} from 'ngx-quill';
   styleUrls: ['./edit-todo.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class EditTodoComponent implements OnInit {
+export class EditTodoComponent implements OnInit, OnDestroy {
 
   todoId: number;
   editTodoFormGroup: FormGroup;
@@ -30,7 +30,7 @@ export class EditTodoComponent implements OnInit {
       [{indent: '-1'}, {indent: '+1'}],
       [{header: 1}, {header: 2}],
       [{script: 'sub'}, {script: 'super'}],
-      [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'},],
+      [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
       [{color: []}, {background: []}],
       ['clean'],
       [{size: ['small', false, 'large', 'huge']}],
@@ -52,6 +52,8 @@ export class EditTodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.appSettingsService.setInfoSidebarIsOpen(true);
+
     this.editTodoFormGroup = this.formBuilder.group({
       editTodoPayload: this.formBuilder.group({
         title: new FormControl(),
@@ -78,6 +80,10 @@ export class EditTodoComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.appSettingsService.setInfoSidebarIsOpen(false);
+  }
+
   onSubmit() {
     const updateTodo: UpdateTodo = this.editTodoFormGroup.controls.editTodoPayload.value;
     updateTodo.dueDate = new Date(updateTodo.dueDate);
@@ -86,8 +92,7 @@ export class EditTodoComponent implements OnInit {
       _ => {
         this.toastrService.success(`Todo #${this.todoId} updated successfully`);
         this.editTodoFormGroup.reset();
-        this.appSettingsService.setInfoSidebarIsOpen(false);
-        this.router.navigateByUrl('/home/table');
+        this.router.navigate([{outlets: {info: null}}], {relativeTo: this.route.parent, skipLocationChange: true});
       },
       error => this.toastrService.error(error.error.message)
     );
@@ -97,8 +102,7 @@ export class EditTodoComponent implements OnInit {
   onClickOut(event: Event) {
     if (this.initialized && !this.elRef.nativeElement.contains(event.target)) {
       this.editTodoFormGroup.reset();
-      this.appSettingsService.setInfoSidebarIsOpen(false);
-      this.router.navigateByUrl('/home/table');
+      this.router.navigate([{outlets: {info: null}}], {relativeTo: this.route.parent, skipLocationChange: true});
     }
   }
 }

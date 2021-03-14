@@ -4,6 +4,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import {TodoService} from '../../../../services/todo.service';
 import {EState} from '../../../../model/e-state.enum';
 import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-state-column',
@@ -12,13 +13,18 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class TodoStateColumnComponent implements OnInit {
 
-  @Input() data: Todo[];
+  @Input() todos: Todo[];
   @Input() title: string;
   @Input() label: EState;
 
   open = true;
 
-  constructor(private todoService: TodoService, private toastrService: ToastrService) {
+  constructor(
+    private todoService: TodoService,
+    private toastrService: ToastrService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
@@ -43,5 +49,26 @@ export class TodoStateColumnComponent implements OnInit {
         error => this.toastrService.error(error.error.message)
       );
     }
+  }
+
+  createTodo() {
+    this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent, skipLocationChange: true});
+  }
+
+  editTodo(id: number) {
+    this.router.navigate([{outlets: {info: ['edit', `${id}`]}}], {relativeTo: this.route.parent, skipLocationChange: true});
+  }
+
+  deleteTodoById(id: number) {
+    this.todoService.deleteTodoById(id).subscribe(
+      () => {
+        const index = this.todos.findIndex(todo => todo.id === id);
+        if (index > -1) {
+          this.todos.splice(index, 1);
+          this.toastrService.success('Todo deleted');
+        }
+      },
+      error => this.toastrService.error(error.error.message)
+    );
   }
 }

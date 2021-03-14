@@ -15,8 +15,8 @@
       <span class="align-middle"><strong>{{title}}</strong></span>
     </div>
     <div class="col-7 py-2 px-0 text-end">
-      <span class="align-middle">{{data.length}}</span>
-      <button class="ms-2 btn btn-sm btn-light">
+      <span class="align-middle">{{todos.length}}</span>
+      <button class="ms-2 btn btn-sm btn-light" (click)="createTodo()">
         <i class="fas fa-fw fa-plus align-middle"></i>
       </button>
     </div>
@@ -30,30 +30,45 @@
     style="height: calc(88vh - 80px); min-height: calc(500px - 80px)"
     [ngStyle]="{ 'visibility': open ? 'visible' : 'hidden' }"
     cdkDropList
-    [cdkDropListData]="data"
+    [cdkDropListData]="todos"
     (cdkDropListDropped)="onDrop($event)"
   >
-    <div class="row mb-2 mx-0 px-0" *ngFor="let todo of data" cdkDragBoundary="#container" cdkDrag>
+    <div class="row mb-2 mx-0 px-0" *ngFor="let todo of todos" cdkDragBoundary="#container" cdkDrag>
       <div class="card bg-dark p-0 text-light mx-auto" style="height: 200px">
-        <div class="card-header" cdkDragHandle style="cursor: grabbing; background-color: black">
+        <div class="card-header row m-0" cdkDragHandle style="cursor: grabbing; background-color: black">
         <span
+          class="col-1 p-0"
           [ngClass]="{
             'text-danger': todo.priority === 'HIGH',
             'text-warning': todo.priority === 'MEDIUM',
             'text-success': todo.priority === 'LOW'
           }"><i class="fas fa-fw fa-circle"></i>
         </span>
-          <span class="ms-3">{{todo.title}}</span>
+          <span class="col-8 ps-1"
+                style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">
+            {{todo.title}}
+          </span>
         </div>
         <div class="card-body overflow-auto p-0">
           <quill-view-html [content]="todo.description"></quill-view-html>
-          <button
-            class="btn btn-dark btn-sm position-absolute"
-            style="top: 5px; right: 5px; background-color: black; border: none">
-            <!--          (click)="todoToUpdate = todo"-->
-            <!--        >-->
-            <i class="fas fa-fw fa-pen align-middle"></i>
-          </button>
+          <div class="btn-group btn-group-sm position-absolute" style="top: 5px; right: 5px">
+            <button
+              type="button"
+              class="btn btn-dark"
+              style="background-color: black; border: none"
+              (click)="editTodo(todo.id)"
+            >
+              <i class="fas fa-pen fa-fw align-middle"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              style="background-color: black; border: none"
+              (click)="deleteTodoById(todo.id)"
+            >
+              <i class="fas fa-trash fa-fw align-middle"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>

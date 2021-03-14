@@ -46,11 +46,8 @@ export class TodoTableComponent implements OnInit {
   deleteTodoById(id: number) {
     this.todoService.deleteTodoById(id).subscribe(
       () => {
-        const index = this.todos.findIndex(todo => todo.id === id);
-        if (index > -1) {
-          this.todos.splice(index, 1);
-          this.toastrService.success('Todo deleted');
-        }
+        this.todos = this.todos.filter(todo => todo.id !== id);
+        this.toastrService.success(`Todo #${id} deleted.`);
       },
       error => this.toastrService.error(error.error.message)
     );
@@ -77,13 +74,11 @@ export class TodoTableComponent implements OnInit {
   }
 
   editTodo(id: number) {
-    this.appSettingsService.setInfoSidebarIsOpen(true);
-    this.router.navigate([{outlets: {info: ['edit', `${id}`]}}], {relativeTo: this.route.parent});
+    this.router.navigate([{outlets: {info: ['edit', `${id}`]}}], {relativeTo: this.route.parent, skipLocationChange: true});
   }
 
   createTodo() {
-    this.appSettingsService.setInfoSidebarIsOpen(true);
-    this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent});
+    this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent, skipLocationChange: true});
   }
 
   sortBy(attr: string) {
