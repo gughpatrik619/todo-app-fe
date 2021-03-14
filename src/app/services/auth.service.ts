@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  static readonly BACKEND_AUTH_URL = 'http://localhost:8081/auth';
+  static readonly BACKEND_AUTH_URL = 'https://todo-app-be-98810.herokuapp.com/auth';
   isLoggedIn = new BehaviorSubject<boolean>(false);
   isAdmin = new BehaviorSubject<boolean>(false);
   isModerator = new BehaviorSubject<boolean>(false);

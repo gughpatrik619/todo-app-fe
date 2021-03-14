@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class TodoService {
 
-  private static readonly API_URL = 'http://localhost:8081/api';
+  private static readonly API_URL = 'https://todo-app-be-98810.herokuapp.com/api';
 
   constructor(private httpClient: HttpClient, private storageService: StorageService) {
   }
