@@ -17,7 +17,7 @@ export class TodoTableComponent implements OnInit {
   todos: Todo[] = [];
   loaded = false;
 
-  sortByAttr: string = null;
+  sortField: string = null;
   sortAsc = true;
 
   stateFilterValues: EState[] = Object.values(EState);
@@ -81,8 +81,8 @@ export class TodoTableComponent implements OnInit {
     this.router.navigate([{outlets: {info: 'create'}}], {relativeTo: this.route.parent, skipLocationChange: true});
   }
 
-  sortBy(attr: string) {
-    this.sortByAttr = attr;
-    this.sortAsc = !this.sortAsc;
+  sortByField(field: string, ascending = true) {
+    this.sortField = field;
+    this.sortAsc = ascending;
   }
 }

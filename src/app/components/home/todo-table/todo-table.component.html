@@ -51,22 +51,58 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th class="d-none d-md-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('id')">
+        <th class="d-none d-md-table-cell" scope="col">
           Id
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-up"
+            style="cursor: pointer"
+            (click)="sortByField('id')"
+          ></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-down"
+            style="cursor: pointer"
+            (click)="sortByField('id', false)"
+          ></i>
         </th>
         <th scope="col">Title</th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('created')">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer">
           Created
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-up"
+            style="cursor: pointer"
+            (click)="sortByField('created')"
+          ></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-down"
+            style="cursor: pointer"
+            (click)="sortByField('created', false)"
+          ></i>
         </th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('lastUpdated')">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer">
           Last Updated
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-up"
+            style="cursor: pointer"
+            (click)="sortByField('lastUpdated')"
+          ></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-down"
+            style="cursor: pointer"
+            (click)="sortByField('lastUpdated', false)"
+          ></i>
         </th>
-        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer" (click)="sortBy('dueDate')">
+        <th class="d-none d-lg-table-cell" scope="col" style="cursor: pointer">
           Due
-          <i class="invisible fas fa-fw fa-sm text-light fa-arrow-{{sortAsc ? 'up' : 'down'}}"></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-up"
+            style="cursor: pointer"
+            (click)="sortByField('dueDate')"
+          ></i>
+          <i
+            class="invisible fas fa-fw fa-sm text-secondary fa-arrow-down"
+            style="cursor: pointer"
+            (click)="sortByField('dueDate', false)"
+          ></i>
         </th>
         <th scope="col">State</th>
         <th scope="col">Priority</th>
@@ -75,7 +111,7 @@
       </thead>
       <tbody>
       <tr
-        *ngFor="let todo of todos | stateFilter: stateFilterValues | priorityFilter: priorityFilterValues | tableColumnSort: sortByAttr: sortAsc"
+        *ngFor="let todo of todos | stateFilter: stateFilterValues | priorityFilter: priorityFilterValues | tableColumnSort: sortField: sortAsc"
         style="cursor: pointer">
         <th class="d-none d-md-table-cell" scope="row">{{todo.id | number: '2.0-0'}}</th>
         <td>{{todo.title}}</td>
@@ -111,14 +147,16 @@
               class="btn btn-outline-primary"
               (click)="editTodo(todo.id)"
             >
-              <i class="fas fa-pen fa-fw align-middle"></i>
+              <i class="fas fa-pen fa-fw align-middle me-1"></i>
+              Edit
             </button>
             <button
               type="button"
               class="btn btn-outline-danger"
               (click)="deleteTodoById(todo.id)"
             >
-              <i class="fas fa-trash fa-fw align-middle"></i>
+              <i class="fas fa-trash fa-fw align-middle me-1"></i>
+              Delete
             </button>
           </div>
         </td>

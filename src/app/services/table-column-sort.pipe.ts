@@ -6,15 +6,15 @@ import {Todo} from '../model/todo';
 })
 export class TableColumnSortPipe implements PipeTransform {
 
-  transform(list: Todo[], attrBy: string, asc: boolean = true) {
-    if (attrBy === null) {
+  transform(list: Todo[], field: string, asc: boolean = true) {
+    if (field === null) {
       return list;
     }
 
     if (asc) {
-      return list.sort((a, b) => a[attrBy] > b[attrBy] ? 1 : -1);
+      return list.sort((a, b) => a[field] > b[field] ? 1 : -1);
     } else {
-      return list.sort((a, b) => a[attrBy] < b[attrBy] ? 1 : -1);
+      return list.sort((a, b) => a[field] < b[field] ? 1 : -1);
     }
   }
 
