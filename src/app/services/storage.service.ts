@@ -11,6 +11,7 @@ export class StorageService {
   static readonly ROLES_KEY = 'roles';
   static readonly NAV_SIDEBAR_IS_OPEN = 'navSidebarIsOpen';
   static readonly INFO_SIDEBAR_IS_OPEN = 'infoSidebarIsOpen';
+  static readonly TOKEN_EXPIRY = 'tokenExpiry';
 
   constructor(private localStorageService: LocalStorageService) {
   }
@@ -26,6 +27,15 @@ export class StorageService {
 
   retrieveToken() {
     return this.localStorageService.retrieve(StorageService.TOKEN_KEY);
+  }
+
+  storeTokenExpiry(expiry: string) {
+    this.localStorageService.clear(StorageService.TOKEN_EXPIRY);
+    this.localStorageService.store(StorageService.TOKEN_EXPIRY, expiry);
+  }
+
+  retrieveTokenExpiry() {
+    return this.localStorageService.retrieve(StorageService.TOKEN_EXPIRY);
   }
 
   storeUsername(username: string) {

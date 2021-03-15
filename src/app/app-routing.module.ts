@@ -19,14 +19,13 @@ import {CreateTodoComponent} from './components/home/create-todo/create-todo.com
 
 const routes: Routes = [
   {
-    path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
-      {path: 'table', component: TodoTableComponent},
-      {path: 'board', component: TodoBoardComponent},
-      {path: 'statistics', component: StatisticsComponent},
-      {path: 'calendar', component: CalendarComponent},
+    path: 'home', component: HomeComponent, children: [
+      {path: 'table', component: TodoTableComponent, canActivate: [AuthGuard]},
+      {path: 'board', component: TodoBoardComponent, canActivate: [AuthGuard]},
+      {path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard]},
+      {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
       {path: 'create', component: CreateTodoComponent, outlet: 'info'},
       {path: 'edit/:id', component: EditTodoComponent, outlet: 'info'},
-      {path: 'calendar', component: CalendarComponent},
       {path: '', redirectTo: 'table', pathMatch: 'full'},
       {path: '**', redirectTo: 'table', pathMatch: 'full'}
     ]

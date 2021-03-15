@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
         this.storageService.storeToken(data.jwtToken);
         this.storageService.storeUsername(data.username);
         this.storageService.storeRoles(data.roles);
+        this.storageService.storeTokenExpiry(data.expiresAt);
         this.formError = false;
         this.authService.isLoggedIn.next(true);
         this.authService.isAdmin.next(data.roles.includes('ROLE_ADMIN'));
