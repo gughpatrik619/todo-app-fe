@@ -112,7 +112,7 @@
         *ngFor="let todo of todos | stateFilter: stateFilterValues | priorityFilter: priorityFilterValues | tableColumnSort: sortField: sortAsc"
         style="cursor: pointer">
         <th class="d-none d-md-table-cell" scope="row">{{todo.id | number: '2.0-0'}}</th>
-        <td>{{todo.title}}</td>
+        <td style="max-width: 200px" class="text-ellip">{{todo.title}}</td>
         <td class="d-none d-lg-table-cell">{{todo.created | date: 'fullDate'}}</td>
         <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'fullDate'}}</td>
         <td class="d-none d-lg-table-cell">

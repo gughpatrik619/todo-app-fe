@@ -18,6 +18,7 @@ export class TodoStateColumnComponent implements OnInit {
   @Input() label: string;
 
   open = true;
+  loading = false;
 
   constructor(
     private todoService: TodoService,
@@ -60,15 +61,21 @@ export class TodoStateColumnComponent implements OnInit {
   }
 
   deleteTodoById(id: number) {
+    this.loading = true;
+
     this.todoService.deleteTodoById(id).subscribe(
       () => {
         const index = this.todos.findIndex(todo => todo.id === id);
         if (index > -1) {
           this.todos.splice(index, 1);
+          this.loading = false;
           this.toastrService.success('Todo deleted');
         }
       },
-      error => this.toastrService.error(error.error.message)
+      error => {
+        this.loading = false;
+        this.toastrService.error(error.error.message);
+      }
     );
   }
 }

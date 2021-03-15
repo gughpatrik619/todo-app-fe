@@ -14,14 +14,14 @@ a {
 }
 
 .nav-link {
-  color: #ffffff8c;
+  color: var(--bs-secondary);
 }
 
 .nav-link:hover {
-  color: white;
+  color: var(--bs-light);
 }
 
 .active {
   border-left: 3px solid white;
-  color: white;
+  color: var(--bs-light);
 }

@@ -52,19 +52,46 @@ a, a:focus, a:hover {
 }
 
 .text-info-hover:hover {
-  color: #0dcaf0 !important;
+  color: var(--bs-info) !important;
 }
 
 .text-light-hover:hover {
-  color: #f8f9fa !important;
+  color: var(--bs-light) !important;
 }
 
 .text-danger-hover:hover {
-  color: #dc3545 !important;
+  color: var(--bs-danger) !important;
 }
 
 .text-primary-hover:hover {
-  color: #0d6efd !important;
+  color: var(--bs-primary) !important;
+}
+
+.text-ellip {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+[tooltip] {
+  position: relative;
+}
+
+[tooltip]:hover::after {
+  content: attr(tooltip);
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  font-size: .8em;
+  z-index: 9999;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 10px;
+  padding: 4px 8px;
+  border-radius: .25rem;
+  background-color: var(--bs-light);
+  color: var(--bs-dark);
+  font-family: var(--bs-font-sans-serif);
 }
 
 

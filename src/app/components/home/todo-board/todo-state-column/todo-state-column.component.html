@@ -42,9 +42,9 @@
             'text-danger': todo.priority === 'HIGH',
             'text-warning': todo.priority === 'MEDIUM',
             'text-success': todo.priority === 'LOW'
-          }"><i class="fas fa-fw fa-circle"></i>
+          }"><i [attr.tooltip]="todo.priority" class="fas fa-fw fa-circle"></i>
         </span>
-          <span class="col-8 ps-1" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">
+          <span class="col-8 ps-1 text-ellip">
             {{todo.title}}
           </span>
         </div>
@@ -65,7 +65,8 @@
               style="background-color: black; border: none"
               (click)="deleteTodoById(todo.id)"
             >
-              <i class="fas fa-trash fa-fw align-middle"></i>
+              <i *ngIf="!loading" class="fas fa-trash fa-fw align-middle"></i>
+              <div *ngIf="loading" class="spinner-border" style="width: 1rem; height: 1rem"></div>
             </button>
           </div>
         </div>

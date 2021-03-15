@@ -17,6 +17,7 @@ export class EditTodoComponent implements OnInit, OnDestroy {
 
   todoId: number;
   editTodoFormGroup: FormGroup;
+  loading = false;
 
   editorStyle = {
     height: '200px',
@@ -56,13 +57,15 @@ export class EditTodoComponent implements OnInit, OnDestroy {
 
     this.editTodoFormGroup = this.formBuilder.group({
       editTodoPayload: this.formBuilder.group({
-        title: new FormControl({value: null, disabled: true}),
+        title: new FormControl(null),
         description: new FormControl(null),
-        dueDate: new FormControl({value: null, disabled: true}),
-        priority: new FormControl({value: null, disabled: true}),
-        state: new FormControl({value: null, disabled: true})
+        dueDate: new FormControl(null),
+        priority: new FormControl(null),
+        state: new FormControl(null)
       })
     });
+
+    this.editTodoFormGroup.controls.editTodoPayload.disable();
 
     this.route.paramMap.subscribe(() => {
       this.todoId = +this.route.snapshot.paramMap.get('id');
@@ -74,7 +77,6 @@ export class EditTodoComponent implements OnInit, OnDestroy {
         this.editTodoFormGroup.get('editTodoPayload.dueDate').setValue(due.substring(0, due.length - 5));
         this.editTodoFormGroup.get('editTodoPayload.priority').setValue(todo.priority);
         this.editTodoFormGroup.get('editTodoPayload.state').setValue(todo.state);
-
         this.initialized = true;
       });
     });
@@ -85,16 +87,22 @@ export class EditTodoComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.loading = true;
+
     const updateTodo: UpdateTodo = this.editTodoFormGroup.controls.editTodoPayload.value;
     updateTodo.dueDate = new Date(updateTodo.dueDate);
 
     this.todoService.updateTodo(this.todoId, updateTodo).subscribe(
       _ => {
+        this.loading = false;
         this.toastrService.success(`Todo #${this.todoId} updated successfully`);
         this.editTodoFormGroup.reset();
         this.router.navigate([{outlets: {info: null}}], {relativeTo: this.route.parent, skipLocationChange: true});
       },
-      error => this.toastrService.error(error.error.message)
+      error => {
+        this.loading = false;
+        this.toastrService.error(error.error.message);
+      }
     );
   }
 
