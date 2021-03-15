@@ -15,7 +15,7 @@ export class TodoStateColumnComponent implements OnInit {
 
   @Input() todos: Todo[];
   @Input() title: string;
-  @Input() label: EState;
+  @Input() label: string;
 
   open = true;
 
@@ -43,7 +43,7 @@ export class TodoStateColumnComponent implements OnInit {
         dueDate: null,
         priority: null,
         title: null,
-        state: this.label
+        state: this.label as EState
       }).subscribe(
         data => this.toastrService.success('Todo updated'),
         error => this.toastrService.error(error.error.message)

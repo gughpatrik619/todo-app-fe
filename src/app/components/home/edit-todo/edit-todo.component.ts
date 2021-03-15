@@ -71,7 +71,7 @@ export class EditTodoComponent implements OnInit, OnDestroy {
         this.editTodoFormGroup.get('editTodoPayload.title').setValue(todo.title);
         this.editTodoFormGroup.get('editTodoPayload.description').setValue(todo.description);
         const due = new Date(todo.dueDate).toISOString();
-        this.editTodoFormGroup.get('editTodoPayload.dueDate').setValue(due.substring(0, due.length - 1));
+        this.editTodoFormGroup.get('editTodoPayload.dueDate').setValue(due.substring(0, due.length - 5));
         this.editTodoFormGroup.get('editTodoPayload.priority').setValue(todo.priority);
         this.editTodoFormGroup.get('editTodoPayload.state').setValue(todo.state);
 

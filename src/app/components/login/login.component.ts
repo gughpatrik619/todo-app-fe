@@ -14,7 +14,7 @@ import {LoginRequestPayload} from '../../model/payload/login-request-payload';
 export class LoginComponent implements OnInit {
 
   loginFormGroup: FormGroup;
-  formError = false;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
+
     if (this.loginFormGroup.invalid) {
       this.toastrService.error('Invalid inputs');
       this.usernameFormControl.markAsDirty();
       this.passwordFormControl.markAsDirty();
-
-      this.formError = true;
+      this.loading = false;
       return;
     }
 
@@ -56,11 +57,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(loginRequestPayload).subscribe(data => {
       if (data) {
+        this.loading = false;
         this.storageService.storeToken(data.jwtToken);
         this.storageService.storeUsername(data.username);
         this.storageService.storeRoles(data.roles);
         this.storageService.storeTokenExpiry(data.expiresAt);
-        this.formError = false;
         this.authService.isLoggedIn.next(true);
         this.authService.isAdmin.next(data.roles.includes('ROLE_ADMIN'));
         this.authService.isModerator.next(data.roles.includes('ROLE_MODERATOR'));
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
       }
     }, error => {
       console.log(error);
+      this.loading = false;
       this.toastrService.error(`Login failed: ${error.error.error}`);
     });
   }
