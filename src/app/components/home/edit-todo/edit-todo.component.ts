@@ -56,11 +56,11 @@ export class EditTodoComponent implements OnInit, OnDestroy {
 
     this.editTodoFormGroup = this.formBuilder.group({
       editTodoPayload: this.formBuilder.group({
-        title: new FormControl(),
+        title: new FormControl({value: null, disabled: true}),
         description: new FormControl(null),
-        dueDate: new FormControl(null),
-        priority: new FormControl(null),
-        state: new FormControl(null)
+        dueDate: new FormControl({value: null, disabled: true}),
+        priority: new FormControl({value: null, disabled: true}),
+        state: new FormControl({value: null, disabled: true})
       })
     });
 
@@ -96,6 +96,11 @@ export class EditTodoComponent implements OnInit, OnDestroy {
       },
       error => this.toastrService.error(error.error.message)
     );
+  }
+
+  cancel() {
+    this.editTodoFormGroup.reset();
+    this.router.navigate([{outlets: {info: null}}], {relativeTo: this.route.parent, skipLocationChange: true});
   }
 
   @HostListener('document:click', ['$event'])

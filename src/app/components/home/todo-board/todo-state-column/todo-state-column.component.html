@@ -44,8 +44,7 @@
             'text-success': todo.priority === 'LOW'
           }"><i class="fas fa-fw fa-circle"></i>
         </span>
-          <span class="col-8 ps-1"
-                style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">
+          <span class="col-8 ps-1" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">
             {{todo.title}}
           </span>
         </div>
@@ -54,7 +53,7 @@
           <div class="btn-group btn-group-sm position-absolute" style="top: 5px; right: 5px">
             <button
               type="button"
-              class="btn btn-dark"
+              class="btn btn-dark text-primary-hover"
               style="background-color: black; border: none"
               (click)="editTodo(todo.id)"
             >
@@ -62,7 +61,7 @@
             </button>
             <button
               type="button"
-              class="btn btn-dark"
+              class="btn btn-dark text-danger-hover"
               style="background-color: black; border: none"
               (click)="deleteTodoById(todo.id)"
             >

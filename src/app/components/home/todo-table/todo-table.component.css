@@ -6,7 +6,3 @@ thead {
 thead tr th:hover i {
   visibility: visible !important;
 }
-
-i:hover {
-  color: white !important;
-}

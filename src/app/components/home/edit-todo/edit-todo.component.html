@@ -16,7 +16,7 @@
           <div class="row m-0">
             <p class="col p-0 bg-dark text-light m-1 text-start">Title:</p>
             <div class="col p-0 text-end">
-              <i class="align-middle fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
+              <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="inputTitle.disabled = false; inputTitle.focus()"
               ></i>
             </div>
@@ -27,7 +27,6 @@
             class="form-control"
             aria-label="title"
             formControlName="title"
-            disabled
           >
         </div>
 
@@ -35,7 +34,7 @@
           <div class="row m-0">
             <p class="col p-0 bg-dark text-light m-1 text-start">Title:</p>
             <div class="col p-0 text-end">
-              <i class="align-middle fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
+              <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="editorDesc.setDisabledState(false); editorDesc.editorElem.focus()"
               ></i>
             </div>
@@ -55,7 +54,7 @@
           <div class="row m-0">
             <p class="col p-0 bg-dark text-light m-1 text-start">Priority:</p>
             <div class="col p-0 text-end">
-              <i class="align-middle fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
+              <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="selectPriority.disabled = false; selectPriority.focus()"
               ></i>
             </div>
@@ -65,7 +64,6 @@
             class="form-select"
             aria-label="priority"
             formControlName="priority"
-            disabled
           >
             <option value="LOW">LOW</option>
             <option value="MEDIUM">MEDIUM</option>
@@ -77,7 +75,7 @@
           <div class="row m-0">
             <p class="col p-0 bg-dark text-light m-1 text-start">Due:</p>
             <div class="col p-0 text-end">
-              <i class="align-middle fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
+              <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="inputDue.disabled = false; inputDue.focus()"
               ></i>
             </div>
@@ -88,7 +86,6 @@
             class="form-control"
             aria-label="dueDate"
             formControlName="dueDate"
-            disabled
           >
         </div>
 
@@ -96,7 +93,7 @@
           <div class="row m-0">
             <p class="col p-0 bg-dark text-light m-1 text-start">State:</p>
             <div class="col p-0 text-end">
-              <i class="align-middle fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
+              <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="selectState.disabled = false; selectState.focus()"
               ></i>
             </div>
@@ -106,7 +103,6 @@
             class="form-select"
             aria-label="priority"
             formControlName="state"
-            disabled
           >
             <option value="TO DO">TO DO</option>
             <option value="IN PROGRESS">IN PROGRESS</option>
@@ -118,7 +114,7 @@
     </div>
 
     <div class="modal-footer p-2">
-      <button type="button" class="btn btn-sm btn-outline-light">Cancel</button>
+      <button type="button" class="btn btn-sm btn-outline-light" (click)="cancel()">Cancel</button>
       <button type="submit" class="btn btn-sm btn-light">Submit</button>
     </div>
 

@@ -1,6 +1,6 @@
 .sidebar.collapse {
   position: relative;
-  width: 68px;
+  width: 0;
   height: 100%;
   display: block;
 }

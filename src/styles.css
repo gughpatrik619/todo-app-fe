@@ -46,3 +46,46 @@ a, a:focus, a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.icon-tilt:hover {
+  transform: rotate(20deg);
+}
+
+.text-info-hover:hover {
+  color: #0dcaf0 !important;
+}
+
+.text-light-hover:hover {
+  color: #f8f9fa !important;
+}
+
+.text-danger-hover:hover {
+  color: #dc3545 !important;
+}
+
+.text-primary-hover:hover {
+  color: #0d6efd !important;
+}
+
+
+/*--bs-blue: #0d6efd;*/
+/*--bs-indigo: #6610f2;*/
+/*--bs-purple: #6f42c1;*/
+/*--bs-pink: #d63384;*/
+/*--bs-red: #dc3545;*/
+/*--bs-orange: #fd7e14;*/
+/*--bs-yellow: #ffc107;*/
+/*--bs-green: #198754;*/
+/*--bs-teal: #20c997;*/
+/*--bs-cyan: #0dcaf0;*/
+/*--bs-white: #fff;*/
+/*--bs-gray: #6c757d;*/
+/*--bs-gray-dark: #343a40;*/
+/*--bs-primary: #0d6efd;*/
+/*--bs-secondary: #6c757d;*/
+/*--bs-success: #198754;*/
+/*--bs-info: #0dcaf0;*/
+/*--bs-warning: #ffc107;*/
+/*--bs-danger: #dc3545;*/
+/*--bs-light: #f8f9fa;*/
+/*--bs-dark: #212529;*/

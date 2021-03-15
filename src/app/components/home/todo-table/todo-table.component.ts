@@ -36,6 +36,9 @@ export class TodoTableComponent implements OnInit {
     this.todoService.getTodos().subscribe(data => {
       this.todos = data;
       this.loaded = true;
+    }, error => {
+      this.loaded = true;
+      this.toastrService.error('Cannot load data');
     });
   }
 
