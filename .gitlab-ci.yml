@@ -5,17 +5,23 @@ stages:
   - deploy
 
 before_script:
-  - npm install
+  - npm install --quiet
   - npm --prefix ./functions install
 
-build-prod:
+build:
   stage: build
+  artifacts:
+    paths:
+      - public/
   script:
-    - echo "Started building stage"
-#    - npm run build-prod
+    - npm run build-prod
 
-deploy-prod:
+
+deploy:
   stage: deploy
+  dependencies:
+    - build
   script:
-    - echo "Started deploying stage"
-#    - npm run deploy-prod
+    - npm run deploy-prod
+  only:
+    - master
