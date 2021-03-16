@@ -1,4 +1,5 @@
 image: node:latest
+
 stages:
   - build
   - deploy
@@ -7,14 +8,14 @@ before_script:
   - npm install
   - npm --prefix ./functions install
 
-build:
+build-prod:
   stage: build
   script:
+    - echo "Started building stage\n"
     - npm run build-prod
 
-deploy:
+deploy-prod:
   stage: deploy
   script:
-    - npm run deploy
-  only:
-    - master
+    - echo "Started deploying stage\n"
+    - npm run deploy-prod
