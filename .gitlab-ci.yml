@@ -11,11 +11,11 @@ before_script:
 build-prod:
   stage: build
   script:
-    - echo "Started building stage\n"
-    - npm run build-prod
+    - echo "Started building stage"
+#    - npm run build-prod
 
 deploy-prod:
   stage: deploy
   script:
-    - echo "Started deploying stage\n"
-    - npm run deploy-prod
+    - echo "Started deploying stage"
+#    - npm run deploy-prod
