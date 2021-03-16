@@ -7,18 +7,13 @@ before_script:
   - npm install
   - npm --prefix ./functions install
 
-app-build:
+build:
   stage: build
-  artifacts:
-    paths:
-      - dist/
   script:
     - npm run build-prod
 
-deploy-production:
+deploy:
   stage: deploy
-  dependencies:
-    - app-build
   script:
     - npm run deploy
   only:
