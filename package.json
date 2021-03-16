@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:todo-app-fe": "ng build --prod --app=todo-app-fe",
+    "deploy": "firebase deploy --non-interactive --token $FIREBASE_TOKEN"
   },
   "private": true,
   "dependencies": {
