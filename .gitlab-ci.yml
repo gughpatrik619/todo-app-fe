@@ -14,7 +14,7 @@ build:
     paths:
       - public/
   script:
-    - ng build --prod
+    - npm run build-prod
 
 deploy:
   stage: deploy
