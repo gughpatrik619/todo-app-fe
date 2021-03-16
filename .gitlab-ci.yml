@@ -14,14 +14,14 @@ build:
     paths:
       - public/
   script:
-    - npm run build-prod
-
+    - ng build --prod
 
 deploy:
   stage: deploy
   dependencies:
     - build
   script:
-    - npm run deploy-prod
+    - npm install -g firebase-tools
+    - firebase deploy --token $FIREBASE_TOKEN
   only:
     - master
