@@ -42,7 +42,7 @@
             'text-danger': todo.priority === 'HIGH',
             'text-warning': todo.priority === 'MEDIUM',
             'text-success': todo.priority === 'LOW'
-          }"><i [attr.tooltip]="todo.priority" class="fas fa-fw fa-circle"></i>
+          }"><i [attr.tooltip]="todo.priority" tooltip-pos="bottom-right" class="fas fa-fw fa-circle"></i>
         </span>
           <span class="col-8 ps-1 text-ellip">
             {{todo.title}}

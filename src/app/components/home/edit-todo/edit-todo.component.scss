@@ -1,5 +1,5 @@
 .ql-toolbar {
-  background-color: whitesmoke;
+  background-color: #c6c6c6;
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
 }
@@ -9,8 +9,10 @@
   border-bottom-right-radius: .25rem;
 }
 
-.ql-disabled, .form-control:disabled, select:disabled {
-  color: #6c757d;
-  opacity: 1;
-  background-color: #e9ecef;
+.custom-edit-disable {
+  .ql-disabled, .form-control:disabled, select:disabled {
+    color: #6c757d;
+    opacity: 1;
+    background-color: #e9ecef;
+  }
 }

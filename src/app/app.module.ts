@@ -27,7 +27,6 @@ import {ChartsModule} from 'ng2-charts';
 import {ChartCardComponent} from './components/home/statistics/chart-card/chart-card.component';
 import {PieChartComponent} from './components/charts/pie-chart/pie-chart.component';
 import {BarChartComponent} from './components/charts/bar-chart/bar-chart.component';
-import {CreateTodoModalComponent} from './components/home/create-todo-modal/create-todo-modal.component';
 import {TodoStateColumnComponent} from './components/home/todo-board/todo-state-column/todo-state-column.component';
 import {SidebarNavComponent} from './components/sidebar/sidebar-nav/sidebar-nav.component';
 import {SidebarInfoComponent} from './components/sidebar/sidebar-info/sidebar-info.component';
@@ -70,7 +69,6 @@ FullCalendarModule.registerPlugins([
     ChartCardComponent,
     PieChartComponent,
     BarChartComponent,
-    CreateTodoModalComponent,
     TodoStateColumnComponent,
     SidebarNavComponent,
     SidebarInfoComponent,

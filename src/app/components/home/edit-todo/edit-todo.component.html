@@ -1,4 +1,4 @@
-<div class="h-100">
+<div class="h-100 custom-edit-disable">
   <form
     [formGroup]="editTodoFormGroup"
     novalidate
@@ -32,7 +32,7 @@
 
         <div class="mb-3">
           <div class="row m-0">
-            <p class="col p-0 bg-dark text-light m-1 text-start">Title:</p>
+            <p class="col p-0 bg-dark text-light m-1 text-start">Description:</p>
             <div class="col p-0 text-end">
               <i class="align-middle icon-tilt fas fa-sm text-light fa-fw fa-pen" style="cursor: pointer"
                  (click)="editorDesc.setDisabledState(false); editorDesc.editorElem.focus()"

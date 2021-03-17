@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-
     if ((!this.authService.isLoggedIn.value) || (this.storageService.retrieveTokenExpiry() < new Date().toISOString())) {
       this.authService.logout();
       this.router.navigate(['/login']);

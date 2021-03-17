@@ -72,8 +72,22 @@ export class TodoTableComponent implements OnInit {
     }
   }
 
-  isToday(date: Date) {
-    return new Date().toDateString() === new Date(date.toString()).toDateString();
+  toUTCString(date: Date) {
+    return new Date(date.toString()).toUTCString();
+  }
+
+  dueToday(date: Date) {
+    const today = new Date();
+    const due = new Date(date.toString());
+
+    return today.toDateString() === due.toDateString();
+  }
+
+  expired(date: Date) {
+    const today = new Date();
+    const due = new Date(date.toString());
+
+    return today.toISOString() > due.toISOString();
   }
 
   editTodo(id: number) {

@@ -80,18 +80,44 @@ a, a:focus, a:hover {
 [tooltip]:hover::after {
   content: attr(tooltip);
   position: absolute;
-  top: 100%;
-  left: 10px;
   font-size: .8em;
   z-index: 9999;
   width: fit-content;
   height: fit-content;
-  margin-top: 10px;
+  white-space: nowrap;
   padding: 4px 8px;
   border-radius: .25rem;
-  background-color: var(--bs-light);
-  color: var(--bs-dark);
+  background-color: var(--bs-secondary);
+  color: var(--bs-light);
   font-family: var(--bs-font-sans-serif);
+}
+
+[tooltip][tooltip-pos="top-right"]:hover::after {
+  bottom: 150%;
+  left: 10px;
+}
+
+[tooltip][tooltip-pos="bottom-right"]:hover::after {
+  top: 150%;
+  left: 10px;
+}
+
+[tooltip][tooltip-pos="top-left"]:hover::after {
+  bottom: 150%;
+  right: 10px;
+}
+
+[tooltip][tooltip-pos="bottom-left"]:hover::after {
+  top: 150%;
+  right: 10px;
+}
+
+[tooltip][tooltip-pos="right"]:hover::after {
+  left: 30px;
+}
+
+[tooltip][tooltip-pos="left"]:hover::after {
+  right: 30px;
 }
 
 

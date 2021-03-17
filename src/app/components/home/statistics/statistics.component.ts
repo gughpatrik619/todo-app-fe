@@ -70,7 +70,7 @@ export class StatisticsComponent implements OnInit {
 
     const todosDone = todos.filter(todo => todo.state === EState.DONE);
 
-    console.log(`todos done: ${todosDone.length}`);
+    // console.log(`todos done: ${todosDone.length}`);
 
 
     const dateTimes: Date[] = [];
@@ -80,14 +80,13 @@ export class StatisticsComponent implements OnInit {
 
     const datas = dateTimes.map(datetime => {
 
-      console.log(`DATETIME: ${datetime.toDateString()}`);
+      // console.log(`DATETIME: ${datetime.toDateString()}`);
 
       const todosDoneDue = todosDone.filter(todo => todo.lastUpdated < datetime);
 
-      console.log(todosDoneDue);
+      // console.log(todosDoneDue);
 
-      const num = todos.length - todosDoneDue.length;
-      return num;
+      return todos.length - todosDoneDue.length;
     });
 
     this.burndownDataset = {

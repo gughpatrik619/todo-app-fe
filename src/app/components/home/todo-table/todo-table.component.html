@@ -117,7 +117,11 @@
         <td class="d-none d-lg-table-cell">{{todo.lastUpdated | date: 'fullDate'}}</td>
         <td class="d-none d-lg-table-cell">
           {{todo.dueDate | date: 'fullDate'}}
-          <i *ngIf="isToday(todo.dueDate)" class="fas fa-fw fa-exclamation text-danger"></i>
+          <i *ngIf="dueToday(todo.dueDate)" tooltip="Due today" tooltip-pos="top-right"
+             class="fas fa-fw fa-exclamation text-danger"></i>
+          <i *ngIf="expired(todo.dueDate)" [attr.tooltip]="'Expired at: ' + toUTCString(todo.dueDate)"
+             tooltip-pos="top-right"
+             class="fas fa-fw fa-clock text-secondary"></i>
         </td>
         <td>
         <span [ngClass]="{

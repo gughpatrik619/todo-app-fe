@@ -1,1 +1,78 @@
-<p class="text-light">create-todo works!</p>
+<div class="h-100">
+  <form
+    [formGroup]="createTodoFormGroup"
+    novalidate
+    (ngSubmit)="onSubmit()"
+  >
+
+    <div class="modal-header text-light p-2">
+      <h5>Create Todo</h5>
+    </div>
+
+    <div class="container p-2">
+
+      <div formGroupName="createTodoPayload">
+        <div class="mb-3">
+          <div class="row m-0">
+            <p class="col p-0 bg-dark text-light m-1 text-start">Title:</p>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="title"
+            formControlName="title"
+          >
+        </div>
+
+        <div class="mb-3">
+          <div class="row m-0">
+            <p class="col p-0 bg-dark text-light m-1 text-start">Description:</p>
+          </div>
+          <quill-editor
+            formControlName="description"
+            [styles]="editorStyle"
+            [modules]="editorConfig"
+            placeholder="Enter some text..."
+            theme="snow"
+          ></quill-editor>
+        </div>
+
+        <div class="mb-3">
+          <div class="row m-0">
+            <p class="col p-0 bg-dark text-light m-1 text-start">Priority:</p>
+          </div>
+          <select
+            class="form-select"
+            aria-label="priority"
+            formControlName="priority"
+          >
+            <option value="LOW">LOW</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HIGH">HIGH</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <div class="row m-0">
+            <p class="col p-0 bg-dark text-light m-1 text-start">Due:</p>
+          </div>
+          <input
+            type="datetime-local"
+            class="form-control"
+            aria-label="dueDate"
+            formControlName="dueDate"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer p-2">
+      <button type="button" class="btn btn-sm btn-outline-light" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-sm btn-light">
+        Submit
+        <div *ngIf="loading" class="ms-1 spinner-border" style="width: 1rem; height: 1rem"></div>
+      </button>
+    </div>
+
+  </form>
+</div>

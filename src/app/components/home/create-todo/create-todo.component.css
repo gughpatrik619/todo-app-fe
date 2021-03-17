@@ -1,0 +1,10 @@
+.ql-toolbar {
+  background-color: #c6c6c6;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.ql-container {
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+}

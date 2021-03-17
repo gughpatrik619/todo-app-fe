@@ -10,7 +10,7 @@ import {QuillModules} from 'ngx-quill';
 @Component({
   selector: 'app-edit-todo',
   templateUrl: './edit-todo.component.html',
-  styleUrls: ['./edit-todo.component.css'],
+  styleUrls: ['./edit-todo.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class EditTodoComponent implements OnInit, OnDestroy {
@@ -28,11 +28,11 @@ export class EditTodoComponent implements OnInit, OnDestroy {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link'],
       [{list: 'ordered'}, {list: 'bullet'}],
+      [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
       [{indent: '-1'}, {indent: '+1'}],
+      [{color: []}, {background: []}],
       [{header: 1}, {header: 2}],
       [{script: 'sub'}, {script: 'super'}],
-      [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
-      [{color: []}, {background: []}],
       ['clean'],
       [{size: ['small', false, 'large', 'huge']}],
       [{font: []}]
