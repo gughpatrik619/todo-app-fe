@@ -11,7 +11,7 @@
 }
 
 .cdk-drag-placeholder {
-  opacity: 30%;
+  opacity: 80%;
 }
 
 .cdk-drag-animating {

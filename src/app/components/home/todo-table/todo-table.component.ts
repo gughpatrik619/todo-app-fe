@@ -49,7 +49,6 @@ export class TodoTableComponent implements OnInit {
         if (index > -1) {
           this.todos.splice(index, 1);
         }
-        // this.todos = this.todos.filter(todo => todo.id !== id);
         this.toastrService.success(`Todo #${id} deleted.`);
       },
       error => this.toastrService.error(error.error.message)
