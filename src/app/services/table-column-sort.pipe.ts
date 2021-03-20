@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {Todo} from '../model/todo';
 
 @Pipe({
-  name: 'tableColumnSort'
+  name: 'tableColumnSort',
+  pure: false
 })
 export class TableColumnSortPipe implements PipeTransform {
 

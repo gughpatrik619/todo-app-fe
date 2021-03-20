@@ -42,14 +42,14 @@ export class TodoTableComponent implements OnInit {
     });
   }
 
-  onTodoCreated(newTodo: Todo) {
-    this.todos.push(newTodo);
-  }
-
   deleteTodoById(id: number) {
     this.todoService.deleteTodoById(id).subscribe(
       () => {
-        this.todos = this.todos.filter(todo => todo.id !== id);
+        const index = this.todos.findIndex(todo => todo.id === id);
+        if (index > -1) {
+          this.todos.splice(index, 1);
+        }
+        // this.todos = this.todos.filter(todo => todo.id !== id);
         this.toastrService.success(`Todo #${id} deleted.`);
       },
       error => this.toastrService.error(error.error.message)

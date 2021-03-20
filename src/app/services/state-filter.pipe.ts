@@ -3,7 +3,8 @@ import {Todo} from '../model/todo';
 import {EState} from '../model/e-state.enum';
 
 @Pipe({
-  name: 'stateFilter'
+  name: 'stateFilter',
+  pure: false
 })
 export class StateFilterPipe implements PipeTransform {
 

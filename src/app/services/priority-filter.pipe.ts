@@ -3,7 +3,8 @@ import {Todo} from '../model/todo';
 import {EPriority} from '../model/e-priority.enum';
 
 @Pipe({
-  name: 'priorityFilter'
+  name: 'priorityFilter',
+  pure: false
 })
 export class PriorityFilterPipe implements PipeTransform {
 
