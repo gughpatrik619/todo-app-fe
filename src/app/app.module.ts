@@ -42,6 +42,8 @@ import {QuillModule} from 'ngx-quill';
 import {StateFilterPipe} from './services/state-filter.pipe';
 import {PriorityFilterPipe} from './services/priority-filter.pipe';
 import {TableColumnSortPipe} from './services/table-column-sort.pipe';
+import {FilterQueryPipe} from './services/filter-query.pipe';
+import {FilterHighlightPipe} from './services/filter-highlight.pipe';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -77,7 +79,9 @@ FullCalendarModule.registerPlugins([
     LineChartComponent,
     StateFilterPipe,
     PriorityFilterPipe,
-    TableColumnSortPipe
+    TableColumnSortPipe,
+    FilterQueryPipe,
+    FilterHighlightPipe
   ],
   imports: [
     BrowserModule,

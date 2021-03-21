@@ -16,6 +16,7 @@ export class TodoTableComponent implements OnInit {
 
   todos: Todo[] = [];
   loaded = false;
+  query = '';
 
   sortField: string = null;
   sortAsc = true;
@@ -100,5 +101,10 @@ export class TodoTableComponent implements OnInit {
   sortByField(field: string, ascending = true) {
     this.sortField = field;
     this.sortAsc = ascending;
+  }
+
+  toUTCStr(date: Date) {
+
+    return new Date(date).toLocaleString('sk-SK');
   }
 }
