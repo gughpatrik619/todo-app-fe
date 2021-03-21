@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {CalendarOptions, FullCalendarComponent} from '@fullcalendar/angular';
+import {CalendarOptions, EventChangeArg, EventHoveringArg, FullCalendarComponent} from '@fullcalendar/angular';
 import {Todo} from '../../../model/todo';
 import {TodoService} from '../../../services/todo.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-calendar',
@@ -54,9 +55,11 @@ export class CalendarComponent implements OnInit {
     // selectMirror: true,
     selectMinDistance: 10,
     eventTextColor: 'white',
+    dayPopoverFormat: {month: 'long', day: 'numeric', year: 'numeric', weekday: 'long'},
     // eventStartEditable: true,
+    eventMouseEnter: this.onMouseEnter.bind(this),
     eventDurationEditable: true,
-    // eventChange: (arg: EventChangeArg) => { console.log(arg.event); },
+    eventChange: this.onEventChange.bind(this),
     nowIndicator: true,
     // dateClick: this.handleDateClick.bind(this),
     weekends: true,
@@ -86,7 +89,7 @@ export class CalendarComponent implements OnInit {
     // ]
   };
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -96,15 +99,49 @@ export class CalendarComponent implements OnInit {
       // add events;
       data.forEach(todo => {
         this.calendar.getApi().addEvent({
+          id: todo.id.toString(),
           title: todo.title,
-          start: new Date(todo.created.toString()).toISOString(),
-          end: new Date(todo.dueDate.toString()).toISOString(),
+          start: todo.created,
+          end: todo.dueDate,
           color: this.randomColor()
         });
       });
 
       // this.loaded = true;
     });
+  }
+
+  onMouseEnter(arg: EventHoveringArg) {
+    const todo = this.todos.find(t => t.id.toString() === arg.event.id);
+
+    arg.el.setAttribute('tooltip', this.todoToString(todo));
+    arg.el.setAttribute('tooltip-pos', 'top-right');
+  }
+
+  private todoToString(todo: Todo) {
+    const title = todo.title;
+    const created = new Date(todo.created).toUTCString();
+    const lastUpdated = new Date(todo.lastUpdated).toUTCString();
+    const due = new Date(todo.dueDate).toUTCString();
+    const prio = todo.priority;
+    const state = todo.state;
+    return `Title:  ${title}\nCreated:  ${created}\nLast updated:  ${lastUpdated}\nDue:  ${due}\nPriority:  ${prio}\nState:  ${state}`;
+  }
+
+  onEventChange(arg: EventChangeArg) {
+    this.todoService.updateTodo(+arg.event.id, {
+      dueDate: arg.event.end,
+      state: null,
+      priority: null,
+      description: null,
+      title: null
+    }).subscribe(
+      todo => {
+        this.toastrService.success(`Todo #${todo.id} updated`);
+      }, error => {
+        this.toastrService.error(error.error.error);
+      }
+    );
   }
 
   // todo: do not remove!!!
@@ -128,10 +165,10 @@ export class CalendarComponent implements OnInit {
 
   addEvent() {
     this.calendar.getApi().addEvent({
-      title: 'Dummy event',
-      date: new Date(),
-      allDay: true,
-      color: this.randomColor()
+      title: 'event 3',
+      start: '2021-03-19T22:50:12.000Z',
+      end: '2021-03-20T06:31:11.000Z',
+      color: 'red'
     });
   }
 

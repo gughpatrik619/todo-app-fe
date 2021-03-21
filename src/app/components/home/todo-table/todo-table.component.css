@@ -3,6 +3,6 @@ thead {
   color: var(--bs-light);
 }
 
-thead tr th:hover i {
+thead tr th:hover em {
   visibility: visible !important;
 }

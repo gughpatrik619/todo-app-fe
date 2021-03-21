@@ -84,7 +84,7 @@ a, a:focus, a:hover {
   z-index: 9999;
   width: fit-content;
   height: fit-content;
-  white-space: nowrap;
+  white-space: pre;
   padding: 4px 8px;
   border-radius: .25rem;
   background-color: var(--bs-secondary);

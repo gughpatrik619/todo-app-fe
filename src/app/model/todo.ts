@@ -10,4 +10,7 @@ export class Todo {
   priority: EPriority;
   state: EState;
   title: string;
+
+  q = `line1\nline2`;
 }
+
