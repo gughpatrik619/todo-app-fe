@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn.value) {
+      this.router.navigateByUrl('/home');
+    }
+
     this.loginFormGroup = this.formBuilder.group({
       loginPayload: this.formBuilder.group({
         username: new FormControl(null, Validators.required),
